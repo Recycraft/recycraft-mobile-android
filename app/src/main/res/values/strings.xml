@@ -1,3 +1,144 @@
 <resources>
-    <string name="app_name">Recycraft</string>
+    <string name="app_name">RecyCraft</string>
+    <string name="hello">Hello, </string>
+    <string name="tvUsername">Recycraft</string>
+    <string name="cari_kerajinan">Cari Kerajinan</string>
+    <string name="top_crafts">Top Crafts</string>
+    <string name="menuHome">Home</string>
+    <string name="menuProfile">Profile</string>
+    <string name="camera_button_desc">Camera Button</string>
+    <string name="nama_kerajinan">Nama Kerajinan</string>
+    <string name="jenis_kategori">Jenis Kategori</string>
+    <string name="Camera">Camera</string>
+    <string name="galery">Galery</string>
+    <string name="upload">Upload</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="login_heading">Login to Your Account</string>
+    <string name="login_subheading">Login to continue your journey</string>
+    <string name="email_title">Email</string>
+    <string name="email_hint">Enter Your Email</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="account">Account</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="descScreen1">Anda bingung dengan jenis sampah anda? Anda bingung ingin diapakan sampah anda? Mari ambil foto sampah kamu lalu kamu akan mendapatkan info menarik tentang barang tersebut dan buat lah kerajinan dari sampah kamu.</string>
+    <string name="descScreen2">Temukan kerajinan sesuai dengan bahan dan keinginanmu</string>
+    <string name="titleScreen2">Let\'s Craft</string>
+    <string name="titleScreen1">Get Inspired</string>
+    <string name="Finish">Finish</string>
+    <string name="lampion_plastik">Lampion Plastik</string>
+    <string name="plastik_sendok">Plastik , Sendok Plastik</string>
+    <string name="list_kerajinan">List Kerajinan</string>
+    <string name="bahan_lampion">1 Botol plastik bekas Aqua \n
+4 buah tutup botol plastik bekas \n
+Cat air \n
+Lem tembak \n
+Spidol \n
+Kuas kecil \n Gunting \n
+2 batang sedotan kecil \n
+2 batang sedotan besar</string>
+    <string name="cara_pembuatan">
+        Gunting sedotan besar sekitar 1 cm lebih panjang dari bodi botol. Ukur dan pastikan panjang diameternya 05 di sisi kanan maupun kiri;
+Tempelkan dengan menggunakan lem tembak;
+Tempelkan kedua batang sedotan secara sejajar. Tunggu lem sampai kering dan sedotan merekat pada botol;
+Ambil 4 buah tutup botol plastik;
+Lubangi bagian tengah botol dengan ujung gunting atau benda runcing;
+Buat lubang seukuran dengan sedotan yang sudah dipotong sebelumnya;
+Masukkan sedotan ke dalam lubang mobil dengan lem tembak;
+Lakukan hal tersebut pada seluruh tutup botol plastik;
+Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi mobil menggunakan lem tembak.
+
+    </string>
+    <string name="pass_hint">Enter Password Here</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="login">Login</string>
+    <string name="login_with_google">Login with Google</string>
+    <string name="prompt_signup">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="recycraft_logo">RecyCraft Logo</string>
+    <string name="signup_heading">Create Your Account</string>
+    <string name="signup_subheading">Create your account to start exploring</string>
+    <string name="full_name">Full Name</string>
+    <string name="name_hint">Enter Your Full Name</string>
+    <string name="prompt_login">Already have an account?</string>
+    <string name="change_photo">Change profile photo</string>
+    <string name="user_photo">User profile photo</string>
+    <string name="change_password">Change Password</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="log_out">Log Out</string>
+    <string-array name="titlesCraft">
+        <item>Contoh 1</item>
+        <item>Contoh 2</item>
+        <item>Contoh 3</item>
+        <item>Contoh 4</item>
+        <item>Contoh 5</item>
+        <item>Contoh 6</item>
+        <item>Contoh 7</item>
+    </string-array>
+    <integer-array name="imagesCraft">
+        <item>@drawable/kerajinanlampion</item>
+        <item>@drawable/kerajinanlampion</item>
+        <item>@drawable/kerajinanlampion</item>
+        <item>@drawable/kerajinanlampion</item>
+        <item>@drawable/kerajinanlampion</item>
+        <item>@drawable/kerajinanlampion</item>
+        <item>@drawable/kerajinanlampion</item>
+    </integer-array>
+    <string-array name="titlesCategories">
+        <item>Plastik</item>
+        <item>Plastik</item>
+        <item>Plastik</item>
+        <item>Plastik</item>
+        <item>Plastik</item>
+        <item>Plastik</item>
+        <item>Plastik</item>
+    </string-array>
+    <string-array name="descCategories">
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue</item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue</item>
+    </string-array>
+    <integer-array name="imagesCategories">
+        <item>@drawable/sampahoverlay</item>
+        <item>@drawable/sampahoverlay</item>
+        <item>@drawable/sampahoverlay</item>
+        <item>@drawable/sampahoverlay</item>
+        <item>@drawable/sampahoverlay</item>
+        <item>@drawable/sampahoverlay</item>
+        <item>@drawable/sampahoverlay</item>
+    </integer-array>
+    <string-array name="titlesListCraft">
+        <item>Lampion Plastik</item>
+        <item>Lampion Plastik</item>
+        <item>Lampion Plastik</item>
+        <item>Lampion Plastik</item>
+        <item>Lampion Plastik</item>
+    </string-array>
+    <string-array name="descsListCraft">
+        <item>Plastik , Sendok Plastik , Botol</item>
+        <item>Plastik , Sendok Plastik , Botol</item>
+        <item>Plastik , Sendok Plastik , Botol</item>
+        <item>Plastik , Sendok Plastik , Botol</item>
+        <item>Plastik , Sendok Plastik , Botol</item>
+    </string-array>
+    <integer-array name="imagesListCraft">
+        <item>@drawable/kerajinanlampion</item>
+        <item>@drawable/kerajinanlampion</item>
+        <item>@drawable/kerajinanlampion</item>
+        <item>@drawable/kerajinanlampion</item>
+        <item>@drawable/kerajinanlampion</item>
+    </integer-array>
 </resources>

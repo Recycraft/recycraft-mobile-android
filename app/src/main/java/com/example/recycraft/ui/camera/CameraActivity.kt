@@ -1,4 +1,4 @@
-package com.oye.recycraft.ui.camera
+package com.example.recycraft.ui.camera
 
 import android.Manifest
 import android.content.Context
@@ -91,7 +91,7 @@ class CameraActivity : AppCompatActivity() {
         createTempFile(application).also {
             val photoURI: Uri = FileProvider.getUriForFile(
                 this@CameraActivity,
-                "com.oye.recycraft.ui.camera",
+                "com.example.recycraft.ui.camera",
                 it
             )
             currentPhotoPath = it.absolutePath

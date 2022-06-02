@@ -1,4 +1,4 @@
-package com.oye.recycraft.ui.detail
+package com.example.recycraft.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

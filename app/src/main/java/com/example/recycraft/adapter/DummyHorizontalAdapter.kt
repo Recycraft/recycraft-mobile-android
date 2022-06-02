@@ -1,4 +1,4 @@
-package com.oye.recycraft.adapter
+package com.example.recycraft.adapter
 
 import android.app.Activity
 import android.view.LayoutInflater

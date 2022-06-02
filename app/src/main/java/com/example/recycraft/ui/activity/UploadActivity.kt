@@ -1,4 +1,4 @@
-package com.oye.recycraft.ui.activity
+package com.example.recycraft.ui.activity
 
 import android.Manifest
 import android.app.Activity

@@ -1,4 +1,4 @@
-package com.oye.recycraft.ui.onBoarding
+package com.example.recycraft.ui.onBoarding
 
 import android.content.Context
 import android.os.Bundle

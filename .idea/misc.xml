@@ -4,8 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/drawable/bg_color1.xml" value="0.1" />
+        <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/font/alata.xml" value="0.1" />
         <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/layout/activity_camera.xml" value="0.1" />
         <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/layout/activity_info.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/layout/activity_list_craft.xml" value="0.23550724637681159" />
+        <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/layout/activity_login.xml" value="0.11094224924012158" />
+        <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/layout/activity_signup.xml" value="0.11094224924012158" />
         <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/layout/activity_splash.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/layout/fragment_home.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/layout/fragment_info.xml" value="0.12158054711246201" />

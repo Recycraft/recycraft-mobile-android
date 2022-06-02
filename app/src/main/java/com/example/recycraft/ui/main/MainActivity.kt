@@ -7,8 +7,8 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivityMainBinding
-import com.oye.recycraft.ui.HomeFragment
-import com.oye.recycraft.ui.list.ListCraftActivity
+import com.example.recycraft.ui.HomeFragment
+import com.example.recycraft.ui.list.ListCraftActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

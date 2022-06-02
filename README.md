@@ -16,5 +16,5 @@ Recycraft
 * (C2009F0934) - [Zekri Fitra Ramadhan](https://github.com/yusrankun) - Universitas Gunadarma
 * (C7009F0926) - [Muhammad Rafi Ramadhan](https://github.com/rafi016) - Universitas Gunadarma
 
-# Recyraft-App Mobile Development
+# RecyCraft-App Mobile Development
 This project is our final project for Google Bangkit Academy 2022.

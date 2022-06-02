@@ -1,4 +1,4 @@
-package com.oye.recycraft.ui
+package com.example.recycraft.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,8 +11,8 @@ import com.example.recycraft.R
 import com.example.recycraft.databinding.FragmentHomeBinding
 import com.example.recycraft.model.CategoriesModel
 import com.example.recycraft.model.TopCraftsModel
-import com.oye.recycraft.adapter.DummyHorizontalAdapter
-import com.oye.recycraft.adapter.DummyVerticalAdapter
+import com.example.recycraft.adapter.DummyHorizontalAdapter
+import com.example.recycraft.adapter.DummyVerticalAdapter
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null

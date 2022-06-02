@@ -1,4 +1,4 @@
-package com.oye.recycraft.ui.onBoarding
+package com.example.recycraft.ui.onBoarding
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.recycraft.R
-import com.oye.recycraft.adapter.ViewPagerAdapter
+import com.example.recycraft.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.fragment_view_pager.view.*
 
 class ViewPagerFragment : Fragment() {

@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.recycraft">
 
-    <uses-feature android:name="android.hardware.camera"/>
-    <uses-feature android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.permission.INTERNET" />
-    <uses-feature
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-feature android:name="android.hardware.camera.any" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -41,6 +41,9 @@
             android:exported="false"/>
         <activity
             android:name="com.example.recycraft.ui.activity.UploadActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.recycraft.ui.camera.CameraActivity"
             android:exported="false" />
         <activity
             android:name="com.example.recycraft.ui.onBoarding.SplashActivity"

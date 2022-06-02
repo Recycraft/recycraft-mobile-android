@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/BANGKIT/recycraft-mobile-android/app/src/main/res/drawable/circle_button_white.xml" value="0.2" />
+        <entry key="..\:/BANGKIT/recycraft-mobile-android/app/src/main/res/layout/activity_camera.xml" value="0.1" />
+        <entry key="..\:/BANGKIT/recycraft-mobile-android/app/src/main/res/layout/activity_info.xml" value="0.16032608695652173" />
+        <entry key="..\:/BANGKIT/recycraft-mobile-android/app/src/main/res/layout/activity_list_craft.xml" value="0.16032608695652173" />
+        <entry key="..\:/BANGKIT/recycraft-mobile-android/app/src/main/res/layout/activity_upload.xml" value="0.16032608695652173" />
         <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/drawable/bg_color1.xml" value="0.1" />
         <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/font/alata.xml" value="0.1" />
         <entry key="..\:/Users/ACER/Documents/fr/RecyCraft/recycraft-mobile-android/app/src/main/res/layout/activity_camera.xml" value="0.1" />

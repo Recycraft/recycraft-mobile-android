@@ -21,32 +21,35 @@
         android:theme="@style/Theme.RecyCraft"
         tools:targetApi="31">
         <activity
-            android:name="com.example.recycraft.ui.signup.SignupActivity"
+            android:name=".ui.signup.SignupActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.recycraft.ui.login.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login" />
         <activity
-            android:name="com.example.recycraft.ui.detail.DetailActivity"
+            android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.recycraft.ui.list.ListCraftActivity"
+            android:name=".ui.list.ListCraftActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.InfoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.main.MainActivity"
+            android:theme="@style/Theme.RecyCraft2"
+            android:parentActivityName=".ui.camera.UploadActivity"
             android:exported="false"/>
         <activity
-            android:name="com.example.recycraft.ui.camera.UploadActivity"
+            android:name=".ui.main.MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".ui.camera.UploadActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.recycraft.ui.camera.CameraActivity"
+            android:name=".ui.camera.CameraActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.recycraft.ui.onBoarding.SplashActivity"
+            android:name=".ui.onBoarding.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.recycraft.databinding.ActivityUploadBinding
 
 import com.example.recycraft.ml.ScdBestModel
+import com.example.recycraft.ui.main.InfoActivity
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 
@@ -53,8 +54,16 @@ class UploadActivity : AppCompatActivity() {
         binding.uploadButton.setOnClickListener {
             classifier = Classifier(assets, mModelPath, mLabelPath, mInputSize)
             val result = classifier.classifyImage(bitmap)
-            binding.tvDetailName.setText(result.get(0).kategori)
-            binding.tvKategoriName.setText(""+result.get(0).akurasi)
+            val kategori = result.get(0).kategori
+            val akurasi = result.get(0).akurasi
+            binding.tvDetailName.setText(kategori)
+            binding.tvKategoriName.setText("$akurasi")
+
+            // move to InfoActivity
+            val moveIntent = Intent(this@UploadActivity, InfoActivity::class.java)
+            moveIntent.putExtra(InfoActivity.EXTRA_KATEGORI, kategori)
+            moveIntent.putExtra(InfoActivity.EXTRA_AKURASI, akurasi)
+            startActivity(moveIntent)
 
         }
            /*
@@ -131,7 +140,7 @@ class UploadActivity : AppCompatActivity() {
             photo = uri.toString()
             bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
 
-            Glide.with(this).load(data?.data).into(binding.previewImageView)
+            Glide.with(this).load(uri).into(binding.previewImageView)
         }
     }
 

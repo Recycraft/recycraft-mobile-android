@@ -39,6 +39,9 @@ class ListCraftActivity : AppCompatActivity() {
             }
         })
 
+        binding.mtoolbarResult.setOnClickListener {
+            finish()
+        }
     }
 
     private val ArrayListCraft: ArrayList<ListCraftModel>

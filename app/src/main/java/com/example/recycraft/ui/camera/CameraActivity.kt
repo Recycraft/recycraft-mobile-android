@@ -54,14 +54,28 @@ class CameraActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupCamera()
 
-
+/*
         if (allPermissionsGranted()){
             startCamera()
         }else{
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
 
+        binding.btnTakePhoto.setOnClickListener { takePhoto() }
+
+        outputDirectory = getOutputDirectory()
+
+        cameraExecutor = Executors.newSingleThreadExecutor()*/
+    }
+
+    private fun setupCamera() {
+        if (allPermissionsGranted()){
+            startCamera()
+        }else{
+            ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+        }
         binding.btnTakePhoto.setOnClickListener { takePhoto() }
 
         outputDirectory = getOutputDirectory()
@@ -132,7 +146,7 @@ class CameraActivity : AppCompatActivity() {
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
-        cameraProviderFuture.addListener(Runnable {
+        cameraProviderFuture.addListener({
             // Used to bind the lifecycle of cameras to the lifecycle owner
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 

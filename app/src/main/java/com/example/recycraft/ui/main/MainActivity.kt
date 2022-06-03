@@ -8,8 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivityMainBinding
 import com.example.recycraft.ui.HomeFragment
-import com.example.recycraft.ui.activity.UploadActivity
-import com.example.recycraft.ui.list.ListCraftActivity
+import com.example.recycraft.ui.camera.UploadActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

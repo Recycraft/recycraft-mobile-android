@@ -7,4 +7,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.recycraft.ui.onBoarding.SplashFragment">
 
+    <ImageView
+        android:layout_width="200sp"
+        android:layout_height="200sp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo_recycraft"
+        />
+
 </FrameLayout>

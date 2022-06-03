@@ -33,8 +33,8 @@ class UploadActivity : AppCompatActivity() {
         const val REQ_CAMERA = 1
         const val REQ_GALLERY = 2
         const val mInputSize = 150
-        const val mModelPath = "scd_best_model.tflite"
-        const val mLabelPath = "scd.txt"
+        const val mModelPath = "stc_best_model.tflite"
+        const val mLabelPath = "stc.txt"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

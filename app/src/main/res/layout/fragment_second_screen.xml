@@ -1,50 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgScreen2"
+    android:background="@color/bgDefault"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.onBoarding.SecondScreenFragment">
 
     <ImageView
+        android:id="@+id/imgScreen1"
         android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:id="@+id/imgScreen2"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/screen2"
+        android:layout_height="250dp"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/screen1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
+        app:layout_constraintTop_toTopOf="parent" />
+    
     <TextView
-        android:id="@+id/tvTitleScreen2"
+        android:id="@+id/tvTitleScreen1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/titleScreen2"
-        android:textSize="30sp"
+        android:text="@string/titleScreen1"
+        android:textColor="@color/black"
+        android:fontFamily="@font/alata"
+        android:textSize="32sp"
         android:textStyle="bold"
-        android:textColor="@color/GreenTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgScreen2"/>
+        app:layout_constraintTop_toBottomOf="@id/imgScreen1"/>
 
     <TextView
-        android:id="@+id/tvDescScreen2"
+        android:id="@+id/tvDescScreen1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:text="@string/descScreen2"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/descScreen1"
+        android:textColor="@color/black"
+        android:fontFamily="@font/alata"
         android:gravity="center"
-        android:textColor="@color/GreenDesc"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleScreen2"/>
-
+        app:layout_constraintTop_toBottomOf="@id/tvTitleScreen1"/>
     <TextView
         android:id="@+id/previous"
         android:layout_width="wrap_content"
@@ -52,23 +54,25 @@
         android:layout_marginStart="40dp"
         android:layout_marginBottom="40dp"
         android:text="@string/previous"
-        android:textColor="@color/GreenButton"
+        android:fontFamily="@font/alata"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvFinish"
-        android:text="@string/Finish"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="40dp"
+        android:fontFamily="@font/alata"
+        android:text="@string/next"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/GreenButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

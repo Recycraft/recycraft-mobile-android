@@ -14,4 +14,12 @@
         android:src="@drawable/logo_recycraft"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="900dp"
+        android:fontFamily="@font/alata"
+        android:gravity="center"
+        android:text="Recycraft"
+        android:textColor="@color/ap_white"
+        android:textSize="30sp" />
 </FrameLayout>

@@ -19,12 +19,12 @@
     <color name="sage">#8b9e8a</color>
     <color name="sage_light">#a9c3b6</color>
     <color name="blue_light">#8fb8ca</color>
-    <color name="bgColorScreen1">#D4DFFF</color>
-    <color name="GreenTitle">#1F6507</color>
-    <color name="GreenDesc">#0A6909</color>
-    <color name="GreenButton">#1F6507</color>
+    <color name="greenTitle">#1F6507</color>
+    <color name="greenDesc">#0A6909</color>
+    <color name="greenButton">#1F6507</color>
     <color name="bgScreen2">#DCDCDC</color>
     <color name="ivory">#fffff0</color>
     <color name="red">#d0312d</color>
     <color name="green_splash">#0ADB7D</color>
+    <color name="bgDefault">#E5E7F1</color>
 </resources>

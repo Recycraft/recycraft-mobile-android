@@ -1,59 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgDefault"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.onBoarding.FirstScreenFragment">
+    tools:context=".ui.onBoarding.ThirdScreenFragment">
 
     <ImageView
         android:layout_width="300dp"
         android:layout_height="250dp"
-        android:id="@+id/imgScreen0"
+        android:id="@+id/imgScreen2"
         android:layout_marginTop="150dp"
-        android:src="@drawable/screen0"
+        android:src="@drawable/screen2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvTitleScreen0"
+        android:id="@+id/tvTitleScreen2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/titleScreen0"
-        android:textColor="@color/black"
-        android:textSize="30sp"
+        android:text="@string/titleScreen2"
+        android:textSize="32sp"
         android:textStyle="bold"
         android:fontFamily="@font/alata"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgScreen0"/>
+        app:layout_constraintTop_toBottomOf="@id/imgScreen2"/>
 
     <TextView
-        android:id="@+id/tvDescScreen1"
+        android:id="@+id/tvDescScreen2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:text="@string/descScreen0"
-        android:textColor="@color/black"
-        android:fontFamily="@font/alata"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/descScreen2"
         android:gravity="center"
+        android:textColor="@color/black"
         android:textSize="16sp"
+        android:fontFamily="@font/alata"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleScreen0"/>
+        app:layout_constraintTop_toBottomOf="@id/tvTitleScreen2"/>
+
+    <TextView
+        android:id="@+id/previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/previous"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/next"
-        android:text="@string/next"
-        android:fontFamily="@font/alata"
+        android:id="@+id/finish"
+        android:text="@string/finish"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="40dp"
         android:textSize="18sp"

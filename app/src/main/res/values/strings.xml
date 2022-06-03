@@ -28,13 +28,19 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="account">Account</string>
+
+
+    <string name="descScreen0">Kenali sampahmu dan jenisnya dengan mudah hanya dengan satu sentuhan.</string>
+    <string name="descScreen1">Temukan ide kreatif dari sampahmu dan buatlah kerajinan yang menarik.</string>
+    <string name="descScreen2">Kreasikan idemu sekarang dan hasilkan berbagai kerajinan yang menarik.</string>
+    <string name="titleScreen0">Recylens</string>
+    <string name="titleScreen1">Get Ideas</string>
+    <string name="titleScreen2">Let\'s Craft</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="descScreen1">Anda bingung dengan jenis sampah anda? Anda bingung ingin diapakan sampah anda? Mari ambil foto sampah kamu lalu kamu akan mendapatkan info menarik tentang barang tersebut dan buat lah kerajinan dari sampah kamu.</string>
-    <string name="descScreen2">Temukan kerajinan sesuai dengan bahan dan keinginanmu</string>
-    <string name="titleScreen2">Let\'s Craft</string>
-    <string name="titleScreen1">Get Inspired</string>
-    <string name="Finish">Finish</string>
+    <string name="finish">Finish</string>
+    <string name="skip">Skip</string>
+
     <string name="lampion_plastik">Lampion Plastik</string>
     <string name="plastik_sendok">Plastik , Sendok Plastik</string>
     <string name="list_kerajinan">List Kerajinan</string>

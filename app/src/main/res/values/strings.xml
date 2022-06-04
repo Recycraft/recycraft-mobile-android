@@ -81,6 +81,7 @@ Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi 
     <string name="change_password">Change Password</string>
     <string name="update_profile">Update Profile</string>
     <string name="log_out">Log Out</string>
+    <string name="hi">Hi,</string>
     <string-array name="titlesCraft">
         <item>Contoh 1</item>
         <item>Contoh 2</item>

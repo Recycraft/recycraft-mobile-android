@@ -11,9 +11,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.recycraft.R
 import com.example.recycraft.R.layout.fragment_second_screen
 import kotlinx.android.synthetic.main.fragment_second_screen.view.*
-import kotlinx.android.synthetic.main.fragment_second_screen.view.finish
-import kotlinx.android.synthetic.main.fragment_second_screen.view.previous
-import kotlinx.android.synthetic.main.fragment_third_screen.view.*
 
 class SecondScreenFragment : Fragment() {
     override fun onCreateView(
@@ -31,7 +28,7 @@ class SecondScreenFragment : Fragment() {
             viewPager?.currentItem = 2
         }
         view.finish.setOnClickListener {
-            findNavController().navigate(R.id.action_viewPagerFragment_to_mainActivity)
+            findNavController().navigate(R.id.action_viewPagerFragment_to_loginActivity)
             onBoardingFinished()
         }
         return view

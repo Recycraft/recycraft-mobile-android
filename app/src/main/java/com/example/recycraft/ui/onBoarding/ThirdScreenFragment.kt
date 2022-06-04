@@ -12,7 +12,6 @@ import com.example.recycraft.R
 import com.example.recycraft.R.id.action_viewPagerFragment_to_loginActivity
 import com.example.recycraft.R.layout.fragment_third_screen
 import kotlinx.android.synthetic.main.fragment_third_screen.view.*
-import kotlinx.android.synthetic.main.fragment_view_pager.*
 
 class ThirdScreenFragment : Fragment() {
 

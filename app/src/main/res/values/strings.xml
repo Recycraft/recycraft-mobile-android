@@ -80,8 +80,12 @@ Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi 
     <string name="change_password">Change Password</string>
     <string name="update_profile">Update Profile</string>
     <string name="log_out">Log Out</string>
+<<<<<<< HEAD
     <string name="titleSplash">Recycraft</string>
     <string name="start">Mulai</string>
+=======
+    <string name="hi">Hi,</string>
+>>>>>>> da5b4db574a02ea7b987e3f32b88953dd6307492
     <string-array name="titlesCraft">
         <item>Contoh 1</item>
         <item>Contoh 2</item>

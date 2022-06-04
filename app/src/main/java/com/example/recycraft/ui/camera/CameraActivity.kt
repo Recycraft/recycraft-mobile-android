@@ -24,9 +24,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivityCameraBinding
-import createTempFile
 import kotlinx.android.synthetic.main.activity_camera.*
-import uriToFile
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*

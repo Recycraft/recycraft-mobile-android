@@ -1,65 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgDefault"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.onBoarding.FirstScreenFragment">
 
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="250dp"
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imgScreen0"
-        android:layout_marginTop="150dp"
-        android:src="@drawable/screen0"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loader1"
+        app:lottie_speed="2" />
 
     <TextView
         android:id="@+id/tvTitleScreen0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_alignBottom="@+id/imgScreen0"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-48dp"
+        android:fontFamily="@font/alata"
         android:text="@string/titleScreen0"
         android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/alata"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgScreen0"/>
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvDescScreen1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvTitleScreen0"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="-5dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="-65dp"
+        android:fontFamily="@font/alata"
+        android:gravity="center"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:text="@string/descScreen0"
-        android:textColor="@color/black"
-        android:fontFamily="@font/alata"
-        android:gravity="center"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleScreen0"/>
+        android:textColor="@color/blackishLight"
+        android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/next"
-        android:text="@string/next"
-        android:fontFamily="@font/alata"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="119dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/button_rounded"
+            android:fontFamily="@font/alata"
+            android:text="@string/start"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+</RelativeLayout>

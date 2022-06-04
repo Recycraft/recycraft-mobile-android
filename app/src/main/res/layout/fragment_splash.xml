@@ -8,18 +8,18 @@
     tools:context="com.example.recycraft.ui.onBoarding.SplashFragment">
 
     <ImageView
-        android:layout_width="200sp"
-        android:layout_height="200sp"
+        android:layout_width="250sp"
+        android:layout_height="250sp"
         android:layout_gravity="center"
         android:src="@drawable/logo_recycraft"
         />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="900dp"
+        android:layout_height="950dp"
         android:fontFamily="@font/alata"
         android:gravity="center"
-        android:text="Recycraft"
+        android:text="@string/titleSplash"
         android:textColor="@color/ap_white"
         android:textSize="30sp" />
 </FrameLayout>

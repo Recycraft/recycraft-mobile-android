@@ -37,9 +37,9 @@
     <string name="titleScreen1">Get Ideas</string>
     <string name="titleScreen2">Let\'s Craft</string>
     <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="previous">kembali</string>
     <string name="finish">Finish</string>
-    <string name="skip">Skip</string>
+    <string name="skip">lewati</string>
 
     <string name="lampion_plastik">Lampion Plastik</string>
     <string name="plastik_sendok">Plastik , Sendok Plastik</string>
@@ -81,6 +81,8 @@ Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi 
     <string name="change_password">Change Password</string>
     <string name="update_profile">Update Profile</string>
     <string name="log_out">Log Out</string>
+    <string name="titleSplash">Recycraft</string>
+    <string name="start">Mulai</string>
     <string-array name="titlesCraft">
         <item>Contoh 1</item>
         <item>Contoh 2</item>

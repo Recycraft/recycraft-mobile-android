@@ -71,7 +71,8 @@
             android:fontFamily="@font/alata"
             android:text="@string/start"
             android:textColor="@android:color/white"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            tools:ignore="TextContrastCheck" />
     </LinearLayout>
 
 </RelativeLayout>

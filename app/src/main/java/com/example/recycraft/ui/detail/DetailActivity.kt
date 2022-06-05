@@ -1,7 +1,7 @@
 package com.example.recycraft.ui.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.recycraft.R
 
 class DetailActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.recycraft.ui
+package com.example.recycraft.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,16 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recycraft.R
 import com.example.recycraft.adapter.DummyHorizontalAdapter
 import com.example.recycraft.adapter.DummyVerticalAdapter
-import com.example.recycraft.databinding.FragmentHomeBinding
-<<<<<<< HEAD
-import com.example.recycraft.model.CategoriesModel
-import com.example.recycraft.model.TopCraftsModel
-=======
 import com.example.recycraft.data.model.CategoriesModel
 import com.example.recycraft.data.model.TopCraftsModel
-import com.example.recycraft.adapter.DummyHorizontalAdapter
-import com.example.recycraft.adapter.DummyVerticalAdapter
->>>>>>> dc69d96b1ef6481b4540f8ffedceab4e614b7fca
+import com.example.recycraft.databinding.FragmentHomeBinding
+
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null

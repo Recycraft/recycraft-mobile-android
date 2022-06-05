@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.example.recycraft.R
 import com.example.recycraft.R.id.action_viewPagerFragment_to_loginActivity
 import com.example.recycraft.R.layout.fragment_third_screen

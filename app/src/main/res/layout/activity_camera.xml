@@ -8,12 +8,12 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_cancel"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/green_scan"
+        android:backgroundTint="@color/ap_transparent"
         android:elevation="5dp"
         android:insetLeft="0dp"
         android:insetTop="0dp"
@@ -27,7 +27,8 @@
         app:iconPadding="0dp"
         app:iconTint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_take_photo"
@@ -52,12 +53,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.90" />
+        app:layout_constraintVertical_bias="0.90"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_take_gallery"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="90dp"
         android:backgroundTint="@color/whiteDark"
         android:elevation="5dp"
         android:gravity="center"
@@ -73,12 +77,9 @@
         app:iconGravity="textStart"
         app:iconPadding="0dp"
         app:iconTint="@color/black"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/viewFinder" />
-
-
+        app:layout_constraintStart_toStartOf="@+id/viewFinder"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.camera.view.PreviewView
         android:id="@+id/viewFinder"

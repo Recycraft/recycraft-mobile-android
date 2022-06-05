@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.recycraft.databinding.VerticalRowBinding
 import com.example.recycraft.data.model.CategoriesModel
+import com.example.recycraft.databinding.VerticalRowBinding
 
 class DummyVerticalAdapter(
     private val listCategory: ArrayList<CategoriesModel>,

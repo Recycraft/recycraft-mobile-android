@@ -36,12 +36,13 @@
         android:id="@+id/app_logo"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/recycraft_logo"
         android:contentDescription="@string/recycraft_logo"
-        app:layout_constraintTop_toBottomOf="@+id/signup_subheading"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/recycraft_logo"
+        app:layout_constraintBottom_toTopOf="@id/name_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/name_title"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_subheading"
+        tools:ignore="ImageContrastCheck,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/name_title"
@@ -54,22 +55,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/name_input"/>
+
     <EditText
         android:id="@+id/name_input"
-        android:fontFamily="@font/alata"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/input_shape"
-        android:hint="@string/name_hint"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:autofillHints="name"
+        android:background="@drawable/input_shape"
+        android:fontFamily="@font/alata"
+        android:hint="@string/name_hint"
         android:inputType="textPersonName"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/name_title"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColorHint="#78909C"
+        app:layout_constraintBottom_toTopOf="@id/email_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/email_title"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_title" />
 
     <TextView
         android:id="@+id/email_title"
@@ -83,22 +86,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/email_input"/>
+
     <EditText
         android:id="@+id/email_input"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:fontFamily="@font/alata"
-        android:background="@drawable/input_shape"
-        android:hint="@string/email_hint"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:autofillHints="emailAddress"
+        android:background="@drawable/input_shape"
+        android:fontFamily="@font/alata"
+        android:hint="@string/email_hint"
         android:inputType="textEmailAddress"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/email_title"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColorHint="#78909C"
+        app:layout_constraintBottom_toTopOf="@id/pass_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/pass_title"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email_title" />
 
     <TextView
         android:id="@+id/pass_title"
@@ -111,48 +116,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/pass_input"/>
+
     <EditText
         android:id="@+id/pass_input"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/input_shape"
-        android:hint="@string/pass_hint"
-        android:fontFamily="@font/alata"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:autofillHints="password"
+        android:background="@drawable/input_shape"
+        android:fontFamily="@font/alata"
+        android:hint="@string/pass_hint"
         android:inputType="textPassword"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/pass_title"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColorHint="#78909C"
+        app:layout_constraintBottom_toTopOf="@id/signup_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/signup_button"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pass_title" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signup_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_login"
         android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:background="@drawable/button_login"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/pass_input"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/login_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/login_button"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pass_input"
+        tools:ignore="TextContrastCheck,TextContrastCheck" />
 
     <TextView
         android:id="@+id/login_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/prompt_login"
         android:fontFamily="@font/alata"
-        app:layout_constraintTop_toTopOf="@id/login_button"
+        android:text="@string/prompt_login"
+        android:textColor="#616161"
         app:layout_constraintBottom_toBottomOf="@id/login_button"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/login_button"
-        app:layout_constraintHorizontal_chainStyle="packed"/>
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/login_button" />
     <Button
         android:id="@+id/login_button"
         android:layout_width="wrap_content"

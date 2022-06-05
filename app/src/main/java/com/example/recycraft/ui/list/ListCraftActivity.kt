@@ -1,13 +1,13 @@
 package com.example.recycraft.ui.list
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recycraft.R
-import com.example.recycraft.databinding.ActivityListCraftBinding
-import com.example.recycraft.data.model.ListCraftModel
 import com.example.recycraft.adapter.DummyListCraftAdapter
+import com.example.recycraft.data.model.ListCraftModel
+import com.example.recycraft.databinding.ActivityListCraftBinding
 import com.example.recycraft.ui.detail.DetailActivity
 
 class ListCraftActivity : AppCompatActivity() {
@@ -25,7 +25,7 @@ class ListCraftActivity : AppCompatActivity() {
         listListCraft.addAll(ArrayListCraft)
         adapter = DummyListCraftAdapter(listListCraft, this)
 
-        binding?.apply {
+        binding.apply {
             rvListKerajinan.setHasFixedSize(true)
             rvListKerajinan.layoutManager = LinearLayoutManager(this@ListCraftActivity)
             rvListKerajinan.adapter = adapter

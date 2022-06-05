@@ -10,8 +10,6 @@ import java.nio.ByteOrder
 import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
 import java.util.*
-import kotlin.Comparator
-import kotlin.collections.ArrayList
 
 class ScrapClassClassifier (assetManager: AssetManager, modelPath: String, labelPath: String,
                             private val inputSize: Int

@@ -87,7 +87,8 @@
             android:fontFamily="@font/alata"
             android:text="@string/next"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/finish"

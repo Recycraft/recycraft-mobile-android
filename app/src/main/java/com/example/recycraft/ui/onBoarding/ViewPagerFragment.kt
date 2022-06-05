@@ -1,10 +1,10 @@
 package com.example.recycraft.ui.onBoarding
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.recycraft.R
 import com.example.recycraft.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.fragment_view_pager.view.*

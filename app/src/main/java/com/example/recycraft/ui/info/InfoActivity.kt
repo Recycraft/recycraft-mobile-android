@@ -1,20 +1,16 @@
-package com.example.recycraft.ui.main
+package com.example.recycraft.ui.info
 
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.androidplot.pie.Segment
-import com.androidplot.pie.SegmentFormatter
 import com.example.recycraft.databinding.ActivityInfoBinding
 import com.example.recycraft.ui.list.ListCraftActivity
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-import kotlin.math.floor
 
 class InfoActivity : AppCompatActivity() {
     private lateinit var binding : ActivityInfoBinding
@@ -25,7 +21,7 @@ class InfoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Result")
+        supportActionBar?.title = "Result"
 
         // get data and visualize pie chart
         val type = intent.getStringExtra(EXTRA_TYPE)
@@ -34,7 +30,7 @@ class InfoActivity : AppCompatActivity() {
         val value1 = (confident*100)
         val value2 = 100 - value1
 
-        var pieMap = mutableMapOf<String, Float>()
+        val pieMap: MutableMap<String, Float>
         when (type?.lowercase()){
             "organic" -> pieMap = mutableMapOf("Organic" to value1, "Recycleable" to value2)
             else -> pieMap = mutableMapOf("Organic" to value2, "Recycleable" to value1)
@@ -77,5 +73,6 @@ class InfoActivity : AppCompatActivity() {
         const val EXTRA_CONFIDENT = "extra_confident"
         const val EXTRA_KATEGORI = "extra_kategori"
         const val EXTRA_AKURASI = "extra_akurasi"
+        const val EXTRA_IMAGE = "image"
     }
 }

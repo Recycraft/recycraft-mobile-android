@@ -1,9 +1,9 @@
 package com.example.recycraft.ui.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivityLoginBinding
 import com.example.recycraft.ui.main.MainActivity

@@ -10,7 +10,6 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <FrameLayout
             android:id="@+id/container_fragment"
             android:layout_width="match_parent"
@@ -40,7 +39,9 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 app:elevation="0dp"
-                app:menu="@menu/bottom_nav_menu" />
+                app:menu="@menu/bottom_nav_menu"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehaviour"
+                />
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
@@ -49,8 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="28dp"
-            android:contentDescription="@string/camera_button_desc"
             android:backgroundTint="@color/green_scan"
+            android:contentDescription="@string/camera_button_desc"
             android:src="@drawable/ic_camera_black_24"
             app:layout_anchor="@id/bottomAppbar"
             app:layout_constraintBottom_toBottomOf="@+id/bottomNavbar"
@@ -58,6 +59,5 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

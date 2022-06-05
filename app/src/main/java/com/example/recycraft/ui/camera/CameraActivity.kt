@@ -126,14 +126,13 @@ class CameraActivity : AppCompatActivity() {
                     Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
                 }
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                  val savedUri = Uri.fromFile(photoFile )
+                    val savedUri = Uri.fromFile(photoFile)
                     val msg = "Photo capture succeeded: $savedUri"
-                 Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                 //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                    Log.d(TAG, "$savedUri")
                   val intent = Intent()
-                 intent.putExtra(CEK_URI, savedUri.toString())
+                    intent.putExtra(CEK_URI, savedUri.toString())
                  setResult(Activity.RESULT_OK, intent)
-
                     /*
                     val intent = Intent(applicationContext, UploadActivity::class.java)
                     intent.putExtra(UploadActivity.EXTRA_DATA,photoFile)

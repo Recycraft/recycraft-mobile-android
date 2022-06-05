@@ -1,4 +1,4 @@
-package com.example.recycraft.ui.info
+package com.example.recycraft.ui.main
 
 import android.content.Intent
 import android.graphics.Color
@@ -8,6 +8,13 @@ import com.androidplot.pie.Segment
 import com.androidplot.pie.SegmentFormatter
 import com.example.recycraft.databinding.ActivityInfoBinding
 import com.example.recycraft.ui.list.ListCraftActivity
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import kotlin.math.floor
 
 class InfoActivity : AppCompatActivity() {
     private lateinit var binding : ActivityInfoBinding
@@ -21,26 +28,42 @@ class InfoActivity : AppCompatActivity() {
         supportActionBar?.setTitle("Result")
 
         // get data and visualize pie chart
-        val kategori = intent.getStringExtra(EXTRA_KATEGORI)
-        val akurasi = intent.getFloatExtra(EXTRA_AKURASI, 0F)
+        val type = intent.getStringExtra(EXTRA_TYPE)
+        val confident = intent.getFloatExtra(EXTRA_CONFIDENT, 0F)
 
-        val photoResult = intent.getStringExtra(EXTRA_IMAGE)
-
-        val value1 = (akurasi*100).toInt()
+        val value1 = (confident*100)
         val value2 = 100 - value1
 
-        var kategori2 = "organic"
-        if (kategori == kategori2) kategori2 = "recycleable"
+        var pieMap = mutableMapOf<String, Float>()
+        when (type?.lowercase()){
+            "organic" -> pieMap = mutableMapOf("Organic" to value1, "Recycleable" to value2)
+            else -> pieMap = mutableMapOf("Organic" to value2, "Recycleable" to value1)
+        }
 
-        val s1 = Segment(kategori, value1)
-        val s2 = Segment(kategori2, value2)
+        val entries = ArrayList<PieEntry>()
+        pieMap.filter { (key, value) ->
+            entries.add(PieEntry(value, key))
+        }
 
-        val sf1 = SegmentFormatter(Color.GREEN)
-        val sf2 = SegmentFormatter(Color.GRAY)
+        val pieColors = ArrayList<Int>()
+        pieColors.add(Color.parseColor("#54B086"))
+        pieColors.add(Color.parseColor("#E9BC99"))
 
-        binding.pieChart.addSegment(s1,sf1)
-        binding.pieChart.addSegment(s2,sf2)
-      //  binding.imageResult.setImageResource(photoResult)
+        val pieDataSet = PieDataSet(entries, "")
+        pieDataSet.colors = pieColors
+        pieDataSet.sliceSpace = 1f
+        val pieData = PieData(pieDataSet)
+        pieData.setValueTextSize(0f)
+
+        binding.pieChart.apply {
+            data = pieData
+            animateY(1400, Easing.EaseInOutQuad)
+            description.isEnabled = false
+            legend.orientation = Legend.LegendOrientation.VERTICAL
+            legend.verticalAlignment = Legend.LegendVerticalAlignment.CENTER
+            setDrawEntryLabels(false)
+            invalidate()
+        }
 
         // button cari kerajinan
         binding.btnCari.setOnClickListener {
@@ -50,8 +73,9 @@ class InfoActivity : AppCompatActivity() {
     }
 
     companion object {
+        const val EXTRA_TYPE = "extra_type"
+        const val EXTRA_CONFIDENT = "extra_confident"
         const val EXTRA_KATEGORI = "extra_kategori"
         const val EXTRA_AKURASI = "extra_akurasi"
-        const val EXTRA_IMAGE = "extra_image"
     }
 }

@@ -2,13 +2,10 @@ package com.example.recycraft.ui.main
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import com.androidplot.pie.Segment
 import com.androidplot.pie.SegmentFormatter
-import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivityInfoBinding
 import com.example.recycraft.ui.list.ListCraftActivity
 

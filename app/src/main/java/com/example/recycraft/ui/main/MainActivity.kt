@@ -1,8 +1,8 @@
 package com.example.recycraft.ui.main
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import com.example.recycraft.R
@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
-
     }
 
     private fun makeCurrentFragment(fragment: Fragment) {

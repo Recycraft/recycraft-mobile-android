@@ -19,6 +19,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivityCameraBinding
+import com.example.recycraft.ui.HomeFragment
+import com.example.recycraft.ui.main.MainActivity
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -70,6 +72,10 @@ class CameraActivity : AppCompatActivity() {
         }
         binding.btnTakePhoto.setOnClickListener { takePhoto() }
 
+        binding.btnCancel.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
         outputDirectory = getOutputDirectory()
 
         cameraExecutor = Executors.newSingleThreadExecutor()

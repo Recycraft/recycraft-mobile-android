@@ -1,13 +1,12 @@
 package com.example.recycraft.adapter
 
 import android.app.Activity
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recycraft.databinding.ItemListKerajinanBinding
-import com.example.recycraft.model.ListCraftModel
+import com.example.recycraft.data.model.ListCraftModel
 
 class DummyListCraftAdapter(
     private val listListCraft: ArrayList<ListCraftModel>,

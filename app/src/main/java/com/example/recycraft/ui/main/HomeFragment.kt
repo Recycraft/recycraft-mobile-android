@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recycraft.R
 import com.example.recycraft.databinding.FragmentHomeBinding
-import com.example.recycraft.model.CategoriesModel
-import com.example.recycraft.model.TopCraftsModel
+import com.example.recycraft.data.model.CategoriesModel
+import com.example.recycraft.data.model.TopCraftsModel
 import com.example.recycraft.adapter.DummyHorizontalAdapter
 import com.example.recycraft.adapter.DummyVerticalAdapter
 

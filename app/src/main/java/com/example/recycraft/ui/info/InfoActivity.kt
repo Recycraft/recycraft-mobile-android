@@ -1,4 +1,4 @@
-package com.example.recycraft.ui.main
+package com.example.recycraft.ui.info
 
 import android.content.Intent
 import android.graphics.Color
@@ -24,6 +24,8 @@ class InfoActivity : AppCompatActivity() {
         val kategori = intent.getStringExtra(EXTRA_KATEGORI)
         val akurasi = intent.getFloatExtra(EXTRA_AKURASI, 0F)
 
+        val photoResult = intent.getStringExtra(EXTRA_IMAGE)
+
         val value1 = (akurasi*100).toInt()
         val value2 = 100 - value1
 
@@ -38,6 +40,7 @@ class InfoActivity : AppCompatActivity() {
 
         binding.pieChart.addSegment(s1,sf1)
         binding.pieChart.addSegment(s2,sf2)
+      //  binding.imageResult.setImageResource(photoResult)
 
         // button cari kerajinan
         binding.btnCari.setOnClickListener {
@@ -49,5 +52,6 @@ class InfoActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_KATEGORI = "extra_kategori"
         const val EXTRA_AKURASI = "extra_akurasi"
+        const val EXTRA_IMAGE = "extra_image"
     }
 }

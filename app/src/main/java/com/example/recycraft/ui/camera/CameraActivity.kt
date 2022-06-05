@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -39,18 +40,27 @@ class CameraActivity : AppCompatActivity() {
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         const val CEK_URI = "extra"
+
+        const val REQ_GALLERY = 2
     }
 
     private lateinit var binding : ActivityCameraBinding
     private var imageCapture : ImageCapture? = null
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
+    private lateinit var  bitmap: Bitmap
+    private var photo : String? = null
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
+        binding.btnTakeGallery.setOnClickListener{
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, REQ_GALLERY)
+        }
         setContentView(binding.root)
         setupCamera()
 
@@ -66,6 +76,19 @@ class CameraActivity : AppCompatActivity() {
         outputDirectory = getOutputDirectory()
 
         cameraExecutor = Executors.newSingleThreadExecutor()*/
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == REQ_GALLERY && resultCode == Activity.RESULT_OK){
+            val uri : Uri? = data?.data
+            photo = uri.toString()
+            val intent = Intent(applicationContext, UploadActivity::class.java)
+            intent.putExtra(UploadActivity.EXTRA_DATA_GALLERY,photo)
+            startActivity(intent)
+            finish()
+
+        }
     }
 
     private fun setupCamera() {
@@ -103,13 +126,18 @@ class CameraActivity : AppCompatActivity() {
                     Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
                 }
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val savedUri = Uri.fromFile(photoFile)
+                  val savedUri = Uri.fromFile(photoFile )
                     val msg = "Photo capture succeeded: $savedUri"
-//                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, "$savedUri")
-                    val intent = Intent()
-                    intent.putExtra(CEK_URI, savedUri.toString())
-                    setResult(Activity.RESULT_OK, intent)
+                 Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                   Log.d(TAG, "$savedUri")
+                  val intent = Intent()
+                 intent.putExtra(CEK_URI, savedUri.toString())
+                 setResult(Activity.RESULT_OK, intent)
+
+                    /*
+                    val intent = Intent(applicationContext, UploadActivity::class.java)
+                    intent.putExtra(UploadActivity.EXTRA_DATA,photoFile)
+                    startActivity(intent)*/
                     finish()
                 }
             })    }

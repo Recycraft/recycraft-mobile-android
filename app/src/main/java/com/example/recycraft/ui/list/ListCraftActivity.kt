@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivityListCraftBinding
-import com.example.recycraft.model.ListCraftModel
+import com.example.recycraft.data.model.ListCraftModel
 import com.example.recycraft.adapter.DummyListCraftAdapter
 import com.example.recycraft.ui.detail.DetailActivity
 

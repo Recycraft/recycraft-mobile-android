@@ -31,6 +31,32 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.90" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_take_gallery"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:backgroundTint="@color/whiteDark"
+        android:elevation="5dp"
+        android:gravity="center"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:minWidth="0dp"
+        android:stateListAnimator="@null"
+        android:text=""
+        app:cornerRadius="60dp"
+        app:icon="@drawable/ic_gallery"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconTint="@color/black"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/viewFinder" />
+
+
+
     <androidx.camera.view.PreviewView
         android:id="@+id/viewFinder"
         android:layout_width="match_parent"
@@ -48,5 +74,7 @@
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/camera"
         app:lottie_loop="true" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

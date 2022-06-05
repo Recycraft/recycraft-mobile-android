@@ -16,11 +16,9 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.loginButton.setOnClickListener(this)
         binding.signupButton.setOnClickListener(this)
     }
-
 
     override fun onClick(view: View) {
         when (view.id){

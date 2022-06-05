@@ -13,10 +13,11 @@ import java.util.*
 import kotlin.Comparator
 import kotlin.collections.ArrayList
 
-class Classifier (assetManager: AssetManager, modelPath: String, labelPath: String, inputSize: Int){
+class Classifier (assetManager: AssetManager, modelPath: String, labelPath: String,
+                  private val inputSize: Int
+){
     private var interpreter: Interpreter
     private var labelList: List<String>
-    private val inputSize: Int = inputSize
     private val pixelSize: Int = 3
     private val imageMean = 0
     private val imageStd = 255.0f
@@ -35,7 +36,7 @@ class Classifier (assetManager: AssetManager, modelPath: String, labelPath: Stri
 
     init {
         val options = Interpreter.Options()
-        options.setNumThreads(5)
+        options.numThreads = 5
 //        options.setUseNNAPI(true)
         interpreter = Interpreter(loadModel(assetManager, modelPath), options)
         labelList = loadLabel(assetManager, labelPath)
@@ -82,20 +83,20 @@ class Classifier (assetManager: AssetManager, modelPath: String, labelPath: Stri
     }
 
 
-    private fun getSortedResult(labelProbArray: Array<FloatArray>): List<Classifier.Classification> {
+    private fun getSortedResult(labelProbArray: Array<FloatArray>): List<Classification> {
         Log.d("Classifier", "List Size:(%d, %d, %d)".format(labelProbArray.size,labelProbArray[0].size,labelList.size))
 
         val pq = PriorityQueue(
             maxResults,
             Comparator<Classification> {
                     (_, akurasi1), (_, akurasi2)
-                -> java.lang.Float.compare(akurasi1, akurasi2) * -1
+                -> akurasi1.compareTo(akurasi2) * -1
             })
 
         for (i in labelList.indices) {
             val akurasi = labelProbArray[0][i]
             if (akurasi >= threshold) {
-                pq.add(Classifier.Classification(
+                pq.add(Classification(
                     if (labelList.size > i) labelList[i] else "Unknown",
                     akurasi)
                 )
@@ -103,10 +104,10 @@ class Classifier (assetManager: AssetManager, modelPath: String, labelPath: Stri
         }
         Log.d("Classifier", "pqsize:(%d)".format(pq.size))
 
-        val recognitions = ArrayList<Classifier.Classification>()
-        val recognitionsSize = Math.min(pq.size, maxResults)
+        val recognitions = ArrayList<Classification>()
+        val recognitionsSize = pq.size.coerceAtMost(maxResults)
         for (i in 0 until recognitionsSize) {
-            recognitions.add(pq.poll())
+            pq.poll()?.let { recognitions.add(it) }
         }
         return recognitions
     }

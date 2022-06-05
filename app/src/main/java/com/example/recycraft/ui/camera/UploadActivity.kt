@@ -54,13 +54,17 @@ class UploadActivity : AppCompatActivity() {
             val type = typeResult[0].type
             val confident = typeResult[0].confident
 
+            val kategori = categoryResult[0].kategori
+            val akurasi = categoryResult[0].akurasi
 
             binding.tvDetailName.text = type
             binding.tvKategoriName.text = "$confident"
             // move to InfoActivity
             val moveIntent = Intent(this@UploadActivity, InfoActivity::class.java)
-            moveIntent.putExtra(InfoActivity.EXTRA_KATEGORI, type)
-            moveIntent.putExtra(InfoActivity.EXTRA_AKURASI, confident)
+            moveIntent.putExtra(InfoActivity.EXTRA_TYPE, type)
+            moveIntent.putExtra(InfoActivity.EXTRA_CONFIDENT, confident)
+            moveIntent.putExtra(InfoActivity.EXTRA_KATEGORI, kategori)
+            moveIntent.putExtra(InfoActivity.EXTRA_AKURASI, akurasi)
             startActivity(moveIntent)
         }
     }

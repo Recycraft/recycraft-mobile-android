@@ -63,6 +63,7 @@ dependencies {
 
     implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
     implementation "com.androidplot:androidplot-core:1.5.9"
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     //camerax
     def camerax_version = "1.2.0-alpha02"

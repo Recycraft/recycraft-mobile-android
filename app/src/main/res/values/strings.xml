@@ -10,7 +10,7 @@
     <string name="nama_kerajinan">Nama Kerajinan</string>
     <string name="jenis_kategori">Jenis Kategori</string>
     <string name="Camera">Camera</string>
-    <string name="galery">Galery</string>
+    <string name="gallery">Gallery</string>
     <string name="upload">Upload</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>

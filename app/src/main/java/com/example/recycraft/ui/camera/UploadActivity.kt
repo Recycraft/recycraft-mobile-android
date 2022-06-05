@@ -10,7 +10,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.recycraft.databinding.ActivityUploadBinding
-import com.example.recycraft.ui.main.InfoActivity
+import com.example.recycraft.ui.info.InfoActivity
 
 class UploadActivity : AppCompatActivity() {
 
@@ -28,12 +28,20 @@ class UploadActivity : AppCompatActivity() {
         const val STCLabel = "stc.txt"
         const val SCDModel = "model_scd_xception.tflite"
         const val SCDLabel = "scd.txt"
+        const val EXTRA_DATA = "extra_data"
+        const val EXTRA_DATA_GALLERY = "extra_data_gallery"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+/*
+        val file : File? = intent.getSerializableExtra(EXTRA_DATA) as File?
+        Glide.with(applicationContext).asBitmap().load(file).into(binding.previewImageView)
+*/
+
+
         binding.cameraButton.setOnClickListener {
             startActivityForResult(Intent(this,CameraActivity::class.java), REQ_CAMERA)
         }
@@ -54,17 +62,15 @@ class UploadActivity : AppCompatActivity() {
             val type = typeResult[0].type
             val confident = typeResult[0].confident
 
-            val kategori = categoryResult[0].kategori
-            val akurasi = categoryResult[0].akurasi
 
             binding.tvDetailName.text = type
             binding.tvKategoriName.text = "$confident"
+
             // move to InfoActivity
             val moveIntent = Intent(this@UploadActivity, InfoActivity::class.java)
-            moveIntent.putExtra(InfoActivity.EXTRA_TYPE, type)
-            moveIntent.putExtra(InfoActivity.EXTRA_CONFIDENT, confident)
-            moveIntent.putExtra(InfoActivity.EXTRA_KATEGORI, kategori)
-            moveIntent.putExtra(InfoActivity.EXTRA_AKURASI, akurasi)
+            moveIntent.putExtra(InfoActivity.EXTRA_KATEGORI, type)
+            moveIntent.putExtra(InfoActivity.EXTRA_AKURASI, confident)
+            moveIntent.putExtra(InfoActivity.EXTRA_IMAGE,photo)
             startActivity(moveIntent)
         }
     }

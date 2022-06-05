@@ -2,14 +2,19 @@ package com.example.recycraft.ui.camera
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.util.Size
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -17,10 +22,15 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivityCameraBinding
+<<<<<<< HEAD
 import com.example.recycraft.ui.HomeFragment
 import com.example.recycraft.ui.main.MainActivity
+=======
+import kotlinx.android.synthetic.main.activity_camera.*
+>>>>>>> dc69d96b1ef6481b4540f8ffedceab4e614b7fca
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -35,18 +45,27 @@ class CameraActivity : AppCompatActivity() {
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         const val CEK_URI = "extra"
+
+        const val REQ_GALLERY = 2
     }
 
     private lateinit var binding : ActivityCameraBinding
     private var imageCapture : ImageCapture? = null
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
+    private lateinit var  bitmap: Bitmap
+    private var photo : String? = null
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
+        binding.btnTakeGallery.setOnClickListener{
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, REQ_GALLERY)
+        }
         setContentView(binding.root)
         setupCamera()
 
@@ -62,6 +81,19 @@ class CameraActivity : AppCompatActivity() {
         outputDirectory = getOutputDirectory()
 
         cameraExecutor = Executors.newSingleThreadExecutor()*/
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == REQ_GALLERY && resultCode == Activity.RESULT_OK){
+            val uri : Uri? = data?.data
+            photo = uri.toString()
+            val intent = Intent(applicationContext, UploadActivity::class.java)
+            intent.putExtra(UploadActivity.EXTRA_DATA_GALLERY,photo)
+            startActivity(intent)
+            finish()
+
+        }
     }
 
     private fun setupCamera() {
@@ -105,11 +137,15 @@ class CameraActivity : AppCompatActivity() {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     val msg = "Photo capture succeeded: $savedUri"
-//                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, "$savedUri")
-                    val intent = Intent()
+                 //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                   Log.d(TAG, "$savedUri")
+                  val intent = Intent()
                     intent.putExtra(CEK_URI, savedUri.toString())
-                    setResult(Activity.RESULT_OK, intent)
+                 setResult(Activity.RESULT_OK, intent)
+                    /*
+                    val intent = Intent(applicationContext, UploadActivity::class.java)
+                    intent.putExtra(UploadActivity.EXTRA_DATA,photoFile)
+                    startActivity(intent)*/
                     finish()
                 }
             })    }

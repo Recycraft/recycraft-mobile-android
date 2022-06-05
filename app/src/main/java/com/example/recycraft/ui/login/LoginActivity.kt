@@ -18,6 +18,8 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
         setContentView(binding.root)
         binding.loginButton.setOnClickListener(this)
         binding.signupButton.setOnClickListener(this)
+
+
     }
 
     override fun onClick(view: View) {

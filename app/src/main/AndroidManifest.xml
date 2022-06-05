@@ -34,7 +34,7 @@
             android:name=".ui.list.ListCraftActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.InfoActivity"
+            android:name=".ui.info.InfoActivity"
             android:theme="@style/Theme.RecyCraft2"
             android:parentActivityName=".ui.camera.UploadActivity"
             android:exported="false"/>

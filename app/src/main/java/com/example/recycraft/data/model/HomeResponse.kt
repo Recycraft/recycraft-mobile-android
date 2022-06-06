@@ -7,7 +7,9 @@ import kotlinx.android.parcel.Parcelize
 data class TopCraftsModel(
     var imageCraft: Int = 0,
     var titleCraft: String? = null,
-    var descCraft: String? = null
+    var descCraft: String? = null,
+    var categoryCraft: String? = null
+
 ) : Parcelable
 
 @Parcelize

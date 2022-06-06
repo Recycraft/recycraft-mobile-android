@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
         lm.orientation = LinearLayoutManager.VERTICAL
         rvCraft = view.findViewById(R.id.rvTopCrafts)
 
-        val adapterCraft = DummyHorizontalAdapter(ArrayCategory, activity)
+        val adapterCraft = DummyVerticalAdapter(ArrayCraft, activity)
         rvCraft.setHasFixedSize(true)
         rvCraft.layoutManager = lm
         rvCraft.adapter = adapterCraft
@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
         vm.orientation = LinearLayoutManager.HORIZONTAL
         rvCategory = view.findViewById(R.id.rvCategories)
 
-        val adapterCategory = DummyVerticalAdapter(ArrayCraft, activity)
+        val adapterCategory = DummyHorizontalAdapter(ArrayCategory, activity)
         rvCategory.setHasFixedSize(true)
         rvCategory.layoutManager = vm
         rvCategory.adapter = adapterCategory
@@ -62,12 +62,13 @@ class HomeFragment : Fragment() {
     private val ArrayCraft: ArrayList<TopCraftsModel>
         get() {
             val dataTitle = resources.getStringArray(R.array.titlesCraft)
-
+            val dataCategoryCraft = resources.getStringArray(R.array.categoryCraft)
             val arrayCraft = ArrayList<TopCraftsModel>()
             for (i in dataTitle.indices) {
                 val craft = TopCraftsModel(
                     R.drawable.kerajinanlampion,
-                    dataTitle[i]
+                    dataTitle[i],
+                    dataCategoryCraft[i]
                 )
                 arrayCraft.add(craft)
             }
@@ -77,13 +78,11 @@ class HomeFragment : Fragment() {
     private val ArrayCategory: ArrayList<CategoriesModel>
         get() {
             val dataTitleCategory = resources.getStringArray(R.array.titlesCategories)
-            val dataDescCategiry = resources.getStringArray(R.array.descCategories)
             val arrayCategory = ArrayList<CategoriesModel>()
             for (i in dataTitleCategory.indices) {
                 val category = CategoriesModel(
                     R.drawable.sampahoverlay,
                     dataTitleCategory[i],
-                    dataDescCategiry[i]
                 )
                 arrayCategory.add(category)
             }

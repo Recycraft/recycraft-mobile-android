@@ -101,6 +101,15 @@ Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi 
         <item>@drawable/kerajinanlampion</item>
         <item>@drawable/kerajinanlampion</item>
     </integer-array>
+    <string-array name="categoryCraft">
+        <item>Category : Sendok Plastik</item>
+        <item>Category : Sendok Plastik</item>
+        <item>Category : Sendok Plastik</item>
+        <item>Category : Sendok Plastik</item>
+        <item>Category : Sendok Plastik</item>
+        <item>Category : Sendok Plastik</item>
+        <item>Category : Sendok Plastik</item>
+    </string-array>
     <string-array name="titlesCategories">
         <item>Plastik</item>
         <item>Plastik</item>

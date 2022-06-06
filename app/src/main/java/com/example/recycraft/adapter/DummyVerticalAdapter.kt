@@ -29,7 +29,7 @@ class DummyVerticalAdapter(
         with(viewHolder) {
             with(listCrafts[position]) {
                 binding.tvKerajinanName.text = titleCraft
-                binding.tvDeskripsi.text = descCraft
+                binding.tvKerajinanKategori.text = descCraft
                 Glide.with(viewHolder.itemView.context)
                     .load(imageCraft)
                     .into(viewHolder.binding.imgKerajinanPhoto)

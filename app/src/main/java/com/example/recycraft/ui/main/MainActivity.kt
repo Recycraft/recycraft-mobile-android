@@ -7,7 +7,6 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivityMainBinding
-import com.example.recycraft.ui.camera.CameraActivity
 import com.example.recycraft.ui.camera.UploadActivity
 
 class MainActivity : AppCompatActivity() {
@@ -17,18 +16,16 @@ class MainActivity : AppCompatActivity() {
         //splash screen
         Thread.sleep(2000)
         val splashScreen = installSplashScreen()
-
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.bottomNavigationView.menu.getItem(1).isEnabled = false
 
         val homeFragment = HomeFragment()
 //        val accountFragment = AccountFragment()
 
         makeCurrentFragment(homeFragment)
 
+        binding.bottomNavigationView.menu.getItem(0).isEnabled = false
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menuHome -> makeCurrentFragment(homeFragment)
@@ -51,5 +48,8 @@ class MainActivity : AppCompatActivity() {
             replace(R.id.container_fragment, fragment)
             commit()
         }
+    }
+
+    override fun onBackPressed() {
     }
 }

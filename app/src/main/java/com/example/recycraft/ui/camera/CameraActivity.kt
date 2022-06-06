@@ -35,7 +35,6 @@ class CameraActivity : AppCompatActivity() {
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         const val CEK_URI = "extra"
-
         const val REQ_GALLERY = 2
     }
 
@@ -51,28 +50,16 @@ class CameraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
-        binding.btnTakeGallery.setOnClickListener{
+        binding.btnTakeGallery.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, REQ_GALLERY)
         }
         setContentView(binding.root)
         setupCamera()
-
-/*
-        if (allPermissionsGranted()){
-            startCamera()
-        }else{
-            ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
-        }
-
-        binding.btnTakePhoto.setOnClickListener { takePhoto() }
-
-        outputDirectory = getOutputDirectory()
-
-        cameraExecutor = Executors.newSingleThreadExecutor()*/
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == REQ_GALLERY && resultCode == Activity.RESULT_OK){

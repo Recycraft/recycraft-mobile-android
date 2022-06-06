@@ -41,7 +41,6 @@ class UploadActivity : AppCompatActivity() {
         Glide.with(applicationContext).asBitmap().load(file).into(binding.previewImageView)
 */
 
-
         binding.cameraButton.setOnClickListener {
             startActivityForResult(Intent(this,CameraActivity::class.java), REQ_CAMERA)
         }
@@ -61,7 +60,6 @@ class UploadActivity : AppCompatActivity() {
 
             val type = typeResult[0].type
             val confident = typeResult[0].confident
-
 
             binding.tvDetailName.text = type
             binding.tvKategoriName.text = "$confident"

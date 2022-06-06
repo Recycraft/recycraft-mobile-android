@@ -2,22 +2,22 @@
     <!-- Base application theme. -->
     <style name="Theme.RecyCraft" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/green_scan</item>
+        <item name="colorPrimaryVariant">@color/green_scan</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/green_scan</item>
         <!-- Customize your theme here. -->
     </style>
 
     <style name="Theme.RecyCraft2" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/green_scan</item>
+        <item name="colorPrimaryVariant">@color/green_scan</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -29,7 +29,7 @@
     </style>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/green_splash</item>
+        <item name="windowSplashScreenBackground">@color/green_scan</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/recycraft_logo</item>
         <item name="postSplashScreenTheme">@style/Theme.RecyCraft</item>
     </style>

@@ -1,6 +1,7 @@
 package com.example.recycraft.ui.onBoarding
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.example.recycraft.R
 
 
 class SplashFragment : Fragment() {
+    private lateinit var preferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +32,7 @@ class SplashFragment : Fragment() {
         }, 3000)
 
         return inflater.inflate(R.layout.fragment_splash, container, false)
+
     }
 
     private fun onBoardingFinished(): Boolean {

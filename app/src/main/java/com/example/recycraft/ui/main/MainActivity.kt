@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivityMainBinding
 import com.example.recycraft.ui.camera.CameraActivity
+import com.example.recycraft.ui.camera.UploadActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.fabCamera.setOnClickListener { view ->
             if (view.id == R.id.fabCamera) {
-                val intent = Intent(this@MainActivity, CameraActivity::class.java)
+                val intent = Intent(this@MainActivity, UploadActivity::class.java)
                 startActivity(intent)
                 finish()
             }

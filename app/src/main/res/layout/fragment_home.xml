@@ -25,23 +25,22 @@
             android:gravity="center_vertical"
             android:orientation="vertical"
             android:padding="10dp">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvTopCrafts"
+                android:fontFamily="@font/alata"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="@string/top_crafts"
+                android:text="@string/jenis_kategori"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTopCrafts"
+                android:id="@+id/rvCategories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_container"
                 android:orientation="horizontal"
                 android:scrollbars="horizontal"
                 tools:listitem="@layout/horizontal_row"
@@ -60,16 +59,18 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/jenis_kategori"
+                android:text="@string/top_crafts"
+                android:fontFamily="@font/alata"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvCategories"
+                android:id="@+id/rvTopCrafts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"

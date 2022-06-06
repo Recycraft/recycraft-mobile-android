@@ -11,7 +11,7 @@
     android:layout_marginTop="4dp"
     android:layout_marginRight="8dp"
     android:layout_marginBottom="4dp"
-    card_view:cardCornerRadius="4dp">
+    card_view:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,9 +19,10 @@
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/img_kategori_photo"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
+            android:id="@+id/img_kerajinan_photo"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_margin="8dp"
             android:scaleType="centerCrop"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
@@ -29,14 +30,14 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/tv_kategori_name"
+            android:id="@+id/tv_kerajinan_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/img_kategori_photo"
+            android:layout_toEndOf="@id/img_kerajinan_photo"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            card_view:layout_constraintStart_toEndOf="@+id/img_kategori_photo"
+            android:layout_marginStart="20dp"
+            card_view:layout_constraintStart_toEndOf="@+id/img_kerajinan_photo"
             card_view:layout_constraintTop_toTopOf="parent"
             tools:text="@string/jenis_kategori" />
 
@@ -48,15 +49,11 @@
             android:textSize="16sp"
             android:ellipsize="end"
             android:maxLines="3"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
-            card_view:layout_constraintStart_toEndOf="@+id/img_kategori_photo"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_kategori_name"
+            card_view:layout_constraintStart_toEndOf="@+id/img_kerajinan_photo"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_kerajinan_name"
             card_view:layout_constraintEnd_toEndOf="parent"/>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 </androidx.cardview.widget.CardView>

@@ -36,22 +36,22 @@ class HomeFragment : Fragment() {
             rvCategories.adapter = dummyVerticalAdapter
 
         }*/
-        //horizontal rv
+        //vertical rv
         val lm = LinearLayoutManager(activity)
-        lm.orientation = LinearLayoutManager.HORIZONTAL
+        lm.orientation = LinearLayoutManager.VERTICAL
         rvCraft = view.findViewById(R.id.rvTopCrafts)
 
-        val adapterCraft = DummyHorizontalAdapter(ArrayCraft, activity)
+        val adapterCraft = DummyHorizontalAdapter(ArrayCategory, activity)
         rvCraft.setHasFixedSize(true)
         rvCraft.layoutManager = lm
         rvCraft.adapter = adapterCraft
 
-        //vertical rv
+        //horizontal rv
         val vm = LinearLayoutManager(activity)
-        vm.orientation = LinearLayoutManager.VERTICAL
+        vm.orientation = LinearLayoutManager.HORIZONTAL
         rvCategory = view.findViewById(R.id.rvCategories)
 
-        val adapterCategory = DummyVerticalAdapter(ArrayCategory, activity)
+        val adapterCategory = DummyVerticalAdapter(ArrayCraft, activity)
         rvCategory.setHasFixedSize(true)
         rvCategory.layoutManager = vm
         rvCategory.adapter = adapterCategory
@@ -90,11 +90,9 @@ class HomeFragment : Fragment() {
             return arrayCategory
         }
 
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-
     }
 }
 

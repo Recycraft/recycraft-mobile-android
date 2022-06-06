@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.recycraft.data.model.TopCraftsModel
+import com.example.recycraft.data.model.CategoriesModel
 import com.example.recycraft.databinding.HorizontalRowBinding
 
 class DummyHorizontalAdapter(
-    private val listCraft: ArrayList<TopCraftsModel>,
+    private val listCategory: ArrayList<CategoriesModel>,
     var context: Activity?
 ) : RecyclerView.Adapter<DummyHorizontalAdapter.ViewHolder>() {
 
@@ -29,25 +29,25 @@ class DummyHorizontalAdapter(
 
 
     override fun getItemCount(): Int {
-        return listCraft.size
+        return listCategory.size
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         with(viewHolder) {
-            with(listCraft[position]) {
-                binding.tvItemName.text = titleCraft
+            with(listCategory[position]) {
+                binding.tvKategoriName.text = titleCategory
                 Glide.with(viewHolder.itemView.context)
-                    .load(imageCraft)
-                    .into(viewHolder.binding.imgItemPhoto)
+                    .load(imageCategory)
+                    .into(viewHolder.binding.imgKategoriPhoto)
 
                 viewHolder.itemView.setOnClickListener {
-                    onItemClickCallback.onItemClicked(listCraft[viewHolder.adapterPosition])
+                    onItemClickCallback.onItemClicked(listCategory[viewHolder.adapterPosition])
                 }
             }
         }
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: TopCraftsModel)
+        fun onItemClicked(data: CategoriesModel)
     }
 }

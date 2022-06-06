@@ -5,17 +5,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.recycraft.data.model.CategoriesModel
+import com.example.recycraft.data.model.TopCraftsModel
 import com.example.recycraft.databinding.VerticalRowBinding
 
 class DummyVerticalAdapter(
-    private val listCategory: ArrayList<CategoriesModel>,
+    private val listCrafts: ArrayList<TopCraftsModel>,
     var context: Activity?
 ) : RecyclerView.Adapter<DummyVerticalAdapter.ViewHolder>() {
     inner class ViewHolder(var binding: VerticalRowBinding) : RecyclerView.ViewHolder(binding.root)
 
-    private lateinit var onItemClickCallback: DummyVerticalAdapter.OnItemClickCallback
-    fun setOnItemClickCallback(onItemClickCallback: DummyVerticalAdapter.OnItemClickCallback) {
+    private lateinit var onItemClickCallback: OnItemClickCallback
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
@@ -27,25 +27,25 @@ class DummyVerticalAdapter(
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         with(viewHolder) {
-            with(listCategory[position]) {
-                binding.tvKategoriName.text = titleCategory
-                binding.tvDeskripsi.text = descCategory
+            with(listCrafts[position]) {
+                binding.tvKerajinanName.text = titleCraft
+                binding.tvDeskripsi.text = descCraft
                 Glide.with(viewHolder.itemView.context)
-                    .load(imageCategory)
-                    .into(viewHolder.binding.imgKategoriPhoto)
+                    .load(imageCraft)
+                    .into(viewHolder.binding.imgKerajinanPhoto)
 
                 viewHolder.itemView.setOnClickListener {
-                    onItemClickCallback.onItemClicked(listCategory[viewHolder.adapterPosition])
+                    onItemClickCallback.onItemClicked(listCrafts[viewHolder.adapterPosition])
                 }
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return listCategory.size
+        return listCrafts.size
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: CategoriesModel)
+        fun onItemClicked(data: TopCraftsModel)
     }
 }

@@ -10,10 +10,8 @@ import java.util.concurrent.Flow
 import java.util.prefs.Preferences
 /*
 class DataPreferences private constructor(private val dataStore: DataStore<Preferences>){
-
     private val loginKey = booleanPreferencesKey("login_setting")
     private val tokenKey = stringPreferencesKey("token_key")
-
 //    fun getLoginSetting() : Flow<Session>{
 //        return dataStore.data.map { preferences ->
 //            Session(
@@ -29,11 +27,9 @@ class DataPreferences private constructor(private val dataStore: DataStore<Prefe
 //            preferences[tokenKey] = token
 //        }
 //    }
-
     companion object {
         @Volatile
         private var INSTANCE : DataPreferences? = null
-
         fun getInstance(dataStore: DataStore<Preferences>):DataPreferences{
             return INSTANCE ?: synchronized(this){
                 val instance = DataPreferences(dataStore)
@@ -42,6 +38,5 @@ class DataPreferences private constructor(private val dataStore: DataStore<Prefe
             }
         }
     }
-
 }
         */

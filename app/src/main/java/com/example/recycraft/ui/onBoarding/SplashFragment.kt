@@ -1,7 +1,6 @@
 package com.example.recycraft.ui.onBoarding
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -14,7 +13,6 @@ import com.example.recycraft.R
 
 
 class SplashFragment : Fragment() {
-    private lateinit var preferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,20 +22,18 @@ class SplashFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
 
         Handler().postDelayed({
-            if (!onBoardingFinished()) {
-                findNavController().navigate(R.id.action_viewPagerFragment_to_loginActivity)
+            if (onBoardingFinished()) {
+                findNavController().navigate(R.id.action_splashFragment_to_loginActivity)
             } else {
                 findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
             }
         }, 3000)
 
         return inflater.inflate(R.layout.fragment_splash, container, false)
-
     }
 
     private fun onBoardingFinished(): Boolean {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("Finished", false)
     }
-
 }

@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <include layout="@layout/toolbar" />
+        <include layout="@layout/toolbar"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -23,14 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alata"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/jenis_kategori"
                 android:textSize="20sp"
@@ -50,7 +49,9 @@
                 android:id="@+id/sv_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/button_search"
                 app:defaultQueryHint="Cari Kerajinan"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -59,9 +60,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
                 android:text="@string/top_crafts"
                 android:fontFamily="@font/alata"
                 android:textSize="20sp"
@@ -73,7 +74,6 @@
                 android:id="@+id/rvTopCrafts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
                 tools:listitem="@layout/vertical_row"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

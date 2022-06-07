@@ -15,8 +15,8 @@ class DummyListCraftAdapter(
     inner class ViewHolder(var binding: ItemListKerajinanBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    private lateinit var onItemClickCallback: DummyListCraftAdapter.OnItemClickCallback
-    fun setOnItemClickCallback(onItemClickCallback: DummyListCraftAdapter.OnItemClickCallback) {
+    private lateinit var onItemClickCallback: OnItemClickCallback
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 

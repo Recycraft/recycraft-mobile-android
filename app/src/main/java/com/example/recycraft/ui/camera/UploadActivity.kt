@@ -36,11 +36,6 @@ class UploadActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
-/*
-        val file : File? = intent.getSerializableExtra(EXTRA_DATA) as File?
-        Glide.with(applicationContext).asBitmap().load(file).into(binding.previewImageView)
-*/
-
 
         binding.cameraButton.setOnClickListener {
             startActivityForResult(Intent(this,CameraActivity::class.java), REQ_CAMERA)
@@ -61,15 +56,16 @@ class UploadActivity : AppCompatActivity() {
 
             val type = typeResult[0].type
             val confident = typeResult[0].confident
-
+            val identify = ArrayList(categoryResult)
 
             binding.tvDetailName.text = type
             binding.tvKategoriName.text = "$confident"
 
             // move to InfoActivity
             val moveIntent = Intent(this@UploadActivity, InfoActivity::class.java)
-            moveIntent.putExtra(InfoActivity.EXTRA_KATEGORI, type)
-            moveIntent.putExtra(InfoActivity.EXTRA_AKURASI, confident)
+            moveIntent.putExtra(InfoActivity.EXTRA_TYPE, type)
+            moveIntent.putExtra(InfoActivity.EXTRA_CONFIDENT, confident)
+            moveIntent.putParcelableArrayListExtra(InfoActivity.EXTRA_IDENTIFY, identify)
             moveIntent.putExtra(InfoActivity.EXTRA_IMAGE,photo)
             startActivity(moveIntent)
         }

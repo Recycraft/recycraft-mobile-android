@@ -2,7 +2,9 @@ package com.example.recycraft.ui.camera
 
 import android.content.res.AssetManager
 import android.graphics.Bitmap
+import android.os.Parcelable
 import android.util.Log
+import kotlinx.android.parcel.Parcelize
 import org.tensorflow.lite.Interpreter
 import java.io.FileInputStream
 import java.nio.ByteBuffer
@@ -21,11 +23,12 @@ class ScrapClassClassifier (assetManager: AssetManager, modelPath: String, label
     private val maxResults = 10
     private val threshold = 0f
 
+    @Parcelize
     data class Classification(
         var kategori: String = "",
         var akurasi: Float = 0F
 
-    ) {
+    ):Parcelable {
         override fun toString(): String {
             return "Kategori : $kategori, akurasi = $akurasi "
         }

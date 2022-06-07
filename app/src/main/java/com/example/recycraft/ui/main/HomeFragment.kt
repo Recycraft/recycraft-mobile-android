@@ -1,9 +1,12 @@
 package com.example.recycraft.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,18 +16,22 @@ import com.example.recycraft.adapter.DummyVerticalAdapter
 import com.example.recycraft.data.model.CategoriesModel
 import com.example.recycraft.data.model.TopCraftsModel
 import com.example.recycraft.databinding.FragmentHomeBinding
+import com.example.recycraft.ui.search.SearchResultActivity
 
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private lateinit var rvCraft: RecyclerView
     private lateinit var rvCategory: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+//        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
 /*
         binding?.apply {
             rvTopCrafts.setHasFixedSize(true)
@@ -36,6 +43,16 @@ class HomeFragment : Fragment() {
             rvCategories.adapter = dummyVerticalAdapter
 
         }*/
+
+
+//        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentHomeBinding.bind(view)
+//        (activity as AppCompatActivity)
+
         //vertical rv
         val lm = LinearLayoutManager(activity)
         lm.orientation = LinearLayoutManager.VERTICAL
@@ -56,7 +73,19 @@ class HomeFragment : Fragment() {
         rvCategory.layoutManager = vm
         rvCategory.adapter = adapterCategory
 
-        return view
+        binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val intent = Intent(requireContext(),SearchResultActivity::class.java)
+                intent.putExtra(SearchResultActivity.EXTRA_DATA, query)
+                startActivity(intent)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+
     }
 
     private val ArrayCraft: ArrayList<TopCraftsModel>
@@ -89,10 +118,11 @@ class HomeFragment : Fragment() {
             return arrayCategory
         }
 
+    /*
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
-    }
+        binding = null
+    }*/
 }
 
 

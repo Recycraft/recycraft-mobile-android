@@ -9,3 +9,4 @@ data class UserRegisterResponse(
     @field:SerializedName("message")
     val message: String
 )
+

@@ -23,9 +23,7 @@ class ThirdScreenFragment : Fragment() {
         val view = inflater.inflate(fragment_third_screen, container, false)
         val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPager)
 
-        view.previous.setOnClickListener {
-            viewPager?.currentItem = 1
-        }
+        view.previous.setOnClickListener { viewPager?.currentItem = 1 }
 
         view.finish.setOnClickListener {
             findNavController().navigate(action_viewPagerFragment_to_loginActivity)

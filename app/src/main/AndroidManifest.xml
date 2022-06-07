@@ -8,8 +8,8 @@
     <uses-feature android:name="android.hardware.camera.any" />
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -20,6 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyCraft"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.category.CategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.search.SearchResultActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.signup.SignupActivity"
             android:exported="false" />
@@ -35,13 +41,13 @@
             android:exported="false" />
         <activity
             android:name=".ui.info.InfoActivity"
-            android:theme="@style/Theme.RecyCraft2"
+            android:exported="false"
             android:parentActivityName=".ui.camera.UploadActivity"
-            android:exported="false"/>
+            android:theme="@style/Theme.RecyCraft2" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.camera.UploadActivity"
             android:exported="false" />
@@ -53,6 +59,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

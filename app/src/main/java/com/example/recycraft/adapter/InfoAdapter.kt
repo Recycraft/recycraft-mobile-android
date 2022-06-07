@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recycraft.databinding.ItemListSampahBinding
 import com.example.recycraft.ui.camera.ScrapClassClassifier
 import kotlin.math.floor
+import kotlin.math.roundToInt
 
 class InfoAdapter(
     private val listScrap: ArrayList<ScrapClassClassifier.Classification>,
@@ -33,7 +34,7 @@ class InfoAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder){
             with(listScrap[position]){
-                val persentase = floor(akurasi*100)
+                val persentase = (akurasi*10000.0).roundToInt() / 100.0
                 val hasilPersentase = StringBuilder()
                 binding.namaSampah.text = kategori
                 binding.hasilPersentase.text = hasilPersentase.append(persentase).append("%")
@@ -46,7 +47,8 @@ class InfoAdapter(
     }
 
     override fun getItemCount(): Int {
-        return listScrap.size
+//        return listScrap.size
+        return 5
     }
 
     interface OnItemClickCallback{

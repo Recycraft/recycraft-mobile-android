@@ -54,9 +54,9 @@
         android:textColor="@color/blackishLight"
         android:textSize="16sp" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="119dp"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:background="@color/white">
 
@@ -65,14 +65,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/button_rounded"
             android:fontFamily="@font/alata"
             android:text="@string/start"
             android:textColor="@android:color/white"
-            android:textSize="18dp"
-            tools:ignore="TextContrastCheck" />
-    </LinearLayout>
+            android:textSize="18sp"
+            tools:ignore="TextContrastCheck"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

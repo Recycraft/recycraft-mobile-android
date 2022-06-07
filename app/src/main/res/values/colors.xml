@@ -28,4 +28,5 @@
     <color name="green_splash">#0ADB7D</color>
     <color name="bgDefault">#E5E7F1</color>
 <!--    <color name="bgDefault">#E5E7F1</color>-->
+    <color name="bgCollapse">#fff</color>
 </resources>

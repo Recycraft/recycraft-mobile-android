@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val homeFragment = HomeFragment()
-//        val accountFragment = AccountFragment()
+        val accountFragment = AccountFragment()
 
         makeCurrentFragment(homeFragment)
 
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menuHome -> makeCurrentFragment(homeFragment)
-//                R.id.menuAccount -> makeCurrentFragment(accountFragment)
+                R.id.menuAccount -> makeCurrentFragment(accountFragment)
             }
             true
         }

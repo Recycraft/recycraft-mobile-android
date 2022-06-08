@@ -184,6 +184,7 @@ class CameraActivity : AppCompatActivity() {
         moveIntent.putParcelableArrayListExtra(InfoActivity.EXTRA_IDENTIFY, identify)
         moveIntent.putExtra(InfoActivity.EXTRA_IMAGE, photo)
         startActivity(moveIntent)
+        finish()
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {

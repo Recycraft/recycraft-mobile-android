@@ -19,7 +19,7 @@ import com.github.mikephil.charting.data.PieEntry
 import kotlin.math.floor
 
 class InfoActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityInfoBinding
+    private lateinit var binding: ActivityInfoBinding
     private lateinit var adapter: InfoAdapter
     private var listScrap = ArrayList<ScrapClassClassifier.Classification>()
 
@@ -43,10 +43,10 @@ class InfoActivity : AppCompatActivity() {
         val confident = intent.getFloatExtra(EXTRA_CONFIDENT, 0F)
         Log.d("INFO_CONFIDENT", "confident: $confident")
 
-        val value1 = floor(confident*100)
+        val value1 = floor(confident * 100)
         val value2 = 100 - value1
 
-        val pieMap: MutableMap<String, Float> = when (type){
+        val pieMap: MutableMap<String, Float> = when (type) {
             "organic" -> mutableMapOf("Organic" to value1, "Recyclable" to value2)
             else -> mutableMapOf("Organic" to value2, "Recyclable" to value1)
         }

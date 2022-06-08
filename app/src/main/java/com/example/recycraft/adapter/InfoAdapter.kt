@@ -12,13 +12,13 @@ import kotlin.math.roundToInt
 class InfoAdapter(
     private val listScrap: ArrayList<ScrapClassClassifier.Classification>,
     var context: Activity?
-): RecyclerView.Adapter<InfoAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<InfoAdapter.ViewHolder>() {
 
-    class ViewHolder (var binding: ItemListSampahBinding): RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(var binding: ItemListSampahBinding) : RecyclerView.ViewHolder(binding.root)
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
@@ -32,9 +32,9 @@ class InfoAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        with(holder){
-            with(listScrap[position]){
-                val persentase = (akurasi*10000.0).roundToInt() / 100.0
+        with(holder) {
+            with(listScrap[position]) {
+                val persentase = (akurasi * 10000.0).roundToInt() / 100.0
                 val hasilPersentase = StringBuilder()
                 binding.namaSampah.text = kategori
                 binding.hasilPersentase.text = hasilPersentase.append(persentase).append("%")
@@ -51,7 +51,7 @@ class InfoAdapter(
         return 5
     }
 
-    interface OnItemClickCallback{
+    interface OnItemClickCallback {
         fun onItemClicked(data: ScrapClassClassifier.Classification)
     }
 }

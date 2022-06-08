@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
 
         binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                val intent = Intent(requireContext(),SearchResultActivity::class.java)
+                val intent = Intent(requireContext(), SearchResultActivity::class.java)
                 intent.putExtra(SearchResultActivity.EXTRA_DATA, query)
                 startActivity(intent)
                 return false

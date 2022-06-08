@@ -14,9 +14,9 @@ import com.example.recycraft.ui.info.InfoActivity
 
 class UploadActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityUploadBinding
-    private lateinit var  bitmap: Bitmap
-    private var photo : String? = null
+    private lateinit var binding: ActivityUploadBinding
+    private lateinit var bitmap: Bitmap
+    private var photo: String? = null
     private lateinit var typeClassifier: ScrapTypeClassifier
     private lateinit var categoryClassifier: ScrapClassClassifier
 
@@ -38,7 +38,7 @@ class UploadActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.cameraButton.setOnClickListener {
-            startActivityForResult(Intent(this,CameraActivity::class.java), REQ_CAMERA)
+            startActivityForResult(Intent(this, CameraActivity::class.java), REQ_CAMERA)
         }
         binding.galleryButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
@@ -66,7 +66,7 @@ class UploadActivity : AppCompatActivity() {
             moveIntent.putExtra(InfoActivity.EXTRA_TYPE, type)
             moveIntent.putExtra(InfoActivity.EXTRA_CONFIDENT, confident)
             moveIntent.putParcelableArrayListExtra(InfoActivity.EXTRA_IDENTIFY, identify)
-            moveIntent.putExtra(InfoActivity.EXTRA_IMAGE,photo)
+            moveIntent.putExtra(InfoActivity.EXTRA_IMAGE, photo)
             startActivity(moveIntent)
         }
     }
@@ -75,8 +75,8 @@ class UploadActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == REQ_CAMERA){
-            if(resultCode == Activity.RESULT_OK){
+        if (requestCode == REQ_CAMERA) {
+            if (resultCode == Activity.RESULT_OK) {
                 val uri = data?.getStringExtra(CameraActivity.CEK_URI)
                 Glide.with(this)
                     .load(uri)
@@ -85,9 +85,8 @@ class UploadActivity : AppCompatActivity() {
                 val u = Uri.parse(uri)
                 bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, u)
             }
-        }
-        else if (requestCode == REQ_GALLERY && resultCode == Activity.RESULT_OK){
-            val uri: Uri? =  data?.data
+        } else if (requestCode == REQ_GALLERY && resultCode == Activity.RESULT_OK) {
+            val uri: Uri? = data?.data
             photo = uri.toString()
             bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
             Glide.with(this).load(uri).into(binding.previewImageView)

@@ -7,10 +7,10 @@ import com.example.recycraft.databinding.ActivitySearchResultBinding
 
 class SearchResultActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivitySearchResultBinding
+    lateinit var binding: ActivitySearchResultBinding
 
 
-    companion object{
+    companion object {
         const val EXTRA_DATA = "extra_data"
     }
 

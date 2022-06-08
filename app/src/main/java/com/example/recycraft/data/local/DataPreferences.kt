@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.map
 import java.util.concurrent.Flow
 import java.util.prefs.Preferences
+
 /*
 class DataPreferences private constructor(private val dataStore: DataStore<Preferences>){
     private val loginKey = booleanPreferencesKey("login_setting")

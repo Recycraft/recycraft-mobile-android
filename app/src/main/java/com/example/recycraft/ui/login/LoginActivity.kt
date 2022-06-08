@@ -17,8 +17,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginActivity : AppCompatActivity(),View.OnClickListener {
-    private lateinit var binding : ActivityLoginBinding
+class LoginActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityLoginBinding
     private lateinit var sharedPreferences: SharedPreferences
     private var isSaveLoginInfo = false
 
@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE)
-        isSaveLoginInfo = sharedPreferences.getBoolean(CHECKBOX,false)
+        isSaveLoginInfo = sharedPreferences.getBoolean(CHECKBOX, false)
         saveloginInfo(isSaveLoginInfo)
 
         binding.loginButton.setOnClickListener(this)
@@ -37,19 +37,19 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     private fun saveloginInfo(boolean: Boolean) {
-        if(boolean){
+        if (boolean) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
     }
 
-    private fun login(){
+    private fun login() {
         showLoading(true)
         val email = binding.emailInput.text.toString().trim()
         val password = binding.passInput.text.toString().trim()
-        val client = ApiConfig.getApiService().getLoginUser(email,password)
-        client.enqueue(object : Callback<UserLoginResponse>{
+        val client = ApiConfig.getApiService().getLoginUser(email, password)
+        client.enqueue(object : Callback<UserLoginResponse> {
             override fun onResponse(
                 call: Call<UserLoginResponse>,
                 response: Response<UserLoginResponse>
@@ -61,14 +61,14 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
                     Intent(this@LoginActivity, MainActivity::class.java).also { startActivity(it) }
                     showLoading(false)
                     finish()
-                }
-                else{
+                } else {
                     showLoading(false)
                     Toast.makeText(
                         this@LoginActivity,
                         "Data yang dimasukan tidak valid",
                         Toast.LENGTH_SHORT
-                    ).show()                }
+                    ).show()
+                }
             }
 
             override fun onFailure(call: Call<UserLoginResponse>, t: Throwable) {
@@ -91,29 +91,29 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     override fun onClick(view: View) {
-        when (view.id){
-            R.id.login_button ->{
+        when (view.id) {
+            R.id.login_button -> {
                 val loginIntent = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(loginIntent)
                 finish()
             }
-            R.id.signup_button ->{
+            R.id.signup_button -> {
                 val registerIntent = Intent(this@LoginActivity, SignupActivity::class.java)
                 startActivity(registerIntent)
             }
         }
     }
 
-    private fun validateLogin(userId: Int, name: String, token: String){
+    private fun validateLogin(userId: Int, name: String, token: String) {
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        editor.putString(NAME,name)
-        editor.putInt(USER_ID,userId)
-        editor.putString(TOKEN,token)
-        editor.putBoolean(CHECKBOX,binding.cbRemember.isChecked)
+        editor.putString(NAME, name)
+        editor.putInt(USER_ID, userId)
+        editor.putString(TOKEN, token)
+        editor.putBoolean(CHECKBOX, binding.cbRemember.isChecked)
         editor.apply()
     }
 
-    companion object{
+    companion object {
         val SHARED_PREFERENCES = "shared_preferences"
         val CHECKBOX = "checkbox"
         val NAME = "name"

@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.util.Size
 import android.widget.Toast
@@ -20,6 +21,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivityCameraBinding
+import com.example.recycraft.ui.info.InfoActivity
 import com.example.recycraft.ui.main.MainActivity
 import java.io.File
 import java.text.SimpleDateFormat
@@ -29,8 +31,8 @@ import java.util.concurrent.Executors
 
 class CameraActivity : AppCompatActivity() {
 
-    companion object{
-        private const val TAG ="CameraXBasic"
+    companion object {
+        private const val TAG = "CameraXBasic"
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
@@ -38,13 +40,12 @@ class CameraActivity : AppCompatActivity() {
         const val REQ_GALLERY = 2
     }
 
-    private lateinit var binding : ActivityCameraBinding
-    private var imageCapture : ImageCapture? = null
+    private lateinit var binding: ActivityCameraBinding
+    private var imageCapture: ImageCapture? = null
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
-    private lateinit var  bitmap: Bitmap
-    private var photo : String? = null
-
+    private lateinit var bitmap: Bitmap
+    private var photo: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,21 +63,26 @@ class CameraActivity : AppCompatActivity() {
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == REQ_GALLERY && resultCode == Activity.RESULT_OK){
-            val uri : Uri? = data?.data
+        if (requestCode == REQ_GALLERY && resultCode == Activity.RESULT_OK) {
+            val uri: Uri? = data?.data
             photo = uri.toString()
-            val intent = Intent(applicationContext, UploadActivity::class.java)
-            intent.putExtra(UploadActivity.EXTRA_DATA_GALLERY,photo)
-            startActivity(intent)
-            finish()
+
+            val u = Uri.parse(photo)
+            bitmap = MediaStore.Images.Media.getBitmap(this@CameraActivity.contentResolver, u)
+            upload()
+
+//            val intent = Intent(applicationContext, UploadActivity::class.java)
+//            intent.putExtra(UploadActivity.EXTRA_DATA_GALLERY, photo)
+//            startActivity(intent)
+//            finish()
 
         }
     }
 
     private fun setupCamera() {
-        if (allPermissionsGranted()){
+        if (allPermissionsGranted()) {
             startCamera()
-        }else{
+        } else {
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
         binding.btnTakePhoto.setOnClickListener { takePhoto() }
@@ -99,7 +105,8 @@ class CameraActivity : AppCompatActivity() {
             outputDirectory,
             SimpleDateFormat(
                 FILENAME_FORMAT, Locale.US
-            ).format(System.currentTimeMillis()) + ".jpg")
+            ).format(System.currentTimeMillis()) + ".jpg"
+        )
 
         // Create output options object which contains file + metadata
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
@@ -107,30 +114,79 @@ class CameraActivity : AppCompatActivity() {
         // Set up image capture listener, which is triggered after photo has
         // been taken
         imageCapture.takePicture(
-            outputOptions, ContextCompat.getMainExecutor(this), object : ImageCapture.OnImageSavedCallback {
+            outputOptions,
+            ContextCompat.getMainExecutor(this),
+            object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
                     Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
                 }
+
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     val msg = "Photo capture succeeded: $savedUri"
-                 //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                   Log.d(TAG, "$savedUri")
-                  val intent = Intent()
+                    //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, "$savedUri")
+                    val intent = Intent()
                     intent.putExtra(CEK_URI, savedUri.toString())
-                 setResult(Activity.RESULT_OK, intent)
+                    setResult(Activity.RESULT_OK, intent)
                     /*
                     val intent = Intent(applicationContext, UploadActivity::class.java)
                     intent.putExtra(UploadActivity.EXTRA_DATA,photoFile)
                     startActivity(intent)*/
-                    finish()
-                }
-            })    }
 
-    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all{
+//                    finish()
+
+                    //upload
+                    photo = savedUri.toString()
+                    val u = Uri.parse(photo)
+                    bitmap = MediaStore.Images.Media.getBitmap(this@CameraActivity.contentResolver, u)
+                    upload()
+                }
+            })
+    }
+
+    private lateinit var typeClassifier: ScrapTypeClassifier
+    private lateinit var categoryClassifier: ScrapClassClassifier
+
+    private fun upload(){
+        //
+        typeClassifier = ScrapTypeClassifier(assets,
+            UploadActivity.STCModel,
+            UploadActivity.STCLabel,
+            UploadActivity.mInputSize
+        )
+        val typeResult = typeClassifier.classifyImage(bitmap)
+        Log.d("STC", typeResult.toString())
+
+        categoryClassifier = ScrapClassClassifier(assets,
+            UploadActivity.SCDModel,
+            UploadActivity.SCDLabel,
+            UploadActivity.mInputSize
+        )
+        val categoryResult = categoryClassifier.classifyImage(bitmap)
+        Log.d("SCD", categoryResult.toString())
+
+        val type = typeResult[0].type
+        val confident = typeResult[0].confident
+        val identify = ArrayList(categoryResult)
+
+//        binding.tvDetailName.text = type
+//        binding.tvKategoriName.text = "$confident"
+
+        // move to InfoActivity
+        val moveIntent = Intent(this@CameraActivity, InfoActivity::class.java)
+        moveIntent.putExtra(InfoActivity.EXTRA_TYPE, type)
+        moveIntent.putExtra(InfoActivity.EXTRA_CONFIDENT, confident)
+        moveIntent.putParcelableArrayListExtra(InfoActivity.EXTRA_IDENTIFY, identify)
+        moveIntent.putExtra(InfoActivity.EXTRA_IMAGE, photo)
+        startActivity(moveIntent)
+    }
+
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
-    private fun getOutputDirectory(): File{
+
+    private fun getOutputDirectory(): File {
         val mediaDir = externalMediaDirs.firstOrNull()?.let {
             File(it, resources.getString(R.string.app_name)).apply { mkdirs() }
         }
@@ -139,15 +195,18 @@ class CameraActivity : AppCompatActivity() {
 
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
-        IntArray) {
+        IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
                 startCamera()
             } else {
-                Toast.makeText(this,
+                Toast.makeText(
+                    this,
                     "Permissions not granted by the user.",
-                    Toast.LENGTH_SHORT).show()
+                    Toast.LENGTH_SHORT
+                ).show()
                 finish()
             }
         }
@@ -168,7 +227,7 @@ class CameraActivity : AppCompatActivity() {
                 }
 
             imageCapture = ImageCapture.Builder()
-                .setTargetResolution(Size(150,150))
+                .setTargetResolution(Size(150, 150))
                 .build()
 
             // Select back camera as a default
@@ -180,9 +239,10 @@ class CameraActivity : AppCompatActivity() {
 
                 // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, imageCapture)
+                    this, cameraSelector, preview, imageCapture
+                )
 
-            } catch(exc: Exception) {
+            } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
             }
 

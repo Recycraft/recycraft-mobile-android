@@ -33,6 +33,7 @@ class SecondScreenFragment : Fragment() {
         }
         return view
     }
+
     private fun onBoardingFinished() {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()

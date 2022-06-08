@@ -13,9 +13,10 @@ import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
 import java.util.*
 
-class ScrapClassClassifier (assetManager: AssetManager, modelPath: String, labelPath: String,
-                            private val inputSize: Int
-){
+class ScrapClassClassifier(
+    assetManager: AssetManager, modelPath: String, labelPath: String,
+    private val inputSize: Int
+) {
     private var interpreter: Interpreter
     private var labelList: List<String>
     private val pixelSize: Int = 3
@@ -28,7 +29,7 @@ class ScrapClassClassifier (assetManager: AssetManager, modelPath: String, label
         var kategori: String = "",
         var akurasi: Float = 0F
 
-    ):Parcelable {
+    ) : Parcelable {
         override fun toString(): String {
             return "Kategori : $kategori, akurasi = $akurasi "
         }
@@ -74,28 +75,37 @@ class ScrapClassClassifier (assetManager: AssetManager, modelPath: String, label
                 val input = intValues[pixel++]
                 byteBuffer.putFloat((input.shr(16) and 0xFF) / imageStd)
                 byteBuffer.putFloat((input.shr(8) and 0xFF) / imageStd)
-                byteBuffer.putFloat((input and 0xFF)  / imageStd)
+                byteBuffer.putFloat((input and 0xFF) / imageStd)
             }
         }
         return byteBuffer
     }
 
     private fun getSortedResult(labelProbArray: Array<FloatArray>): List<Classification> {
-        Log.d("Classifier", "List Size:(%d, %d, %d)".format(labelProbArray.size,labelProbArray[0].size,labelList.size))
+        Log.d(
+            "Classifier",
+            "List Size:(%d, %d, %d)".format(
+                labelProbArray.size,
+                labelProbArray[0].size,
+                labelList.size
+            )
+        )
 
         val pq = PriorityQueue(
             maxResults,
-            Comparator<Classification> {
-                    (_, akurasi1), (_, akurasi2)
-                -> akurasi1.compareTo(akurasi2) * -1
+            Comparator<Classification> { (_, akurasi1), (_, akurasi2)
+                ->
+                akurasi1.compareTo(akurasi2) * -1
             })
 
         for (i in labelList.indices) {
             val akurasi = labelProbArray[0][i]
             if (akurasi >= threshold) {
-                pq.add(Classification(
-                    if (labelList.size > i) labelList[i] else "Unknown",
-                    akurasi)
+                pq.add(
+                    Classification(
+                        if (labelList.size > i) labelList[i] else "Unknown",
+                        akurasi
+                    )
                 )
             }
         }

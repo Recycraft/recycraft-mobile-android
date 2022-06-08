@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.util.Size
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
@@ -85,7 +86,10 @@ class CameraActivity : AppCompatActivity() {
         } else {
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
-        binding.btnTakePhoto.setOnClickListener { takePhoto() }
+        binding.btnTakePhoto.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
+            Toast.makeText(applicationContext,"Success take a picture",Toast.LENGTH_SHORT).show()
+            takePhoto() }
 
         binding.btnCancel.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))

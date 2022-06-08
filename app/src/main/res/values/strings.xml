@@ -87,6 +87,8 @@ Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi 
     <string name="insert_manual">Insert Manual</string>
     <string name="hasil_tangkapan_gambar">Hasil tangkapan gambar</string>
     <string name="contribute">Contribute</string>
+    <string name="semua">semua</string>
+    <string name="show_all">show all</string>
     <string-array name="titlesCraft">
         <item>Contoh 1</item>
         <item>Contoh 2</item>

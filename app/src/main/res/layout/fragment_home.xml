@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,18 +58,33 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:text="@string/top_crafts"
-                android:fontFamily="@font/alata"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/top_crafts"
+                    android:fontFamily="@font/alata"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/show_all"
+                    android:layout_marginStart="10dp"
+                    />
+
+            </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTopCrafts"

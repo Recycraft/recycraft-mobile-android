@@ -76,16 +76,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/next"/>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/next"
+            app:icon="@drawable/ic_next"
+            app:iconGravity="textStart"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@drawable/button_circle"
-            android:fontFamily="@font/alata"
-            android:text="@string/next"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            tools:ignore="TextContrastCheck"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-
         //camera
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(

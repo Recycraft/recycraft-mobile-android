@@ -3,15 +3,19 @@ package com.example.recycraft.ui.camera
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.Intent.ACTION_PICK
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.util.Size
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -38,7 +42,7 @@ class CameraActivity : AppCompatActivity() {
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         const val CEK_URI = "extra"
-        const val REQ_GALLERY = 2
+//        const val REQ_GALLERY = 2
     }
 
     private lateinit var binding: ActivityCameraBinding
@@ -52,33 +56,62 @@ class CameraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
-        binding.btnTakeGallery.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, REQ_GALLERY)
-        }
+//        binding.btnTakeGallery.setOnClickListener {
+//            val intent = Intent(Intent.ACTION_PICK)
+//            intent.type = "image/*"
+//            startActivityForResult(intent, REQ_GALLERY)
+//        }
         setContentView(binding.root)
+
+        binding.btnTakeGallery.setOnClickListener { startGallery() }
         setupCamera()
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQ_GALLERY && resultCode == Activity.RESULT_OK) {
-            val uri: Uri? = data?.data
-            photo = uri.toString()
+    private fun startGallery() {
+        val intent = Intent()
+        intent.action = ACTION_PICK /* or ACTION_GET_CONTENT */
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        launcherIntentGallery.launch(chooser)
+    }
 
+    private val launcherIntentGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val selectedImg: Uri = result.data?.data as Uri
+            photo = selectedImg.toString()
             val u = Uri.parse(photo)
-            bitmap = MediaStore.Images.Media.getBitmap(this@CameraActivity.contentResolver, u)
+
+            bitmap = if (Build.VERSION.SDK_INT < 28) {
+                MediaStore.Images.Media.getBitmap(this@CameraActivity.contentResolver, u)
+            } else {
+                val src = ImageDecoder.createSource(this@CameraActivity.contentResolver, u)
+                ImageDecoder.decodeBitmap(src).copy(Bitmap.Config.RGBA_F16, true)
+            }
+
             upload()
+        }
+    }
+
+//    @Deprecated("Deprecated in Java")
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == REQ_GALLERY && resultCode == Activity.RESULT_OK) {
+//            val uri: Uri? = data?.data
+//            photo = uri.toString()
+//
+//            val u = Uri.parse(photo)
+//            bitmap = MediaStore.Images.Media.getBitmap(this@CameraActivity.contentResolver, u)
+//            upload()
 
 //            val intent = Intent(applicationContext, UploadActivity::class.java)
 //            intent.putExtra(UploadActivity.EXTRA_DATA_GALLERY, photo)
 //            startActivity(intent)
 //            finish()
 
-        }
-    }
+//        }
+//    }
 
     private fun setupCamera() {
         if (allPermissionsGranted()) {
@@ -88,8 +121,9 @@ class CameraActivity : AppCompatActivity() {
         }
         binding.btnTakePhoto.setOnClickListener {
             binding.progressBar.visibility = View.VISIBLE
-            Toast.makeText(applicationContext,"Success take a picture",Toast.LENGTH_SHORT).show()
-            takePhoto() }
+            Toast.makeText(applicationContext, "Success take a picture", Toast.LENGTH_SHORT).show()
+            takePhoto()
+        }
 
         binding.btnCancel.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
@@ -128,7 +162,7 @@ class CameraActivity : AppCompatActivity() {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     val msg = "Photo capture succeeded: $savedUri"
-                    //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "$savedUri")
                     val intent = Intent()
                     intent.putExtra(CEK_URI, savedUri.toString())
@@ -143,7 +177,13 @@ class CameraActivity : AppCompatActivity() {
                     //upload
                     photo = savedUri.toString()
                     val u = Uri.parse(photo)
-                    bitmap = MediaStore.Images.Media.getBitmap(this@CameraActivity.contentResolver, u)
+
+                    bitmap = if (Build.VERSION.SDK_INT < 28) {
+                        MediaStore.Images.Media.getBitmap(this@CameraActivity.contentResolver, u)
+                    } else {
+                        val src = ImageDecoder.createSource(this@CameraActivity.contentResolver, u)
+                        ImageDecoder.decodeBitmap(src).copy(Bitmap.Config.RGBA_F16, true)
+                    }
                     upload()
                 }
             })
@@ -152,9 +192,9 @@ class CameraActivity : AppCompatActivity() {
     private lateinit var typeClassifier: ScrapTypeClassifier
     private lateinit var categoryClassifier: ScrapClassClassifier
 
-    private fun upload(){
-        //
-        typeClassifier = ScrapTypeClassifier(assets,
+    private fun upload() {
+        typeClassifier = ScrapTypeClassifier(
+            assets,
             UploadActivity.STCModel,
             UploadActivity.STCLabel,
             UploadActivity.mInputSize
@@ -162,7 +202,8 @@ class CameraActivity : AppCompatActivity() {
         val typeResult = typeClassifier.classifyImage(bitmap)
         Log.d("STC", typeResult.toString())
 
-        categoryClassifier = ScrapClassClassifier(assets,
+        categoryClassifier = ScrapClassClassifier(
+            assets,
             UploadActivity.SCDModel,
             UploadActivity.SCDLabel,
             UploadActivity.mInputSize
@@ -173,9 +214,6 @@ class CameraActivity : AppCompatActivity() {
         val type = typeResult[0].type
         val confident = typeResult[0].confident
         val identify = ArrayList(categoryResult)
-
-//        binding.tvDetailName.text = type
-//        binding.tvKategoriName.text = "$confident"
 
         // move to InfoActivity
         val moveIntent = Intent(this@CameraActivity, InfoActivity::class.java)

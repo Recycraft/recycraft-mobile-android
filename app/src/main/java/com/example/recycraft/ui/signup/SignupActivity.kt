@@ -80,7 +80,7 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
             override fun onFailure(call: Call<UserRegisterResponse>, t: Throwable) {
 
                 Log.e("error : ", "${t.message}")
-                Toast.makeText(this@SignupActivity, "${t.message.toString()}", Toast.LENGTH_SHORT)
+                Toast.makeText(this@SignupActivity, t.message.toString(), Toast.LENGTH_SHORT)
                     .show()
 
             }

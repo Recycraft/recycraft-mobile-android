@@ -1,59 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     android:background="@color/bgDefault"
     tools:context=".ui.category.CategoryActivity">
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:id="@+id/layoutLinear"
-    >
-
-    <TextView
-        android:id="@+id/tv_title_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="30dp"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Nama Kategori" />
-
-    <TextView
-        android:id="@+id/tv_desc_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_category"
-        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel dui vitae ante tempor vehicula. Nulla facilisi. Integer quis magna id nisi aliquam placerat sed faucibus ligula. Cras faucibus ante sed tortor volutpat posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus ac pharetra odio. Curabitur in lectus cursus, molestie neque nec, tristique eros. Duis quam justo, condimentum at tortor sit amet, dapibus finibus est. Curabitur augue lorem, lobortis aliquam nibh vitae, tincidunt efficitur lorem. Morbi vel enim volutpat ligula interdum interdum. Praesent semper " />
-</LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list_kerajinan"
+    <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        app:layout_constraintTop_toBottomOf="@id/layoutLinear"
-        android:clipToPadding="true"
-        android:padding="16dp"
-        tools:listitem="@layout/item_list_kerajinan"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_Bar_Result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bgDefault">
+            <include layout="@layout/category_toolbar"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/inner_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/tv_title_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Nama Kategori" />
+
+                <TextView
+                    android:id="@+id/tv_desc_category"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title_category"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel dui vitae ante tempor vehicula. Nulla facilisi. Integer quis magna id nisi aliquam placerat sed faucibus ligula. Cras faucibus ante sed tortor volutpat posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus ac pharetra odio. Curabitur in lectus cursus, molestie neque nec, tristique eros. Duis quam justo, condimentum at tortor sit amet, dapibus finibus est. Curabitur augue lorem, lobortis aliquam nibh vitae, tincidunt efficitur lorem. Morbi vel enim volutpat ligula interdum interdum. Praesent semper " />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_kerajinan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@id/card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_list_kerajinan" />
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

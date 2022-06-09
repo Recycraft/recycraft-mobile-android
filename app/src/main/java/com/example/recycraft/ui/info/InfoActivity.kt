@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.recycraft.adapter.InfoAdapter
 import com.example.recycraft.databinding.ActivityInfoBinding
-import com.example.recycraft.databinding.ResultToolbarBinding
 import com.example.recycraft.ui.camera.ScrapClassClassifier
 import com.example.recycraft.ui.list.ListCraftActivity
 import com.example.recycraft.ui.main.MainActivity
@@ -30,9 +29,6 @@ class InfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar?.title = "Result"
 
         //get image
         val img = intent.getStringExtra(EXTRA_IMAGE)
@@ -96,7 +92,7 @@ class InfoActivity : AppCompatActivity() {
             startActivity(moveIntent)
         }
         binding.appBarResult.LogoBack.setOnClickListener {
-            val backIntent = Intent(this@InfoActivity,MainActivity::class.java)
+            val backIntent = Intent(this@InfoActivity, MainActivity::class.java)
             startActivity(backIntent)
             finish()
         }

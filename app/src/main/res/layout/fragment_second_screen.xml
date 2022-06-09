@@ -79,7 +79,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/next"
             app:icon="@drawable/ic_next"
-            app:iconGravity="textStart"
+            app:iconGravity="start"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@drawable/button_circle"

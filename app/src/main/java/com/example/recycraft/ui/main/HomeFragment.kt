@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +15,7 @@ import com.example.recycraft.adapter.DummyVerticalAdapter
 import com.example.recycraft.data.model.CategoriesModel
 import com.example.recycraft.data.model.TopCraftsModel
 import com.example.recycraft.databinding.FragmentHomeBinding
+import com.example.recycraft.ui.category.CategoryActivity
 import com.example.recycraft.ui.search.SearchResultActivity
 
 
@@ -29,7 +29,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        val view = inflater.inflate(R.layout.fragment_home, container, false)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
 /*
@@ -72,6 +71,15 @@ class HomeFragment : Fragment() {
         rvCategory.setHasFixedSize(true)
         rvCategory.layoutManager = vm
         rvCategory.adapter = adapterCategory
+
+        adapterCraft.setOnItemClickCallback(object : DummyVerticalAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: TopCraftsModel) {
+                val intent = Intent(requireActivity(), CategoryActivity::class.java)
+                //passing data
+//                intent.putExtra()
+                startActivity(intent)
+            }
+        })
 
         binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

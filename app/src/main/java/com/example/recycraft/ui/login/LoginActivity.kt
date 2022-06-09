@@ -114,10 +114,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     companion object {
-        val SHARED_PREFERENCES = "shared_preferences"
-        val CHECKBOX = "checkbox"
-        val NAME = "name"
-        val USER_ID = "user_id"
-        val TOKEN = "token"
+        const val SHARED_PREFERENCES = "shared_preferences"
+        const val CHECKBOX = "checkbox"
+        const val NAME = "name"
+        const val USER_ID = "user_id"
+        const val TOKEN = "token"
     }
 }

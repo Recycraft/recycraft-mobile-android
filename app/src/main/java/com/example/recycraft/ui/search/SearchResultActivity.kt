@@ -2,7 +2,6 @@ package com.example.recycraft.ui.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivitySearchResultBinding
 
 class SearchResultActivity : AppCompatActivity() {

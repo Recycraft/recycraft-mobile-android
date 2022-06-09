@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recycraft.databinding.ItemListSampahBinding
 import com.example.recycraft.ui.camera.ScrapClassClassifier
-import kotlin.math.floor
 import kotlin.math.roundToInt
 
 class InfoAdapter(

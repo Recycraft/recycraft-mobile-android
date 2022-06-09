@@ -3,13 +3,12 @@ package com.example.recycraft.ui.detail
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.recycraft.R
 import com.example.recycraft.databinding.ActivityDetailBinding
 import com.example.recycraft.ui.main.MainActivity
 import kotlinx.android.synthetic.main.detail_toolbar.view.*
 
 class DetailActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityDetailBinding
+    private lateinit var binding: ActivityDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

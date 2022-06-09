@@ -42,8 +42,8 @@
         <activity
             android:name=".ui.info.InfoActivity"
             android:exported="false"
-            android:parentActivityName=".ui.camera.UploadActivity"
-            android:theme="@style/Theme.RecyCraft2" />
+            android:parentActivityName=".ui.camera.UploadActivity"/>
+<!--            android:theme="@style/Theme.RecyCraft2" />-->
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="false"

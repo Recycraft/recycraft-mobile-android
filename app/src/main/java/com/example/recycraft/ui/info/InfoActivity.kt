@@ -27,9 +27,9 @@ class InfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Result"
+//
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar?.title = "Result"
 
         //get image
         val img = intent.getStringExtra(EXTRA_IMAGE)

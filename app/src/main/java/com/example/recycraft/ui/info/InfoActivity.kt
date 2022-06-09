@@ -9,13 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.recycraft.adapter.InfoAdapter
 import com.example.recycraft.databinding.ActivityInfoBinding
+import com.example.recycraft.databinding.ResultToolbarBinding
 import com.example.recycraft.ui.camera.ScrapClassClassifier
 import com.example.recycraft.ui.list.ListCraftActivity
+import com.example.recycraft.ui.main.MainActivity
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import kotlinx.android.synthetic.main.result_toolbar.view.*
 import kotlin.math.floor
 
 class InfoActivity : AppCompatActivity() {
@@ -91,6 +94,11 @@ class InfoActivity : AppCompatActivity() {
         binding.btnCari.setOnClickListener {
             val moveIntent = Intent(this@InfoActivity, ListCraftActivity::class.java)
             startActivity(moveIntent)
+        }
+        binding.appBarResult.LogoBack.setOnClickListener {
+            val backIntent = Intent(this@InfoActivity,MainActivity::class.java)
+            startActivity(backIntent)
+            finish()
         }
     }
 

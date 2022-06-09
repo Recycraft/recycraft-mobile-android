@@ -48,7 +48,7 @@ class InfoAdapter(
 
     override fun getItemCount(): Int {
 //        return listScrap.size
-        return 5
+        return 3
     }
 
     interface OnItemClickCallback {

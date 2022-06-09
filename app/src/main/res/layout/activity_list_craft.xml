@@ -7,30 +7,11 @@
     tools:context=".ui.list.ListCraftActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_Bar_Result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:elevation="0dp">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/mtoolbar_result"
-            android:background="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            app:navigationIcon="@drawable/ic_close" />
-
-        <TextView
-            android:id="@+id/text_toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:textColor="@color/black"
-            android:text="@string/list_kerajinan" />
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
+        android:background="@color/bgDefault">
+        <include layout="@layout/listcraft_toolbar"/>
     </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView

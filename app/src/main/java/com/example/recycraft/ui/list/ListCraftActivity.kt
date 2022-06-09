@@ -9,6 +9,7 @@ import com.example.recycraft.adapter.DummyListCraftAdapter
 import com.example.recycraft.data.model.ListCraftModel
 import com.example.recycraft.databinding.ActivityListCraftBinding
 import com.example.recycraft.ui.detail.DetailActivity
+import kotlinx.android.synthetic.main.listcraft_toolbar.view.*
 
 class ListCraftActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListCraftBinding
@@ -39,7 +40,7 @@ class ListCraftActivity : AppCompatActivity() {
             }
         })
 
-        binding.mtoolbarResult.setOnClickListener {
+        binding.appBarResult.LogoBack.setOnClickListener {
             finish()
         }
     }

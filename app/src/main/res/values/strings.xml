@@ -89,6 +89,8 @@ Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi 
     <string name="contribute">Contribute</string>
     <string name="semua">semua</string>
     <string name="show_all">show all</string>
+    <string name="detail">Detail</string>
+    <string name="list_craft">List Craft</string>
     <string-array name="titlesCraft">
         <item>Contoh 1</item>
         <item>Contoh 2</item>
@@ -97,8 +99,10 @@ Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi 
         <item>Contoh 5</item>
         <item>Contoh 6</item>
         <item>Contoh 7</item>
+        <item>Contoh 8</item>
     </string-array>
     <integer-array name="imagesCraft">
+        <item>@drawable/kerajinanlampion</item>
         <item>@drawable/kerajinanlampion</item>
         <item>@drawable/kerajinanlampion</item>
         <item>@drawable/kerajinanlampion</item>
@@ -115,17 +119,20 @@ Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi 
         <item>Category : Sendok Plastik</item>
         <item>Category : Sendok Plastik</item>
         <item>Category : Sendok Plastik</item>
+        <item>Category : Sendok Plastik</item>
     </string-array>
     <string-array name="titlesCategories">
         <item>Plastik</item>
-        <item>Plastik</item>
-        <item>Plastik</item>
-        <item>Plastik</item>
-        <item>Plastik</item>
-        <item>Plastik</item>
-        <item>Plastik</item>
+        <item>Botol</item>
+        <item>Kaleng</item>
+        <item>Kardus</item>
+        <item>Kaca</item>
+        <item>Kertas</item>
+        <item>Sendok</item>
+        <item>Sterofoam</item>
     </string-array>
     <string-array name="descCategories">
+        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue</item>
         <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue</item>
         <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue</item>
         <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue</item>
@@ -142,8 +149,10 @@ Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi 
         <item>@drawable/sampahoverlay</item>
         <item>@drawable/sampahoverlay</item>
         <item>@drawable/sampahoverlay</item>
+        <item>@drawable/sampahoverlay</item>
     </integer-array>
     <string-array name="titlesListCraft">
+        <item>Lampion Plastik</item>
         <item>Lampion Plastik</item>
         <item>Lampion Plastik</item>
         <item>Lampion Plastik</item>
@@ -156,8 +165,10 @@ Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi 
         <item>Plastik , Sendok Plastik , Botol</item>
         <item>Plastik , Sendok Plastik , Botol</item>
         <item>Plastik , Sendok Plastik , Botol</item>
+        <item>Plastik , Sendok Plastik , Botol</item>
     </string-array>
     <integer-array name="imagesListCraft">
+        <item>@drawable/kerajinanlampion</item>
         <item>@drawable/kerajinanlampion</item>
         <item>@drawable/kerajinanlampion</item>
         <item>@drawable/kerajinanlampion</item>

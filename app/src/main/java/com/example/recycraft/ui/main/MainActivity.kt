@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         makeCurrentFragment(homeFragment)
 
-        binding.bottomNavigationView.menu.getItem(0).isEnabled = false
+        binding.bottomNavigationView.menu.getItem(1).isEnabled = false
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menuHome -> makeCurrentFragment(homeFragment)

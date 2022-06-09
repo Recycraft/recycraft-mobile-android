@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    app:layout_scrollFlags="scroll|enterAlways">
+    android:stateListAnimator="@null"
+    app:layout_collapseMode="pin">
 
     <ImageView
         android:id="@+id/Logo"

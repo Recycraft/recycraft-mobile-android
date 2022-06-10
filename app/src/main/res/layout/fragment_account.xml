@@ -99,17 +99,6 @@
         app:layout_constraintTop_toTopOf="@id/iv_email"
         tools:text="Alfondasteven99@gmail.com"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_contribute"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/contribute"
-        android:textSize="16sp"
-        app:cornerRadius="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/relativeLayout"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_logout"

@@ -86,18 +86,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:listitem="@layout/item_list_sampah"/>
 
-            <Button
-                android:id="@+id/btn_manual"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="@string/insert_manual"
-                android:textAllCaps="false"
-                app:layout_constraintTop_toBottomOf="@id/rv_sampah"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+
 
             <Button
                 android:id="@+id/btn_cari"
@@ -108,7 +97,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:textAllCaps="false"
-                app:layout_constraintTop_toBottomOf="@id/btn_manual"
+                app:layout_constraintTop_toBottomOf="@id/rv_sampah"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>

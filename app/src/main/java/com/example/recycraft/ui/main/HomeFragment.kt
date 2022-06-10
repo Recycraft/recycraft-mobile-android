@@ -17,6 +17,7 @@ import com.example.recycraft.data.model.TopCraftsModel
 import com.example.recycraft.databinding.FragmentHomeBinding
 import com.example.recycraft.ui.category.CategoryActivity
 import com.example.recycraft.ui.detail.DetailActivity
+import com.example.recycraft.ui.list.ListCraftActivity
 import com.example.recycraft.ui.search.SearchResultActivity
 
 
@@ -75,6 +76,11 @@ class HomeFragment : Fragment() {
                 startActivity(intent)
             }
         })
+
+        binding.btnShow.setOnClickListener {
+            val intent = Intent(requireActivity(), ListCraftActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

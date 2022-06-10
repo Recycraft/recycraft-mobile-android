@@ -5,26 +5,24 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recycraft.R
-import com.example.recycraft.adapter.DummyListCraftAdapter
-import com.example.recycraft.data.model.ListCraftModel
+import com.example.recycraft.adapter.CraftVerticalAdapter
+import com.example.recycraft.data.model.TopCraftsModel
 import com.example.recycraft.databinding.ActivityListCraftBinding
 import com.example.recycraft.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.listcraft_toolbar.view.*
 
 class ListCraftActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListCraftBinding
-    private lateinit var adapter: DummyListCraftAdapter
-    private val listListCraft = ArrayList<ListCraftModel>()
+    private lateinit var adapter: CraftVerticalAdapter
+    private val listListCraft = ArrayList<TopCraftsModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListCraftBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.hide()
-
         listListCraft.addAll(ArrayListCraft)
-        adapter = DummyListCraftAdapter(listListCraft, this)
+        adapter = CraftVerticalAdapter(listListCraft, this)
 
         binding.apply {
             rvListKerajinan.setHasFixedSize(true)
@@ -32,8 +30,8 @@ class ListCraftActivity : AppCompatActivity() {
             rvListKerajinan.adapter = adapter
         }
 
-        adapter.setOnItemClickCallback(object : DummyListCraftAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: ListCraftModel) {
+        adapter.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: TopCraftsModel) {
                 val moveIntent = Intent(this@ListCraftActivity, DetailActivity::class.java)
                 moveIntent.putExtra(DetailActivity.EXTRA_CRAFT, data)
                 startActivity(moveIntent)
@@ -45,13 +43,13 @@ class ListCraftActivity : AppCompatActivity() {
         }
     }
 
-    private val ArrayListCraft: ArrayList<ListCraftModel>
+    private val ArrayListCraft: ArrayList<TopCraftsModel>
         get() {
             val dataListTitle = resources.getStringArray(R.array.titlesListCraft)
             val dataListDesc = resources.getStringArray(R.array.descsListCraft)
-            val arrayListCraft = ArrayList<ListCraftModel>()
+            val arrayListCraft = ArrayList<TopCraftsModel>()
             for (i in dataListTitle.indices) {
-                val listCraft = ListCraftModel(
+                val listCraft = TopCraftsModel(
                     R.drawable.kerajinanlampion,
                     dataListTitle[i],
                     dataListDesc[i]

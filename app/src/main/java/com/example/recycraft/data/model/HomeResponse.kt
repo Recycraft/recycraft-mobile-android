@@ -18,10 +18,3 @@ data class CategoriesModel(
     var titleCategory: String? = null,
     var descCategory: String? = null
 ) : Parcelable
-
-@Parcelize
-data class ListCraftModel(
-    var imageListCraft: Int = 0,
-    var titleListCraft: String? = null,
-    var descListCraft: String? = null
-) : Parcelable

@@ -10,12 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recycraft.R
-import com.example.recycraft.adapter.DummyHorizontalAdapter
-import com.example.recycraft.adapter.DummyVerticalAdapter
+import com.example.recycraft.adapter.CategoryHorizontalAdapter
+import com.example.recycraft.adapter.CraftVerticalAdapter
 import com.example.recycraft.data.model.CategoriesModel
 import com.example.recycraft.data.model.TopCraftsModel
 import com.example.recycraft.databinding.FragmentHomeBinding
 import com.example.recycraft.ui.category.CategoryActivity
+import com.example.recycraft.ui.detail.DetailActivity
 import com.example.recycraft.ui.search.SearchResultActivity
 
 
@@ -31,20 +32,6 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
-/*
-        binding?.apply {
-            rvTopCrafts.setHasFixedSize(true)
-            rvTopCrafts.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL,false)
-            rvTopCrafts.adapter = dummyHorizontalAdapter
-
-            rvCategories.setHasFixedSize(true)
-            rvCategories.layoutManager = LinearLayoutManager(activity)
-            rvCategories.adapter = dummyVerticalAdapter
-
-        }*/
-
-
-//        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,30 +40,38 @@ class HomeFragment : Fragment() {
 //        (activity as AppCompatActivity)
 
         //vertical rv
-        val lm = LinearLayoutManager(activity)
-        lm.orientation = LinearLayoutManager.VERTICAL
-        rvCraft = view.findViewById(R.id.rvTopCrafts)
+        val craftLayout = LinearLayoutManager(activity)
+        craftLayout.orientation = LinearLayoutManager.VERTICAL
+        rvCraft = binding.rvTopCrafts
 
-        val adapterCraft = DummyVerticalAdapter(ArrayCraft, activity)
+        val adapterCraft = CraftVerticalAdapter(ArrayCraft, activity)
         rvCraft.setHasFixedSize(true)
-        rvCraft.layoutManager = lm
+        rvCraft.layoutManager = craftLayout
         rvCraft.adapter = adapterCraft
 
         //horizontal rv
-        val vm = LinearLayoutManager(activity)
-        vm.orientation = LinearLayoutManager.HORIZONTAL
-        rvCategory = view.findViewById(R.id.rvCategories)
+        val categoryLayout = LinearLayoutManager(activity)
+        categoryLayout.orientation = LinearLayoutManager.HORIZONTAL
+        rvCategory = binding.rvCategories
 
-        val adapterCategory = DummyHorizontalAdapter(ArrayCategory, activity)
+        val adapterCategory = CategoryHorizontalAdapter(ArrayCategory, activity)
         rvCategory.setHasFixedSize(true)
-        rvCategory.layoutManager = vm
+        rvCategory.layoutManager = categoryLayout
         rvCategory.adapter = adapterCategory
 
-        adapterCraft.setOnItemClickCallback(object : DummyVerticalAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: TopCraftsModel) {
+        adapterCategory.setOnItemClickCallback(object :
+            CategoryHorizontalAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: CategoriesModel) {
                 val intent = Intent(requireActivity(), CategoryActivity::class.java)
                 //passing data
 //                intent.putExtra()
+                startActivity(intent)
+            }
+        })
+
+        adapterCraft.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: TopCraftsModel) {
+                val intent = Intent(requireActivity(), DetailActivity::class.java)
                 startActivity(intent)
             }
         })
@@ -126,11 +121,10 @@ class HomeFragment : Fragment() {
             return arrayCategory
         }
 
-    /*
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
-    }*/
+        _binding = null
+    }
 }
 
 

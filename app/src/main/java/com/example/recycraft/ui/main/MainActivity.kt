@@ -34,28 +34,11 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        //camera
-//        binding.fabCamera.setOnClickListener { view ->
-//            if (view.id == R.id.fabCamera) {
-////                val intent = Intent(this@MainActivity, UploadActivity::class.java)
-////                startActivity(intent)
-////                finish()
-//
-//                startActivityForResult(
-//                    Intent(this, CameraActivity::class.java),
-//                    REQ_CAMERA
-//                )
-//            }
-//        }
         binding.fabCamera.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
             startActivity(intent)
         }
     }
-
-//    private val launcherCamera = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-//        it.resultCode == REQ_CAMERA
-//    }
 
     private fun makeCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {

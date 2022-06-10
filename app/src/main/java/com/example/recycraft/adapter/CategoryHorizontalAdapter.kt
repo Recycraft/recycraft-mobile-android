@@ -8,10 +8,10 @@ import com.bumptech.glide.Glide
 import com.example.recycraft.data.model.CategoriesModel
 import com.example.recycraft.databinding.HorizontalRowBinding
 
-class DummyHorizontalAdapter(
+class CategoryHorizontalAdapter(
     private val listCategory: ArrayList<CategoriesModel>,
     var context: Activity?
-) : RecyclerView.Adapter<DummyHorizontalAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<CategoryHorizontalAdapter.ViewHolder>() {
 
     inner class ViewHolder(var binding: HorizontalRowBinding) :
         RecyclerView.ViewHolder(binding.root)

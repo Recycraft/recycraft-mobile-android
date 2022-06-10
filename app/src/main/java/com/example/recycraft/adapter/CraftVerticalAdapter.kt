@@ -8,10 +8,10 @@ import com.bumptech.glide.Glide
 import com.example.recycraft.data.model.TopCraftsModel
 import com.example.recycraft.databinding.VerticalRowBinding
 
-class DummyVerticalAdapter(
+class CraftVerticalAdapter(
     private val listCrafts: ArrayList<TopCraftsModel>,
     var context: Activity?
-) : RecyclerView.Adapter<DummyVerticalAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<CraftVerticalAdapter.ViewHolder>() {
     inner class ViewHolder(var binding: VerticalRowBinding) : RecyclerView.ViewHolder(binding.root)
 
     private lateinit var onItemClickCallback: OnItemClickCallback

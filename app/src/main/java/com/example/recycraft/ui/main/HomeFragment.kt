@@ -9,12 +9,9 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.recycraft.R
 import com.example.recycraft.adapter.CategoryHorizontalAdapter
 import com.example.recycraft.adapter.CraftVerticalAdapter
-import com.example.recycraft.data.model.CategoriesModel
-import com.example.recycraft.data.model.TopCraftsModel
+import com.example.recycraft.data.model.CraftsModel
 import com.example.recycraft.databinding.FragmentHomeBinding
 import com.example.recycraft.ui.detail.DetailActivity
 import com.example.recycraft.ui.list.ListCraftActivity
@@ -28,7 +25,6 @@ class HomeFragment : Fragment() {
 //    private val listCraft = ArrayList<TopCraftsModel>()
 
     private lateinit var adapterCraft: CraftVerticalAdapter
-   // private lateinit var categoryHorizontalAdapter : CategoryHorizontalAdapter
     private lateinit var adapterCategory : CategoryHorizontalAdapter
     private lateinit var viewModel : HomeViewModel
 
@@ -54,11 +50,11 @@ class HomeFragment : Fragment() {
         adapterCategory.notifyDataSetChanged()
 
         binding.apply {
-            rvTopCrafts.setHasFixedSize(true)
+            rvCrafts.setHasFixedSize(true)
             val craftLayout = LinearLayoutManager(activity)
             craftLayout.orientation = LinearLayoutManager.VERTICAL
-            rvTopCrafts.layoutManager = craftLayout
-            rvTopCrafts.adapter = adapterCraft
+            rvCrafts.layoutManager = craftLayout
+            rvCrafts.adapter = adapterCraft
 
             rvCategories.setHasFixedSize(true)
             val categoryLayout = LinearLayoutManager(activity)
@@ -73,25 +69,25 @@ class HomeFragment : Fragment() {
             ViewModelProvider.NewInstanceFactory()
         )[HomeViewModel::class.java]
 
-        //show craft
+        //show loading
+        showLoadingCraft(true)
+        showLoadingCategory(true)
+        
+        //show rv
         this.viewModel.setAllCraft()
         this.viewModel.getAllCraft().observe(viewLifecycleOwner) {
             if (it != null) {
                 adapterCraft.setListCraft(it)
-//                showLoading(false)
+                showLoadingCraft(false)
             }
         }
         this.viewModel.setAllCategory()
         this.viewModel.getAllCategory().observe(viewLifecycleOwner){
             if(it != null){
                 adapterCategory.setListCategory(it)
+                showLoadingCategory(false)
             }
         }
-
-
-
-
-
 /*
         val adapterCategory = CategoryHorizontalAdapter(ArrayCategory, activity)
         rvCategory.setHasFixedSize(true)
@@ -108,12 +104,10 @@ class HomeFragment : Fragment() {
             }
         })*/
 
-
-
         adapterCraft.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: TopCraftsModel) {
+            override fun onItemClicked(dataCraft: CraftsModel) {
                 val intent = Intent(requireActivity(), DetailActivity::class.java)
-                intent.putExtra(DetailActivity.EXTRA_CRAFT, data)
+                intent.putExtra(DetailActivity.EXTRA_CRAFT, dataCraft)
                 startActivity(intent)
             }
         })
@@ -174,9 +168,12 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-//    private fun showLoading(isLoading: Boolean) {
-//        binding.progressbar.visibility = if (isLoading) View.VISIBLE else View.GONE
-//    }
+    private fun showLoadingCraft(isLoading: Boolean) {
+        binding.craftProgress.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+    private fun showLoadingCategory(isLoading: Boolean) {
+        binding.categoryProgress.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
 }
 
 

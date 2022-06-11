@@ -11,8 +11,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HomeViewModel : ViewModel(){
-    val listCrafts = MutableLiveData<ArrayList<TopCraftsModel>>()
-    val listCraftSlug = MutableLiveData<TopCraftsModel>()
+    val listCrafts = MutableLiveData<ArrayList<CraftsModel>>()
+    val listCraftSlug = MutableLiveData<CraftsModel>()
     val listCategory = MutableLiveData<ArrayList<CategoriesModel>>()
     val listCategorySlug = MutableLiveData<CategoriesModel>()
 
@@ -58,7 +58,7 @@ class HomeViewModel : ViewModel(){
         })
     }
 
-    fun getAllCraft(): LiveData<ArrayList<TopCraftsModel>> {
+    fun getAllCraft(): LiveData<ArrayList<CraftsModel>> {
         return listCrafts
     }
 
@@ -89,10 +89,10 @@ class HomeViewModel : ViewModel(){
 
     fun setCraftBySlug(slug: String){
         val client = ApiConfig.getApiService().getCraftBySlug(slug)
-        client.enqueue(object : Callback<TopCraftsModel> {
+        client.enqueue(object : Callback<CraftsModel> {
             override fun onResponse(
-                call: Call<TopCraftsModel>,
-                response: Response<TopCraftsModel>
+                call: Call<CraftsModel>,
+                response: Response<CraftsModel>
             ) {
                 if (response.isSuccessful) {
                     listCraftSlug.value = response.body()
@@ -101,14 +101,14 @@ class HomeViewModel : ViewModel(){
                 }
             }
 
-            override fun onFailure(call: Call<TopCraftsModel>, t: Throwable) {
+            override fun onFailure(call: Call<CraftsModel>, t: Throwable) {
                 Log.e("CraftBySlug", "onFailure: ${t.message.toString()}")
             }
 
         })
     }
 
-    fun getCraftBySlug() : LiveData<TopCraftsModel> {
+    fun getCraftBySlug() : LiveData<CraftsModel> {
         return listCraftSlug
     }
 }

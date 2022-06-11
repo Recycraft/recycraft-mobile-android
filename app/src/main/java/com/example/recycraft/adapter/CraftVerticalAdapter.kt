@@ -1,18 +1,17 @@
 package com.example.recycraft.adapter
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.recycraft.data.model.TopCraftsModel
+import com.example.recycraft.data.model.CraftsModel
 import com.example.recycraft.databinding.VerticalRowBinding
 
 class CraftVerticalAdapter
 //    (private val listCrafts: ArrayList<TopCraftsModel>,
 //    var context: Activity?)
     : RecyclerView.Adapter<CraftVerticalAdapter.ViewHolder>() {
-    private var listCrafts = ArrayList<TopCraftsModel>()
+    private var listCrafts = ArrayList<CraftsModel>()
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
@@ -48,12 +47,12 @@ class CraftVerticalAdapter
         return listCrafts.size
     }
 
-    fun setListCraft(items: ArrayList<TopCraftsModel>){
+    fun setListCraft(items: ArrayList<CraftsModel>){
         listCrafts.clear()
         listCrafts.addAll(items)
         notifyDataSetChanged()
     }
     interface OnItemClickCallback {
-        fun onItemClicked(dataCraft: TopCraftsModel)
+        fun onItemClicked(dataCraft: CraftsModel)
     }
 }

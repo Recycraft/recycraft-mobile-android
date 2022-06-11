@@ -93,6 +93,7 @@ Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi 
     <string name="list_craft">List Craft</string>
     <string name="identifikasi">Identifikasi</string>
     <string name="result">Result</string>
+    <string name="gambar_kerajinan">Gambar Kerajinan</string>
     <string-array name="titlesCraft">
         <item>Contoh 1</item>
         <item>Contoh 2</item>

@@ -4,9 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.recycraft.R
 import com.example.recycraft.adapter.CraftVerticalAdapter
-import com.example.recycraft.data.model.TopCraftsModel
+import com.example.recycraft.data.model.CraftsModel
 import com.example.recycraft.databinding.ActivityCategoryBinding
 import com.example.recycraft.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.category_toolbar.view.*
@@ -14,7 +13,7 @@ import kotlinx.android.synthetic.main.category_toolbar.view.*
 class CategoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCategoryBinding
     private lateinit var adapter: CraftVerticalAdapter
-    private val listListCraft = ArrayList<TopCraftsModel>()
+    private val listListCraft = ArrayList<CraftsModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +35,7 @@ class CategoryActivity : AppCompatActivity() {
         }
 
         adapter.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: TopCraftsModel) {
+            override fun onItemClicked(data: CraftsModel) {
                 val moveIntent = Intent(this@CategoryActivity, DetailActivity::class.java)
                 moveIntent.putExtra(DetailActivity.EXTRA_CRAFT, data)
                 startActivity(moveIntent)

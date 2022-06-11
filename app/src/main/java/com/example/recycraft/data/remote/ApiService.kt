@@ -26,7 +26,7 @@ interface ApiService {
     @GET("handicraft/{slug}")
     fun getCraftBySlug(
         @Path("slug") slug: String
-    ): Call<TopCraftsModel>
+    ): Call<CraftsModel>
 
     @GET("category")
     fun getAllCategory(): Call<CategoryResponse>

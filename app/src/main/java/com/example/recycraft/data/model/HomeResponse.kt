@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class TopCraftsModel(
+data class CraftsModel(
     val id: Int,
     val slug: String,
 
@@ -47,7 +47,7 @@ data class CategoriesModel(
 
 data class CraftResponse(
     @field:SerializedName("data")
-    val dataCraft: ArrayList<TopCraftsModel>
+    val dataCraft: ArrayList<CraftsModel>
 )
 
 data class CategoryResponse(

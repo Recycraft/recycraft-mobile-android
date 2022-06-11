@@ -29,12 +29,29 @@ data class TopCraftsModel(
 
 @Parcelize
 data class CategoriesModel(
-    val imageCategory: Int = 0,
-    val titleCategory: String? = null,
-    val descCategory: String? = null
+    val id: Int,
+
+    val slug: String,
+    @field:SerializedName("name")
+    val titleCategory: String?,
+
+    @field:SerializedName("type")
+    val type: String,
+
+    @field:SerializedName("image")
+    val imageCategory: String,
+
+    @field:SerializedName("desc")
+    val descCategory: String?
 ) : Parcelable
 
 data class CraftResponse(
     @field:SerializedName("data")
-    val data: ArrayList<TopCraftsModel>
+    val dataCraft: ArrayList<TopCraftsModel>
 )
+
+data class CategoryResponse(
+    @field:SerializedName("data")
+    val dataCategory: ArrayList<CategoriesModel>
+)
+

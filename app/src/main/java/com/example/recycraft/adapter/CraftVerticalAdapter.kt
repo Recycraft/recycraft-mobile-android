@@ -54,6 +54,6 @@ class CraftVerticalAdapter
         notifyDataSetChanged()
     }
     interface OnItemClickCallback {
-        fun onItemClicked(data: TopCraftsModel)
+        fun onItemClicked(dataCraft: TopCraftsModel)
     }
 }

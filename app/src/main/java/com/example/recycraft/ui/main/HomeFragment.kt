@@ -25,14 +25,11 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var rvCategory: RecyclerView
 //    private val listCraft = ArrayList<TopCraftsModel>()
 
     private lateinit var adapterCraft: CraftVerticalAdapter
    // private lateinit var categoryHorizontalAdapter : CategoryHorizontalAdapter
-    private val categoryHorizontalAdapter : CategoryHorizontalAdapter by lazy {
-        CategoryHorizontalAdapter()
-    }
+    private lateinit var adapterCategory : CategoryHorizontalAdapter
     private lateinit var viewModel : HomeViewModel
 
     override fun onCreateView(
@@ -52,12 +49,22 @@ class HomeFragment : Fragment() {
         adapterCraft = CraftVerticalAdapter(/*ArrayCraft, activity*/)
         adapterCraft.notifyDataSetChanged()
 
+        //category rv
+        adapterCategory = CategoryHorizontalAdapter()
+        adapterCategory.notifyDataSetChanged()
+
         binding.apply {
             rvTopCrafts.setHasFixedSize(true)
             val craftLayout = LinearLayoutManager(activity)
             craftLayout.orientation = LinearLayoutManager.VERTICAL
             rvTopCrafts.layoutManager = craftLayout
             rvTopCrafts.adapter = adapterCraft
+
+            rvCategories.setHasFixedSize(true)
+            val categoryLayout = LinearLayoutManager(activity)
+            categoryLayout.orientation = LinearLayoutManager.HORIZONTAL
+            rvCategories.layoutManager = categoryLayout
+            rvCategories.adapter = adapterCategory
         }
 
         //view model
@@ -74,19 +81,14 @@ class HomeFragment : Fragment() {
 //                showLoading(false)
             }
         }
-
-        //horizontal rv
-        val categoryLayout = LinearLayoutManager(activity)
-        categoryLayout.orientation = LinearLayoutManager.HORIZONTAL
-        rvCategory = binding.rvCategories
-
-        this.viewModel = ViewModelProvider(this,ViewModelProvider.NewInstanceFactory())[HomeViewModel::class.java]
-        binding.apply {
-            rvCategory.setHasFixedSize(true)
-            rvCategory.layoutManager = categoryLayout
-            rvCategory.adapter = categoryHorizontalAdapter
-
+        this.viewModel.setAllCategory()
+        this.viewModel.getAllCategory().observe(viewLifecycleOwner){
+            if(it != null){
+                adapterCategory.setListCategory(it)
+            }
         }
+
+
 
 
 
@@ -105,6 +107,8 @@ class HomeFragment : Fragment() {
                 startActivity(intent)
             }
         })*/
+
+
 
         adapterCraft.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
             override fun onItemClicked(data: TopCraftsModel) {
@@ -150,6 +154,7 @@ class HomeFragment : Fragment() {
 //            return arrayCraft
 //        }
 
+    /*
     private val ArrayCategory: ArrayList<CategoriesModel>
         get() {
             val dataTitleCategory = resources.getStringArray(R.array.titlesCategories)
@@ -163,7 +168,7 @@ class HomeFragment : Fragment() {
             }
             return arrayCategory
         }
-
+*/
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

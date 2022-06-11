@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recycraft.R
@@ -26,6 +28,13 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var rvCraft: RecyclerView
     private lateinit var rvCategory: RecyclerView
+   // private lateinit var categoryHorizontalAdapter : CategoryHorizontalAdapter
+    private val categoryHorizontalAdapter : CategoryHorizontalAdapter by lazy {
+        CategoryHorizontalAdapter()
+    }
+
+
+    private lateinit var viewModel : HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +64,17 @@ class HomeFragment : Fragment() {
         categoryLayout.orientation = LinearLayoutManager.HORIZONTAL
         rvCategory = binding.rvCategories
 
+        viewModel = ViewModelProvider(this,ViewModelProvider.NewInstanceFactory()).get(HomeViewModel::class.java)
+        binding.apply {
+            rvCategory.setHasFixedSize(true)
+            rvCategory.layoutManager = categoryLayout
+            rvCategory.adapter = categoryHorizontalAdapter
+
+        }
+
+
+
+/*
         val adapterCategory = CategoryHorizontalAdapter(ArrayCategory, activity)
         rvCategory.setHasFixedSize(true)
         rvCategory.layoutManager = categoryLayout
@@ -68,7 +88,7 @@ class HomeFragment : Fragment() {
 //                intent.putExtra()
                 startActivity(intent)
             }
-        })
+        })*/
 
         adapterCraft.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
             override fun onItemClicked(data: TopCraftsModel) {

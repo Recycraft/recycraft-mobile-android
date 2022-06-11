@@ -50,7 +50,8 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
     private fun clearEditText() {
         binding.nameInput.text.clear()
         binding.emailInput.text!!.clear()
-        binding.passInput.text!!.clear()    }
+        binding.passInput.text!!.clear()
+    }
 
     private fun requestCreateAccount() {
         val name = binding.nameInput.text.toString().trim()
@@ -100,9 +101,11 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun validateCreateAccount(): Boolean {
-        return if(binding.emailInput.text!!.isNotEmpty() && binding.passInput.text!!.isNotEmpty() && binding.nameInput.text.isNotEmpty()
-            && android.util.Patterns.EMAIL_ADDRESS.matcher(binding.emailInput.text.toString()).matches()
-            && binding.passInput.text.toString().length > 5){
+        return if (binding.emailInput.text!!.isNotEmpty() && binding.passInput.text!!.isNotEmpty() && binding.nameInput.text.isNotEmpty()
+            && android.util.Patterns.EMAIL_ADDRESS.matcher(binding.emailInput.text.toString())
+                .matches()
+            && binding.passInput.text.toString().length > 5
+        ) {
             true
         } else {
             Toast.makeText(this, "Invalid Format", Toast.LENGTH_SHORT).show()

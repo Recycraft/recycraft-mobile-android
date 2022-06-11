@@ -10,20 +10,20 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeViewModel : ViewModel(){
+class HomeViewModel : ViewModel() {
     val listCrafts = MutableLiveData<ArrayList<CraftsModel>>()
     val listCraftSlug = MutableLiveData<CraftsModel>()
     val listCategory = MutableLiveData<ArrayList<CategoriesModel>>()
     val listCategorySlug = MutableLiveData<CategoriesModel>()
 
-    fun setAllCategory(){
+    fun setAllCategory() {
         val client = ApiConfig.getApiService().getAllCategory()
         client.enqueue(object : Callback<CategoryResponse> {
             override fun onResponse(
                 call: Call<CategoryResponse>,
                 response: Response<CategoryResponse>
             ) {
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     listCategory.value = response.body()?.dataCategory
                 } else {
                     Log.e("HomeViewModel", "onFailure: ${response.message()}")
@@ -40,11 +40,11 @@ class HomeViewModel : ViewModel(){
         return listCategory
     }
 
-    fun setAllCraft(){
+    fun setAllCraft() {
         val client = ApiConfig.getApiService().getAllCraft()
         client.enqueue(object : Callback<CraftResponse> {
             override fun onResponse(call: Call<CraftResponse>, response: Response<CraftResponse>) {
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     listCrafts.value = response.body()?.dataCraft
                 } else {
                     Log.e("HomeViewModel", "onFailure: ${response.message()}")
@@ -62,7 +62,7 @@ class HomeViewModel : ViewModel(){
         return listCrafts
     }
 
-    fun setCategoryBySlug(slug: String){
+    fun setCategoryBySlug(slug: String) {
         val client = ApiConfig.getApiService().getCategoryBySlug(slug)
         client.enqueue(object : Callback<CategoriesModel> {
             override fun onResponse(
@@ -83,11 +83,11 @@ class HomeViewModel : ViewModel(){
         })
     }
 
-    fun getCategoryBySlug() : LiveData<CategoriesModel> {
+    fun getCategoryBySlug(): LiveData<CategoriesModel> {
         return listCategorySlug
     }
 
-    fun setCraftBySlug(slug: String){
+    fun setCraftBySlug(slug: String) {
         val client = ApiConfig.getApiService().getCraftBySlug(slug)
         client.enqueue(object : Callback<CraftsModel> {
             override fun onResponse(
@@ -108,7 +108,7 @@ class HomeViewModel : ViewModel(){
         })
     }
 
-    fun getCraftBySlug() : LiveData<CraftsModel> {
+    fun getCraftBySlug(): LiveData<CraftsModel> {
         return listCraftSlug
     }
 }

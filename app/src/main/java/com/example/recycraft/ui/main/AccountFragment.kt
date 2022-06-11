@@ -17,9 +17,9 @@ class AccountFragment : Fragment() {
 
     private var _binding: FragmentAccountBinding? = null
     private val binding get() = _binding!!
-    private lateinit var name : String
-    private lateinit var username : String
-    private lateinit var email : String
+    private lateinit var name: String
+    private lateinit var username: String
+    private lateinit var email: String
     private lateinit var preferences: SharedPreferences
 
     override fun onCreateView(
@@ -35,10 +35,13 @@ class AccountFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentAccountBinding.bind(view)
 
-        preferences = requireActivity().getSharedPreferences(LoginActivity.SHARED_PREFERENCES, Context.MODE_PRIVATE)
-        name = preferences.getString(LoginActivity.NAME,"").toString()
-        username = preferences.getString(LoginActivity.USERNAME,"").toString()
-        email = preferences.getString(LoginActivity.EMAIL,"").toString()
+        preferences = requireActivity().getSharedPreferences(
+            LoginActivity.SHARED_PREFERENCES,
+            Context.MODE_PRIVATE
+        )
+        name = preferences.getString(LoginActivity.NAME, "").toString()
+        username = preferences.getString(LoginActivity.USERNAME, "").toString()
+        email = preferences.getString(LoginActivity.EMAIL, "").toString()
 
         binding.tvUsername.text = "$username"
         binding.tvFullname.text = "$name"

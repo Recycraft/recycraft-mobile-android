@@ -29,10 +29,12 @@ class DetailActivity : AppCompatActivity() {
             .into(binding.craftImage)
 
         //html to text
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             binding.craftDesc.text = Html.fromHtml(dataCraft.descCraft, Html.FROM_HTML_MODE_COMPACT)
-            binding.tvScrollBahan.text = Html.fromHtml(dataCraft.materials, Html.FROM_HTML_MODE_COMPACT)
-            binding.tvScrollTutorial.text = Html.fromHtml(dataCraft.process, Html.FROM_HTML_MODE_LEGACY)
+            binding.tvScrollBahan.text =
+                Html.fromHtml(dataCraft.materials, Html.FROM_HTML_MODE_COMPACT)
+            binding.tvScrollTutorial.text =
+                Html.fromHtml(dataCraft.process, Html.FROM_HTML_MODE_LEGACY)
         } else {
             binding.craftDesc.text = Html.fromHtml(dataCraft.descCraft)
             binding.tvScrollBahan.text = Html.fromHtml(dataCraft.materials)

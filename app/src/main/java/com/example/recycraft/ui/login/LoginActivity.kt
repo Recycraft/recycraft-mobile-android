@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             ) {
                 if (response.isSuccessful) {
                     response.body()?.dataLogin?.apply {
-                        validateLogin(userId, name, token,email, username)
+                        validateLogin(userId, name, token, email, username)
                     }
                     Intent(this@LoginActivity, MainActivity::class.java).also { startActivity(it) }
                     showLoading(false)
@@ -102,7 +102,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun validateLogin(userId: Int, name: String, token: String, email : String , username : String) {
+    private fun validateLogin(
+        userId: Int,
+        name: String,
+        token: String,
+        email: String,
+        username: String
+    ) {
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString(NAME, name)
         editor.putInt(USER_ID, userId)

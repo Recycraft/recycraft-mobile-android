@@ -15,7 +15,8 @@ class CraftVerticalAdapter
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
-    inner class ViewHolder(var binding: ItemListCraftBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(var binding: ItemListCraftBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
@@ -51,11 +52,12 @@ class CraftVerticalAdapter
         return listCrafts.size
     }
 
-    fun setListCraft(items: ArrayList<CraftsModel>){
+    fun setListCraft(items: ArrayList<CraftsModel>) {
         listCrafts.clear()
         listCrafts.addAll(items)
         notifyDataSetChanged()
     }
+
     interface OnItemClickCallback {
         fun onItemClicked(dataCraft: CraftsModel)
     }

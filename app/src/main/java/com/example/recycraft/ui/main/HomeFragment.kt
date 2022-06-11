@@ -28,8 +28,8 @@ class HomeFragment : Fragment() {
     private var allCraft = ArrayList<CraftsModel>()
 
     private lateinit var adapterCraft: CraftVerticalAdapter
-    private lateinit var adapterCategory : CategoryHorizontalAdapter
-    private lateinit var viewModel : HomeViewModel
+    private lateinit var adapterCategory: CategoryHorizontalAdapter
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
         //show loading
         showLoadingCraft(true)
         showLoadingCategory(true)
-        
+
         //show rv
         this.viewModel.setAllCraft()
         this.viewModel.getAllCraft().observe(viewLifecycleOwner) {
@@ -86,8 +86,8 @@ class HomeFragment : Fragment() {
             }
         }
         this.viewModel.setAllCategory()
-        this.viewModel.getAllCategory().observe(viewLifecycleOwner){
-            if(it != null){
+        this.viewModel.getAllCategory().observe(viewLifecycleOwner) {
+            if (it != null) {
                 adapterCategory.setListCategory(it)
                 showLoadingCategory(false)
             }
@@ -117,7 +117,8 @@ class HomeFragment : Fragment() {
                 startActivity(intent)
             }
         })
-        adapterCategory.setOnItemClickCallback(object : CategoryHorizontalAdapter.OnItemClickCallback {
+        adapterCategory.setOnItemClickCallback(object :
+            CategoryHorizontalAdapter.OnItemClickCallback {
             override fun onItemClicked(dataCategory: CategoriesModel) {
                 val intent = Intent(requireActivity(), CategoryActivity::class.java)
                 //kirim data sampah
@@ -125,7 +126,8 @@ class HomeFragment : Fragment() {
                 Log.d(" HOME DATA CATEGORY", "dataCategory: $dataCategory")
 
                 //kirim data craft
-                val craft = allCraft.filter { craft -> craft.categoryCraft.titleCategory == dataCategory.titleCategory }
+                val craft =
+                    allCraft.filter { craft -> craft.categoryCraft.titleCategory == dataCategory.titleCategory }
                 val dataCraft = ArrayList<CraftsModel>()
                 dataCraft.addAll(craft)
                 intent.putExtra(CategoryActivity.EXTRA_CRAFT, dataCraft)
@@ -140,19 +142,27 @@ class HomeFragment : Fragment() {
         }
 
         //button search
-        binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                val intent = Intent(requireContext(), SearchResultActivity::class.java)
-                intent.putExtra(SearchResultActivity.EXTRA_DATA, query)
-                startActivity(intent)
-                return false
-            }
+//        binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                val intent = Intent(requireContext(), SearchResultActivity::class.java)
+//                intent.putExtra(SearchResultActivity.EXTRA_DATA, query)
+//                startActivity(intent)
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                return false
+//            }
+//        })
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
-
+        //search onclick
+        binding.svSearch.setOnClickListener {
+            val intent = Intent(requireContext(), SearchResultActivity::class.java)
+            //kirim data all craft
+            val dataCraft = allCraft
+            intent.putExtra(SearchResultActivity.EXTRA_CRAFT, dataCraft)
+            startActivity(intent)
+        }
     }
 
 //    private fun mapping(craft: List<CraftsModel>): ArrayList<CraftsModel> {
@@ -208,6 +218,7 @@ class HomeFragment : Fragment() {
     private fun showLoadingCraft(isLoading: Boolean) {
         binding.craftProgress.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
+
     private fun showLoadingCategory(isLoading: Boolean) {
         binding.categoryProgress.visibility = if (isLoading) View.VISIBLE else View.GONE
     }

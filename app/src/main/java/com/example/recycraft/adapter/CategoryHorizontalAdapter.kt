@@ -6,18 +6,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recycraft.data.model.CategoriesModel
 import com.example.recycraft.databinding.HorizontalRowBinding
 
-class CategoryHorizontalAdapter :RecyclerView.Adapter<CategoryHorizontalAdapter.ViewHolder>(){
+class CategoryHorizontalAdapter : RecyclerView.Adapter<CategoryHorizontalAdapter.ViewHolder>() {
 
     private val listCategory = ArrayList<CategoriesModel>()
 
-    private var onItemClickCallback : OnItemClickCallback? =null
+    private var onItemClickCallback: OnItemClickCallback? = null
 
     fun setOnItemClickCallback(onItemClickCallback: CategoryHorizontalAdapter.OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
 
-    inner class ViewHolder(var binding: HorizontalRowBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(var binding: HorizontalRowBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -43,12 +44,12 @@ class CategoryHorizontalAdapter :RecyclerView.Adapter<CategoryHorizontalAdapter.
 
     override fun getItemCount(): Int = listCategory.size
 
-    interface OnItemClickCallback{
-        fun onItemClicked(dataCategory : CategoriesModel)
+    interface OnItemClickCallback {
+        fun onItemClicked(dataCategory: CategoriesModel)
 
     }
 
-    fun setListCategory(items: ArrayList<CategoriesModel>){
+    fun setListCategory(items: ArrayList<CategoriesModel>) {
         listCategory.clear()
         listCategory.addAll(items)
         notifyDataSetChanged()

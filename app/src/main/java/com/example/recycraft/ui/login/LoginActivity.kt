@@ -55,8 +55,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 response: Response<UserLoginResponse>
             ) {
                 if (response.isSuccessful) {
-                    response.body()?.userResult?.apply {
-                        validateLogin(userId, name, token)
+                    response.body()?.dataLogin?.apply {
+                        validateLogin(userId, name, token,email, username)
                     }
                     Intent(this@LoginActivity, MainActivity::class.java).also { startActivity(it) }
                     showLoading(false)
@@ -93,9 +93,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         when (view.id) {
             R.id.login_button -> {
-                val loginIntent = Intent(this@LoginActivity, MainActivity::class.java)
-                startActivity(loginIntent)
-                finish()
+                login()
             }
             R.id.signup_button -> {
                 val registerIntent = Intent(this@LoginActivity, SignupActivity::class.java)
@@ -104,11 +102,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun validateLogin(userId: Int, name: String, token: String) {
+    private fun validateLogin(userId: Int, name: String, token: String, email : String , username : String) {
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString(NAME, name)
         editor.putInt(USER_ID, userId)
         editor.putString(TOKEN, token)
+        editor.putString(EMAIL, token)
+        editor.putString(USERNAME, token)
         editor.putBoolean(CHECKBOX, binding.cbRemember.isChecked)
         editor.apply()
     }
@@ -119,5 +119,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         const val NAME = "name"
         const val USER_ID = "user_id"
         const val TOKEN = "token"
+        const val USERNAME = "username"
+        const val EMAIL = "email"
     }
 }

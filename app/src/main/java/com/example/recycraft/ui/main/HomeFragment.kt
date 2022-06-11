@@ -11,8 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recycraft.adapter.CategoryHorizontalAdapter
 import com.example.recycraft.adapter.CraftVerticalAdapter
+import com.example.recycraft.data.model.CategoriesModel
 import com.example.recycraft.data.model.CraftsModel
 import com.example.recycraft.databinding.FragmentHomeBinding
+import com.example.recycraft.ui.category.CategoryActivity
 import com.example.recycraft.ui.detail.DetailActivity
 import com.example.recycraft.ui.list.ListCraftActivity
 import com.example.recycraft.ui.search.SearchResultActivity
@@ -108,6 +110,14 @@ class HomeFragment : Fragment() {
             override fun onItemClicked(dataCraft: CraftsModel) {
                 val intent = Intent(requireActivity(), DetailActivity::class.java)
                 intent.putExtra(DetailActivity.EXTRA_CRAFT, dataCraft)
+                startActivity(intent)
+            }
+        })
+
+        adapterCategory.setOnItemClickCallback(object :CategoryHorizontalAdapter.OnItemClickCallback{
+            override fun onItemClicked(dataCategory: CategoriesModel) {
+                val intent = Intent(requireActivity(),CategoryActivity::class.java)
+                intent.putExtra(CategoryActivity.EXTRA_CATEGORY,dataCategory)
                 startActivity(intent)
             }
         })

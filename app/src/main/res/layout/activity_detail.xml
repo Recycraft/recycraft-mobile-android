@@ -16,73 +16,96 @@
             android:layout_height="wrap_content"
             android:background="@color/bgDefault"
             tools:ignore="MissingConstraints">
-            <include layout="@layout/detail_toolbar"/>
+
+            <include layout="@layout/detail_toolbar" />
         </com.google.android.material.appbar.AppBarLayout>
 
-<TextView
-    android:id="@+id/tv_detail_name"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:text="@string/lampion_plastik"
-    android:textSize="20sp"
-    android:textStyle="bold"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.498"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/app_Bar_Result"
-    app:layout_constraintVertical_bias="0.052"/>
+        <TextView
+            android:id="@+id/tv_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_Bar_Result"
+            tools:text="@string/lampion_plastik" />
 
-    <LinearLayout
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_name"
-        app:layout_constraintVertical_bias="0.104">
+        <ImageView
+            android:id="@+id/craft_image"
+            android:layout_width="380dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="25dp"
+            android:contentDescription="@string/gambar_kerajinan"
+            tools:src="@drawable/kerajinanlampion"
+            app:layout_constraintTop_toBottomOf="@id/tv_detail_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/craft_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_margin="20dp"
+            tools:text="@tools:sample/lorem"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/craft_image"
+            app:layout_constraintBottom_toTopOf="@id/alat_bahan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <ImageView
-                android:id="@+id/craft_image"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                tools:src="@drawable/kerajinanlampion"
-                android:contentDescription="@string/gambar_kerajinan"/>
+        <TextView
+            android:id="@+id/alat_bahan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/alat_dan_bahan"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/craft_desc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_Scroll_Bahan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/bahan_lampion"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/alat_bahan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
+        <TextView
+            android:id="@+id/langkah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/langkah_pembuatan"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tv_Scroll_Bahan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_Scroll_Bahan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="@string/bahan_lampion"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_scroll_tutorial"
-                    android:text="@string/cara_pembuatan"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20sp"/>
-
-            </LinearLayout>
-
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tv_scroll_tutorial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/cara_pembuatan"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/langkah"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -16,7 +16,7 @@ data class CraftsModel(
     val titleCraft: String?,
 
     @field:SerializedName("image")
-    val imageCraft: String?,
+    var imageCraft: String?,
 
     @field:SerializedName("desc")
     val descCraft: String,

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recycraft.data.model.CraftsModel
-import com.example.recycraft.databinding.VerticalRowBinding
+import com.example.recycraft.databinding.ItemListCraftBinding
 
 class CraftVerticalAdapter
 //    (private val listCrafts: ArrayList<TopCraftsModel>,
@@ -15,7 +15,7 @@ class CraftVerticalAdapter
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
-    inner class ViewHolder(var binding: VerticalRowBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(var binding: ItemListCraftBinding) : RecyclerView.ViewHolder(binding.root)
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
@@ -23,7 +23,7 @@ class CraftVerticalAdapter
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            VerticalRowBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+            ItemListCraftBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
         return ViewHolder(binding)
     }
 
@@ -31,7 +31,11 @@ class CraftVerticalAdapter
         with(viewHolder) {
             with(listCrafts[position]) {
                 binding.tvKerajinanName.text = titleCraft
-                binding.tvKerajinanKategori.text = descCraft
+                binding.tvKerajinanKategori.text = categoryCraft.titleCategory
+
+                //edit link foto
+                imageCraft = imageCraft?.replace("handicrafts//", "handicrafts/")
+
                 Glide.with(itemView.context)
                     .load(imageCraft)
                     .into(binding.imgKerajinanPhoto)

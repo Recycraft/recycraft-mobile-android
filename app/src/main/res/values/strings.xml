@@ -94,6 +94,8 @@ Tempelkan kedua kerangka yang telah dilengkapi 4 roda tersebut pada bagian bodi 
     <string name="identifikasi">Identifikasi</string>
     <string name="result">Result</string>
     <string name="gambar_kerajinan">Gambar Kerajinan</string>
+    <string name="alat_dan_bahan">Alat dan Bahan</string>
+    <string name="langkah_pembuatan">Langkah Pembuatan</string>
     <string-array name="titlesCraft">
         <item>Contoh 1</item>
         <item>Contoh 2</item>

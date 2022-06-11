@@ -2,6 +2,7 @@ package com.example.recycraft.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +25,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-//    private val listCraft = ArrayList<TopCraftsModel>()
+    private var allCraft = ArrayList<CraftsModel>()
 
     private lateinit var adapterCraft: CraftVerticalAdapter
     private lateinit var adapterCategory : CategoryHorizontalAdapter
@@ -43,11 +44,11 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.bind(view)
 //        (activity as AppCompatActivity)
 
-        //craft rv
+        //craft adapter
         adapterCraft = CraftVerticalAdapter(/*ArrayCraft, activity*/)
         adapterCraft.notifyDataSetChanged()
 
-        //category rv
+        //category adapter
         adapterCategory = CategoryHorizontalAdapter()
         adapterCategory.notifyDataSetChanged()
 
@@ -81,6 +82,7 @@ class HomeFragment : Fragment() {
             if (it != null) {
                 adapterCraft.setListCraft(it)
                 showLoadingCraft(false)
+                allCraft = it
             }
         }
         this.viewModel.setAllCategory()
@@ -106,27 +108,38 @@ class HomeFragment : Fragment() {
             }
         })*/
 
+        //on item clicked
         adapterCraft.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
             override fun onItemClicked(dataCraft: CraftsModel) {
                 val intent = Intent(requireActivity(), DetailActivity::class.java)
                 intent.putExtra(DetailActivity.EXTRA_CRAFT, dataCraft)
+                Log.d(" HOME DATA CRAFT", "dataCraft: $dataCraft")
                 startActivity(intent)
             }
         })
-
-        adapterCategory.setOnItemClickCallback(object :CategoryHorizontalAdapter.OnItemClickCallback{
+        adapterCategory.setOnItemClickCallback(object : CategoryHorizontalAdapter.OnItemClickCallback {
             override fun onItemClicked(dataCategory: CategoriesModel) {
-                val intent = Intent(requireActivity(),CategoryActivity::class.java)
-                intent.putExtra(CategoryActivity.EXTRA_CATEGORY,dataCategory)
+                val intent = Intent(requireActivity(), CategoryActivity::class.java)
+                //kirim data sampah
+                intent.putExtra(CategoryActivity.EXTRA_CATEGORY, dataCategory)
+                Log.d(" HOME DATA CATEGORY", "dataCategory: $dataCategory")
+
+                //kirim data craft
+                val craft = allCraft.filter { craft -> craft.categoryCraft.titleCategory == dataCategory.titleCategory }
+                val dataCraft = ArrayList<CraftsModel>()
+                dataCraft.addAll(craft)
+                intent.putExtra(CategoryActivity.EXTRA_CRAFT, dataCraft)
                 startActivity(intent)
             }
         })
 
+        //button show all
         binding.btnShow.setOnClickListener {
             val intent = Intent(requireActivity(), ListCraftActivity::class.java)
             startActivity(intent)
         }
 
+        //button search
         binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 val intent = Intent(requireContext(), SearchResultActivity::class.java)
@@ -141,6 +154,20 @@ class HomeFragment : Fragment() {
         })
 
     }
+
+//    private fun mapping(craft: List<CraftsModel>): ArrayList<CraftsModel> {
+//        val listCraft = ArrayList<CraftsModel>()
+//        for (c in craft) {
+//            val favUser = CraftsModel(
+//                c.id,
+//                c.login,
+//                c.avatarUrl,
+//                c.type
+//            )
+//            listFav.add(favUser)
+//        }
+//        return listFav
+//    }
 
 //    private val ArrayCraft: ArrayList<TopCraftsModel>
 //        get() {

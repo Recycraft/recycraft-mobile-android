@@ -91,7 +91,7 @@ class InfoActivity : AppCompatActivity() {
             val moveIntent = Intent(this@InfoActivity, ListCraftActivity::class.java)
             startActivity(moveIntent)
         }
-        binding.appBarResult.LogoBack.setOnClickListener {
+        binding.appBarResult.btn_back.setOnClickListener {
             val backIntent = Intent(this@InfoActivity, MainActivity::class.java)
             startActivity(backIntent)
             finish()

@@ -10,7 +10,7 @@
 
     <com.google.android.material.button.MaterialButton
         app:icon="@drawable/ic_back"
-        android:id="@+id/LogoBack"
+        android:id="@+id/btn_back"
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:clickable="true"

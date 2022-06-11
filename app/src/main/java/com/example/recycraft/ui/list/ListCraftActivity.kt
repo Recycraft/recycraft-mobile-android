@@ -30,14 +30,14 @@ class ListCraftActivity : AppCompatActivity() {
         }
 
         adapter.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: CraftsModel) {
+            override fun onItemClicked(dataCraft: CraftsModel) {
                 val moveIntent = Intent(this@ListCraftActivity, DetailActivity::class.java)
-                moveIntent.putExtra(DetailActivity.EXTRA_CRAFT, data)
+                moveIntent.putExtra(DetailActivity.EXTRA_CRAFT, dataCraft)
                 startActivity(moveIntent)
             }
         })
 
-        binding.appBarResult.LogoBack.setOnClickListener {
+        binding.appBarResult.btn_back.setOnClickListener {
             finish()
         }
     }

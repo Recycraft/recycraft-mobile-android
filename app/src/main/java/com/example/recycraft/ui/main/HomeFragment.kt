@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recycraft.R
@@ -24,8 +25,12 @@ import com.example.recycraft.ui.search.SearchResultActivity
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var rvCraft: RecyclerView
+
     private lateinit var rvCategory: RecyclerView
+//    private val listCraft = ArrayList<TopCraftsModel>()
+
+    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var adapterCraft: CraftVerticalAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,15 +45,32 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.bind(view)
 //        (activity as AppCompatActivity)
 
-        //vertical rv
-        val craftLayout = LinearLayoutManager(activity)
-        craftLayout.orientation = LinearLayoutManager.VERTICAL
-        rvCraft = binding.rvTopCrafts
+        //craft rv
+        adapterCraft = CraftVerticalAdapter(/*ArrayCraft, activity*/)
+        adapterCraft.notifyDataSetChanged()
 
-        val adapterCraft = CraftVerticalAdapter(ArrayCraft, activity)
-        rvCraft.setHasFixedSize(true)
-        rvCraft.layoutManager = craftLayout
-        rvCraft.adapter = adapterCraft
+        binding.apply {
+            rvTopCrafts.setHasFixedSize(true)
+            val craftLayout = LinearLayoutManager(activity)
+            craftLayout.orientation = LinearLayoutManager.VERTICAL
+            rvTopCrafts.layoutManager = craftLayout
+            rvTopCrafts.adapter = adapterCraft
+        }
+
+        //view model
+        homeViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[HomeViewModel::class.java]
+
+        //show craft
+        homeViewModel.setAllCraft()
+        homeViewModel.getAllCraft().observe(viewLifecycleOwner) {
+            if (it != null) {
+                adapterCraft.setListCraft(it)
+//                showLoading(false)
+            }
+        }
 
         //horizontal rv
         val categoryLayout = LinearLayoutManager(activity)
@@ -73,6 +95,7 @@ class HomeFragment : Fragment() {
         adapterCraft.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
             override fun onItemClicked(data: TopCraftsModel) {
                 val intent = Intent(requireActivity(), DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_CRAFT, data)
                 startActivity(intent)
             }
         })
@@ -97,21 +120,21 @@ class HomeFragment : Fragment() {
 
     }
 
-    private val ArrayCraft: ArrayList<TopCraftsModel>
-        get() {
-            val dataTitle = resources.getStringArray(R.array.titlesCraft)
-            val dataCategoryCraft = resources.getStringArray(R.array.categoryCraft)
-            val arrayCraft = ArrayList<TopCraftsModel>()
-            for (i in dataTitle.indices) {
-                val craft = TopCraftsModel(
-                    R.drawable.kerajinanlampion,
-                    dataTitle[i],
-                    dataCategoryCraft[i]
-                )
-                arrayCraft.add(craft)
-            }
-            return arrayCraft
-        }
+//    private val ArrayCraft: ArrayList<TopCraftsModel>
+//        get() {
+//            val dataTitle = resources.getStringArray(R.array.titlesCraft)
+//            val dataCategoryCraft = resources.getStringArray(R.array.categoryCraft)
+//            val arrayCraft = ArrayList<TopCraftsModel>()
+//            for (i in dataTitle.indices) {
+//                val craft = TopCraftsModel(
+//                    R.drawable.kerajinanlampion,
+//                    dataTitle[i],
+//                    dataCategoryCraft[i]
+//                )
+//                arrayCraft.add(craft)
+//            }
+//            return arrayCraft
+//        }
 
     private val ArrayCategory: ArrayList<CategoriesModel>
         get() {
@@ -131,6 +154,10 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+//    private fun showLoading(isLoading: Boolean) {
+//        binding.progressbar.visibility = if (isLoading) View.VISIBLE else View.GONE
+//    }
 }
 
 

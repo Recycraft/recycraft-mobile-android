@@ -1,11 +1,11 @@
 package com.example.recycraft.data.remote
 
+import com.example.recycraft.data.model.CraftResponse
+import com.example.recycraft.data.model.TopCraftsModel
 import com.example.recycraft.data.model.UserLoginResponse
 import com.example.recycraft.data.model.UserRegisterResponse
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
     @FormUrlEncoded
@@ -22,4 +22,12 @@ interface ApiService {
         @Field("email") email: String,
         @Field("password") password: String
     ): Call<UserRegisterResponse>
+
+    @GET("handicraft")
+    fun getAllCraft(): Call<CraftResponse>
+
+    @GET("handicraft/{slug}")
+    fun getCraftBySlug(
+        @Path("slug") slug: String
+    ): Call<TopCraftsModel>
 }

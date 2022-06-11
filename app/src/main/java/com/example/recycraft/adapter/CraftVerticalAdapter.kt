@@ -8,13 +8,16 @@ import com.bumptech.glide.Glide
 import com.example.recycraft.data.model.TopCraftsModel
 import com.example.recycraft.databinding.VerticalRowBinding
 
-class CraftVerticalAdapter(
-    private val listCrafts: ArrayList<TopCraftsModel>,
-    var context: Activity?
-) : RecyclerView.Adapter<CraftVerticalAdapter.ViewHolder>() {
+class CraftVerticalAdapter
+//    (private val listCrafts: ArrayList<TopCraftsModel>,
+//    var context: Activity?)
+    : RecyclerView.Adapter<CraftVerticalAdapter.ViewHolder>() {
+    private var listCrafts = ArrayList<TopCraftsModel>()
+
+    private var onItemClickCallback: OnItemClickCallback? = null
+
     inner class ViewHolder(var binding: VerticalRowBinding) : RecyclerView.ViewHolder(binding.root)
 
-    private lateinit var onItemClickCallback: OnItemClickCallback
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
@@ -30,12 +33,12 @@ class CraftVerticalAdapter(
             with(listCrafts[position]) {
                 binding.tvKerajinanName.text = titleCraft
                 binding.tvKerajinanKategori.text = descCraft
-                Glide.with(viewHolder.itemView.context)
+                Glide.with(itemView.context)
                     .load(imageCraft)
-                    .into(viewHolder.binding.imgKerajinanPhoto)
+                    .into(binding.imgKerajinanPhoto)
 
-                viewHolder.itemView.setOnClickListener {
-                    onItemClickCallback.onItemClicked(listCrafts[viewHolder.adapterPosition])
+                itemView.setOnClickListener {
+                    onItemClickCallback?.onItemClicked(listCrafts[viewHolder.adapterPosition])
                 }
             }
         }
@@ -45,6 +48,11 @@ class CraftVerticalAdapter(
         return listCrafts.size
     }
 
+    fun setListCraft(items: ArrayList<TopCraftsModel>){
+        listCrafts.clear()
+        listCrafts.addAll(items)
+        notifyDataSetChanged()
+    }
     interface OnItemClickCallback {
         fun onItemClicked(data: TopCraftsModel)
     }

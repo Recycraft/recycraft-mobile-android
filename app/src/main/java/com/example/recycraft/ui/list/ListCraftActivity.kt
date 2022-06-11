@@ -21,8 +21,8 @@ class ListCraftActivity : AppCompatActivity() {
         binding = ActivityListCraftBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        listListCraft.addAll(ArrayListCraft)
-        adapter = CraftVerticalAdapter(listListCraft, this)
+//        listListCraft.addAll(ArrayListCraft)
+        adapter = CraftVerticalAdapter(/*listListCraft, this*/)
 
         binding.apply {
             rvListKerajinan.setHasFixedSize(true)
@@ -43,19 +43,19 @@ class ListCraftActivity : AppCompatActivity() {
         }
     }
 
-    private val ArrayListCraft: ArrayList<TopCraftsModel>
-        get() {
-            val dataListTitle = resources.getStringArray(R.array.titlesListCraft)
-            val dataListDesc = resources.getStringArray(R.array.descsListCraft)
-            val arrayListCraft = ArrayList<TopCraftsModel>()
-            for (i in dataListTitle.indices) {
-                val listCraft = TopCraftsModel(
-                    R.drawable.kerajinanlampion,
-                    dataListTitle[i],
-                    dataListDesc[i]
-                )
-                arrayListCraft.add(listCraft)
-            }
-            return arrayListCraft
-        }
+//    private val ArrayListCraft: ArrayList<TopCraftsModel>
+//        get() {
+//            val dataListTitle = resources.getStringArray(R.array.titlesListCraft)
+//            val dataListDesc = resources.getStringArray(R.array.descsListCraft)
+//            val arrayListCraft = ArrayList<TopCraftsModel>()
+//            for (i in dataListTitle.indices) {
+//                val listCraft = TopCraftsModel(
+//                    R.drawable.kerajinanlampion,
+//                    dataListTitle[i],
+//                    dataListDesc[i]
+//                )
+//                arrayListCraft.add(listCraft)
+//            }
+//            return arrayListCraft
+//        }
 }

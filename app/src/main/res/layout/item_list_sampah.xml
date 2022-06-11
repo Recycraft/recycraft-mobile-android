@@ -13,23 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/image_sampah"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/sampahoverlay"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+
 
     <TextView
         android:id="@+id/nama_sampah"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:text="Plastik"
         android:layout_marginLeft="15dp"
-        app:layout_constraintStart_toEndOf="@id/image_sampah"
-        app:layout_constraintTop_toTopOf="@id/image_sampah"
-        app:layout_constraintBottom_toBottomOf="@id/image_sampah"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/bullet"
@@ -49,6 +44,8 @@
         android:layout_height="wrap_content"
         android:text="10%"
         android:layout_marginLeft="5dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/bullet"
         app:layout_constraintTop_toTopOf="@id/nama_sampah"
         app:layout_constraintBottom_toBottomOf="@id/nama_sampah"/>

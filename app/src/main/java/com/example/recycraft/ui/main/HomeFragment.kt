@@ -16,7 +16,6 @@ import com.example.recycraft.adapter.CraftVerticalAdapter
 import com.example.recycraft.data.model.CategoriesModel
 import com.example.recycraft.data.model.TopCraftsModel
 import com.example.recycraft.databinding.FragmentHomeBinding
-import com.example.recycraft.ui.category.CategoryActivity
 import com.example.recycraft.ui.detail.DetailActivity
 import com.example.recycraft.ui.list.ListCraftActivity
 import com.example.recycraft.ui.search.SearchResultActivity
@@ -29,8 +28,12 @@ class HomeFragment : Fragment() {
     private lateinit var rvCategory: RecyclerView
 //    private val listCraft = ArrayList<TopCraftsModel>()
 
-    private lateinit var homeViewModel: HomeViewModel
     private lateinit var adapterCraft: CraftVerticalAdapter
+   // private lateinit var categoryHorizontalAdapter : CategoryHorizontalAdapter
+    private val categoryHorizontalAdapter : CategoryHorizontalAdapter by lazy {
+        CategoryHorizontalAdapter()
+    }
+    private lateinit var viewModel : HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,14 +61,14 @@ class HomeFragment : Fragment() {
         }
 
         //view model
-        homeViewModel = ViewModelProvider(
+        this.viewModel = ViewModelProvider(
             this,
             ViewModelProvider.NewInstanceFactory()
         )[HomeViewModel::class.java]
 
         //show craft
-        homeViewModel.setAllCraft()
-        homeViewModel.getAllCraft().observe(viewLifecycleOwner) {
+        this.viewModel.setAllCraft()
+        this.viewModel.getAllCraft().observe(viewLifecycleOwner) {
             if (it != null) {
                 adapterCraft.setListCraft(it)
 //                showLoading(false)
@@ -77,6 +80,17 @@ class HomeFragment : Fragment() {
         categoryLayout.orientation = LinearLayoutManager.HORIZONTAL
         rvCategory = binding.rvCategories
 
+        this.viewModel = ViewModelProvider(this,ViewModelProvider.NewInstanceFactory())[HomeViewModel::class.java]
+        binding.apply {
+            rvCategory.setHasFixedSize(true)
+            rvCategory.layoutManager = categoryLayout
+            rvCategory.adapter = categoryHorizontalAdapter
+
+        }
+
+
+
+/*
         val adapterCategory = CategoryHorizontalAdapter(ArrayCategory, activity)
         rvCategory.setHasFixedSize(true)
         rvCategory.layoutManager = categoryLayout
@@ -90,7 +104,7 @@ class HomeFragment : Fragment() {
 //                intent.putExtra()
                 startActivity(intent)
             }
-        })
+        })*/
 
         adapterCraft.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
             override fun onItemClicked(data: TopCraftsModel) {

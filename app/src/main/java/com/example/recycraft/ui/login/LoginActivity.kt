@@ -85,8 +85,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             ) {
 
                 if (response.isSuccessful) {
+                    Log.d("Response:", response.toString())
                     response.body()?.dataLogin?.apply {
-                        validateLogin(userId, name, token, email, username)
+                        validateLogin(userId, name, token, emailId, username)
                     }
                     Intent(this@LoginActivity, MainActivity::class.java).also { startActivity(it) }
                     showLoading(false)
@@ -160,17 +161,18 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         userId: Int,
         name: String,
         token: String,
-        email: String,
+        emailId: String,
         username: String
     ) {
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString(NAME, name)
         editor.putInt(USER_ID, userId)
         editor.putString(TOKEN, token)
-        editor.putString(EMAIL, email)
+        editor.putString(EMAIL, emailId)
         editor.putString(USERNAME, username)
         editor.putBoolean(CHECKBOX, binding.cbremember.isChecked)
         editor.apply()
+        Log.d("Login",name+emailId+userId+username+token)
     }
 
     companion object {

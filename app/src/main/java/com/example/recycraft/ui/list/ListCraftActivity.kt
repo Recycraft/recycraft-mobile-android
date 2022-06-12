@@ -2,6 +2,7 @@ package com.example.recycraft.ui.list
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recycraft.adapter.CraftVerticalAdapter
@@ -32,10 +33,13 @@ class ListCraftActivity : AppCompatActivity() {
             rvListKerajinan.adapter = adapter
         }
 
+        showLoading(true)
+
         //get data craft
         val dataCraft = intent.getParcelableArrayListExtra<CraftsModel>(EXTRA_CRAFT)
         if (dataCraft != null) {
             adapter.setListCraft(dataCraft)
+            showLoading(false)
         }
 
         adapter.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
@@ -66,6 +70,10 @@ class ListCraftActivity : AppCompatActivity() {
 //            }
 //            return arrayListCraft
 //        }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
 
     companion object {
         const val EXTRA_CRAFT = "extra_craft"

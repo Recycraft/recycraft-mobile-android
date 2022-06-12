@@ -60,7 +60,7 @@ class AccountFragment : Fragment() {
                 clear()
                 apply()
             }
-            val backIntent = Intent(activity, SplashFragment::class.java)
+            val backIntent = Intent(activity, SplashActivity::class.java)
             startActivity(backIntent)
 
         }

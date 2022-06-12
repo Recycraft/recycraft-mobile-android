@@ -64,19 +64,4 @@ class CategoryActivity : AppCompatActivity() {
         const val EXTRA_CRAFT = "extra_craft"
     }
 
-//    private val ArrayListCraft: ArrayList<TopCraftsModel>
-//        get() {
-//            val dataListTitle = resources.getStringArray(R.array.titlesListCraft)
-//            val dataListDesc = resources.getStringArray(R.array.descsListCraft)
-//            val arrayListCraft = ArrayList<TopCraftsModel>()
-//            for (i in dataListTitle.indices) {
-//                val listCraft = TopCraftsModel(
-//                    R.drawable.kerajinanlampion,
-//                    dataListTitle[i],
-//                    dataListDesc[i]
-//                )
-//                arrayListCraft.add(listCraft)
-//            }
-//            return arrayListCraft
-//        }
 }

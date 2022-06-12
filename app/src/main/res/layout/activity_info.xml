@@ -46,7 +46,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:src="@drawable/kerajinanlampion"
+                        tools:src="@drawable/ic_place_holder"
                         android:contentDescription="@string/hasil_tangkapan_gambar"
                         app:layout_constraintStart_toStartOf="@id/card_constraint"
                         app:layout_constraintTop_toTopOf="@id/card_constraint"

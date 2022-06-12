@@ -7,10 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.recycraft.data.model.CraftsModel
 import com.example.recycraft.databinding.ItemListCraftBinding
 
-class CraftVerticalAdapter
-//    (private val listCrafts: ArrayList<TopCraftsModel>,
-//    var context: Activity?)
-    : RecyclerView.Adapter<CraftVerticalAdapter.ViewHolder>() {
+class CraftVerticalAdapter : RecyclerView.Adapter<CraftVerticalAdapter.ViewHolder>() {
     private var listCrafts = ArrayList<CraftsModel>()
 
     private var onItemClickCallback: OnItemClickCallback? = null

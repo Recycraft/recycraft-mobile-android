@@ -53,8 +53,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list_kerajinan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
         android:clipToPadding="true"
         android:padding="16dp"
         app:layout_constraintTop_toBottomOf="@id/et_search"

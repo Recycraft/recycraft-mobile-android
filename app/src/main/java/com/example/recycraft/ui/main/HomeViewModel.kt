@@ -12,9 +12,7 @@ import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
     val listCrafts = MutableLiveData<ArrayList<CraftsModel>>()
-    val listCraftSlug = MutableLiveData<CraftsModel>()
     val listCategory = MutableLiveData<ArrayList<CategoriesModel>>()
-    val listCategorySlug = MutableLiveData<CategoriesModel>()
 
     fun setAllCategory() {
         val client = ApiConfig.getApiService().getAllCategory()
@@ -62,53 +60,4 @@ class HomeViewModel : ViewModel() {
         return listCrafts
     }
 
-    fun setCategoryBySlug(slug: String) {
-        val client = ApiConfig.getApiService().getCategoryBySlug(slug)
-        client.enqueue(object : Callback<CategoriesModel> {
-            override fun onResponse(
-                call: Call<CategoriesModel>,
-                response: Response<CategoriesModel>
-            ) {
-                if (response.isSuccessful) {
-                    listCategorySlug.value = response.body()
-                } else {
-                    Log.e("CraftBySlug", "onFailure: ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<CategoriesModel>, t: Throwable) {
-                Log.e("CraftBySlug", "onFailure: ${t.message.toString()}")
-            }
-
-        })
-    }
-
-    fun getCategoryBySlug(): LiveData<CategoriesModel> {
-        return listCategorySlug
-    }
-
-    fun setCraftBySlug(slug: String) {
-        val client = ApiConfig.getApiService().getCraftBySlug(slug)
-        client.enqueue(object : Callback<CraftsModel> {
-            override fun onResponse(
-                call: Call<CraftsModel>,
-                response: Response<CraftsModel>
-            ) {
-                if (response.isSuccessful) {
-                    listCraftSlug.value = response.body()
-                } else {
-                    Log.e("CraftBySlug", "onFailure: ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<CraftsModel>, t: Throwable) {
-                Log.e("CraftBySlug", "onFailure: ${t.message.toString()}")
-            }
-
-        })
-    }
-
-    fun getCraftBySlug(): LiveData<CraftsModel> {
-        return listCraftSlug
-    }
 }

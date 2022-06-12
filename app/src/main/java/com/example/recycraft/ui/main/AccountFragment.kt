@@ -9,12 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.recycraft.databinding.FragmentAccountBinding
-import com.example.recycraft.databinding.FragmentHomeBinding
 import com.example.recycraft.ui.login.LoginActivity
 import com.example.recycraft.ui.onBoarding.SplashActivity
-import com.example.recycraft.ui.onBoarding.SplashFragment
-import com.example.recycraft.ui.onBoarding.ThirdScreenFragment
-import kotlinx.android.synthetic.main.fragment_third_screen.*
 
 class AccountFragment : Fragment() {
 
@@ -24,7 +20,6 @@ class AccountFragment : Fragment() {
     private lateinit var username: String
     private lateinit var email: String
     private lateinit var preferences: SharedPreferences
-    private lateinit var onBoardingPref : SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,13 +45,13 @@ class AccountFragment : Fragment() {
         username = preferences.getString(LoginActivity.USERNAME, "").toString()
         email = preferences.getString(LoginActivity.EMAIL, "").toString()
 
-        binding.tvUsername.text = "$username"
-        binding.tvFullname.text = "$name"
-        binding.tvEmail.text = "$email"
+        binding.tvUsername.text = username
+        binding.tvFullname.text = name
+        binding.tvEmail.text = email
 
 
         binding.btnLogout.setOnClickListener {
-            preferences.edit().apply{
+            preferences.edit().apply {
                 clear()
                 apply()
             }
@@ -64,7 +59,6 @@ class AccountFragment : Fragment() {
             startActivity(backIntent)
 
         }
-
 
 
     }

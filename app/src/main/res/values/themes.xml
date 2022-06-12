@@ -14,9 +14,4 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/green_scan</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/recycraft_logo</item>
-        <item name="postSplashScreenTheme">@style/Theme.RecyCraft</item>
-    </style>
 </resources>

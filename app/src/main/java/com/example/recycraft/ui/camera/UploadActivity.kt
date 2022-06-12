@@ -28,8 +28,6 @@ class UploadActivity : AppCompatActivity() {
         const val STCLabel = "stc.txt"
         const val SCDModel = "scd_best_model.tflite"
         const val SCDLabel = "scd.txt"
-        const val EXTRA_DATA = "extra_data"
-        const val EXTRA_DATA_GALLERY = "extra_data_gallery"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

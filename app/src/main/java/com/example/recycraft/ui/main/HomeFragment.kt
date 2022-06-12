@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -92,21 +91,6 @@ class HomeFragment : Fragment() {
                 showLoadingCategory(false)
             }
         }
-/*
-        val adapterCategory = CategoryHorizontalAdapter(ArrayCategory, activity)
-        rvCategory.setHasFixedSize(true)
-        rvCategory.layoutManager = categoryLayout
-        rvCategory.adapter = adapterCategory
-
-        adapterCategory.setOnItemClickCallback(object :
-            CategoryHorizontalAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: CategoriesModel) {
-                val intent = Intent(requireActivity(), CategoryActivity::class.java)
-                //passing data
-//                intent.putExtra()
-                startActivity(intent)
-            }
-        })*/
 
         //on item clicked
         adapterCraft.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
@@ -143,20 +127,6 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        //button search
-//        binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                val intent = Intent(requireContext(), SearchResultActivity::class.java)
-//                intent.putExtra(SearchResultActivity.EXTRA_DATA, query)
-//                startActivity(intent)
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                return false
-//            }
-//        })
-
         //search onclick
         binding.svSearch.setOnClickListener {
             val intent = Intent(requireContext(), SearchResultActivity::class.java)
@@ -167,51 +137,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-//    private fun mapping(craft: List<CraftsModel>): ArrayList<CraftsModel> {
-//        val listCraft = ArrayList<CraftsModel>()
-//        for (c in craft) {
-//            val favUser = CraftsModel(
-//                c.id,
-//                c.login,
-//                c.avatarUrl,
-//                c.type
-//            )
-//            listFav.add(favUser)
-//        }
-//        return listFav
-//    }
-
-//    private val ArrayCraft: ArrayList<TopCraftsModel>
-//        get() {
-//            val dataTitle = resources.getStringArray(R.array.titlesCraft)
-//            val dataCategoryCraft = resources.getStringArray(R.array.categoryCraft)
-//            val arrayCraft = ArrayList<TopCraftsModel>()
-//            for (i in dataTitle.indices) {
-//                val craft = TopCraftsModel(
-//                    R.drawable.kerajinanlampion,
-//                    dataTitle[i],
-//                    dataCategoryCraft[i]
-//                )
-//                arrayCraft.add(craft)
-//            }
-//            return arrayCraft
-//        }
-
-    /*
-    private val ArrayCategory: ArrayList<CategoriesModel>
-        get() {
-            val dataTitleCategory = resources.getStringArray(R.array.titlesCategories)
-            val arrayCategory = ArrayList<CategoriesModel>()
-            for (i in dataTitleCategory.indices) {
-                val category = CategoriesModel(
-                    R.drawable.sampahoverlay,
-                    dataTitleCategory[i],
-                )
-                arrayCategory.add(category)
-            }
-            return arrayCategory
-        }
-*/
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

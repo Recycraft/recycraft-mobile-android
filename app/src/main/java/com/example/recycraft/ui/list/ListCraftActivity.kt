@@ -9,15 +9,11 @@ import com.example.recycraft.adapter.CraftVerticalAdapter
 import com.example.recycraft.data.model.CraftsModel
 import com.example.recycraft.databinding.ActivityListCraftBinding
 import com.example.recycraft.ui.detail.DetailActivity
-import com.example.recycraft.ui.main.HomeViewModel
 import kotlinx.android.synthetic.main.listcraft_toolbar.view.*
 
 class ListCraftActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListCraftBinding
     private lateinit var adapter: CraftVerticalAdapter
-    private lateinit var viewModel: HomeViewModel
-
-    private var allCraft = ArrayList<CraftsModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,22 +50,6 @@ class ListCraftActivity : AppCompatActivity() {
             finish()
         }
     }
-
-//    private val ArrayListCraft: ArrayList<TopCraftsModel>
-//        get() {
-//            val dataListTitle = resources.getStringArray(R.array.titlesListCraft)
-//            val dataListDesc = resources.getStringArray(R.array.descsListCraft)
-//            val arrayListCraft = ArrayList<TopCraftsModel>()
-//            for (i in dataListTitle.indices) {
-//                val listCraft = TopCraftsModel(
-//                    R.drawable.kerajinanlampion,
-//                    dataListTitle[i],
-//                    dataListDesc[i]
-//                )
-//                arrayListCraft.add(listCraft)
-//            }
-//            return arrayListCraft
-//        }
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE

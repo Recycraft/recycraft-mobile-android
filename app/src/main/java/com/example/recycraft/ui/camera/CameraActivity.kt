@@ -42,7 +42,6 @@ class CameraActivity : AppCompatActivity() {
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         const val CEK_URI = "extra"
-//        const val REQ_GALLERY = 2
     }
 
     private lateinit var binding: ActivityCameraBinding
@@ -56,11 +55,6 @@ class CameraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
-//        binding.btnTakeGallery.setOnClickListener {
-//            val intent = Intent(Intent.ACTION_PICK)
-//            intent.type = "image/*"
-//            startActivityForResult(intent, REQ_GALLERY)
-//        }
         setContentView(binding.root)
 
         binding.btnTakeGallery.setOnClickListener { startGallery() }
@@ -93,25 +87,6 @@ class CameraActivity : AppCompatActivity() {
             upload()
         }
     }
-
-//    @Deprecated("Deprecated in Java")
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == REQ_GALLERY && resultCode == Activity.RESULT_OK) {
-//            val uri: Uri? = data?.data
-//            photo = uri.toString()
-//
-//            val u = Uri.parse(photo)
-//            bitmap = MediaStore.Images.Media.getBitmap(this@CameraActivity.contentResolver, u)
-//            upload()
-
-//            val intent = Intent(applicationContext, UploadActivity::class.java)
-//            intent.putExtra(UploadActivity.EXTRA_DATA_GALLERY, photo)
-//            startActivity(intent)
-//            finish()
-
-//        }
-//    }
 
     private fun setupCamera() {
         if (allPermissionsGranted()) {
@@ -167,14 +142,7 @@ class CameraActivity : AppCompatActivity() {
                     val intent = Intent()
                     intent.putExtra(CEK_URI, savedUri.toString())
                     setResult(Activity.RESULT_OK, intent)
-                    /*
-                    val intent = Intent(applicationContext, UploadActivity::class.java)
-                    intent.putExtra(UploadActivity.EXTRA_DATA,photoFile)
-                    startActivity(intent)*/
 
-//                    finish()
-
-                    //upload
                     photo = savedUri.toString()
                     val u = Uri.parse(photo)
 

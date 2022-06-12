@@ -19,7 +19,6 @@ class SearchResultActivity : AppCompatActivity() {
     private lateinit var adapter: CraftVerticalAdapter
 
     companion object {
-        const val EXTRA_DATA = "extra_data"
         const val EXTRA_CRAFT = "extra_craft"
     }
 
@@ -63,9 +62,6 @@ class SearchResultActivity : AppCompatActivity() {
                     craft.addAll(craft2)
                 }
                 craft = craft.distinct() as ArrayList<CraftsModel>
-                
-//                craft.clear()
-//                craft.addAll(craft_distinct)
 
                 //set data
                 adapter.setListCraft(craft)

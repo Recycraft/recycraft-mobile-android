@@ -3,13 +3,12 @@ package com.example.recycraft.ui.info
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
+//import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.recycraft.adapter.CraftVerticalAdapter
 import com.example.recycraft.adapter.InfoAdapter
 import com.example.recycraft.data.model.CraftsModel
 import com.example.recycraft.databinding.ActivityInfoBinding
@@ -46,9 +45,9 @@ class InfoActivity : AppCompatActivity() {
 
         // get data and visualize pie chart
         val type = intent.getStringExtra(EXTRA_TYPE)
-        Log.d("INFO_TYPE", "type: $type")
+//        Log.d("INFO_TYPE", "type: $type")
         val confident = intent.getFloatExtra(EXTRA_CONFIDENT, 0F)
-        Log.d("INFO_CONFIDENT", "confident: $confident")
+//        Log.d("INFO_CONFIDENT", "confident: $confident")
 
         val value1 = floor(confident * 100)
         val value2 = 100 - value1
@@ -95,7 +94,7 @@ class InfoActivity : AppCompatActivity() {
         }
 
         //adapter onclick
-        adapter.setOnItemClickCallback(object : InfoAdapter.OnItemClickCallback{
+        adapter.setOnItemClickCallback(object : InfoAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ScrapClassClassifier.Classification) {
                 nama = data.kategori
             }
@@ -107,8 +106,8 @@ class InfoActivity : AppCompatActivity() {
             ViewModelProvider.NewInstanceFactory()
         )[HomeViewModel::class.java]
         viewModel.setAllCraft()
-        viewModel.getAllCraft().observe(this){
-            if (it != null){
+        viewModel.getAllCraft().observe(this) {
+            if (it != null) {
                 allCraft = it
             }
         }
@@ -126,7 +125,11 @@ class InfoActivity : AppCompatActivity() {
 
                 startActivity(moveIntent)
             } else {
-                Toast.makeText(applicationContext, "Pilih hasil Classification terlebih dahulu", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Pilih hasil Classification terlebih dahulu",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 

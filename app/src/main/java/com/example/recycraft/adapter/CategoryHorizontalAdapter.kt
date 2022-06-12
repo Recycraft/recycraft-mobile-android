@@ -12,7 +12,7 @@ class CategoryHorizontalAdapter : RecyclerView.Adapter<CategoryHorizontalAdapter
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
-    fun setOnItemClickCallback(onItemClickCallback: CategoryHorizontalAdapter.OnItemClickCallback) {
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 

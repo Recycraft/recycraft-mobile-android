@@ -4,13 +4,18 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.recycraft.adapter.CraftVerticalAdapter
 import com.example.recycraft.adapter.InfoAdapter
+import com.example.recycraft.data.model.CraftsModel
 import com.example.recycraft.databinding.ActivityInfoBinding
 import com.example.recycraft.ui.camera.ScrapClassClassifier
 import com.example.recycraft.ui.list.ListCraftActivity
+import com.example.recycraft.ui.main.HomeViewModel
 import com.example.recycraft.ui.main.MainActivity
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Legend
@@ -24,6 +29,9 @@ class InfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInfoBinding
     private lateinit var adapter: InfoAdapter
     private var listScrap = ArrayList<ScrapClassClassifier.Classification>()
+
+    private var nama: String? = null
+    private var allCraft = ArrayList<CraftsModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,11 +94,42 @@ class InfoActivity : AppCompatActivity() {
             rvSampah.adapter = adapter
         }
 
+        //adapter onclick
+        adapter.setOnItemClickCallback(object : InfoAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: ScrapClassClassifier.Classification) {
+                nama = data.kategori
+            }
+        })
+
+        //get data craft
+        val viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[HomeViewModel::class.java]
+        viewModel.setAllCraft()
+        viewModel.getAllCraft().observe(this){
+            if (it != null){
+                allCraft = it
+            }
+        }
+
         // button cari kerajinan
         binding.btnCari.setOnClickListener {
-            val moveIntent = Intent(this@InfoActivity, ListCraftActivity::class.java)
-            startActivity(moveIntent)
+            if (nama != null) {
+                val moveIntent = Intent(this@InfoActivity, ListCraftActivity::class.java)
+
+                //kirim data craft - filtered
+                val craft = allCraft.filter { craft -> craft.categoryCraft.slug == nama }
+                val dataCraft = ArrayList<CraftsModel>()
+                dataCraft.addAll(craft)
+                moveIntent.putExtra(ListCraftActivity.EXTRA_CRAFT, dataCraft)
+
+                startActivity(moveIntent)
+            } else {
+                Toast.makeText(applicationContext, "Pilih hasil Classification terlebih dahulu", Toast.LENGTH_SHORT).show()
+            }
         }
+
         binding.appBarResult.btn_back.setOnClickListener {
             val backIntent = Intent(this@InfoActivity, MainActivity::class.java)
             startActivity(backIntent)

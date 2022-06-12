@@ -125,7 +125,7 @@ class HomeFragment : Fragment() {
                 intent.putExtra(CategoryActivity.EXTRA_CATEGORY, dataCategory)
                 Log.d(" HOME DATA CATEGORY", "dataCategory: $dataCategory")
 
-                //kirim data craft
+                //kirim data craft - filtered
                 val craft =
                     allCraft.filter { craft -> craft.categoryCraft.titleCategory == dataCategory.titleCategory }
                 val dataCraft = ArrayList<CraftsModel>()
@@ -138,6 +138,8 @@ class HomeFragment : Fragment() {
         //button show all
         binding.btnShow.setOnClickListener {
             val intent = Intent(requireActivity(), ListCraftActivity::class.java)
+            //kirim data craft - all
+            intent.putExtra(ListCraftActivity.EXTRA_CRAFT, allCraft)
             startActivity(intent)
         }
 

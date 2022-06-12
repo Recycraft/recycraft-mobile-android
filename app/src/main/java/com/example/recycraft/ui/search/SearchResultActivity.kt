@@ -55,20 +55,20 @@ class SearchResultActivity : AppCompatActivity() {
                 val craft2 =
                     dataCraft?.filter { craft -> craft.categoryCraft.titleCategory?.lowercase() == p0.lowercase() }
 
-                val craft = ArrayList<CraftsModel>()
+                var craft = ArrayList<CraftsModel>()
                 if (craft1 != null) {
                     craft.addAll(craft1)
                 }
                 if (craft2 != null) {
                     craft.addAll(craft2)
                 }
-                val craftDistinct = craft.distinct()
+                craft = craft.distinct() as ArrayList<CraftsModel>
                 
 //                craft.clear()
 //                craft.addAll(craft_distinct)
 
                 //set data
-                adapter.setListCraft(craftDistinct as ArrayList<CraftsModel>)
+                adapter.setListCraft(craft)
 
                 showLoading(false)
                 binding.etSearch.clearFocus()
@@ -89,6 +89,9 @@ class SearchResultActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
+
+        //back button
+        binding.btnBack.setOnClickListener { finish() }
     }
 
     private fun showLoading(isLoading: Boolean) {

@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.listcraft_toolbar.view.*
 class ListCraftActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListCraftBinding
     private lateinit var adapter: CraftVerticalAdapter
-    private val listListCraft = ArrayList<CraftsModel>()
     private lateinit var viewModel: HomeViewModel
 
     private var allCraft = ArrayList<CraftsModel>()
@@ -24,13 +23,19 @@ class ListCraftActivity : AppCompatActivity() {
         binding = ActivityListCraftBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        listListCraft.addAll(ArrayListCraft)
-        adapter = CraftVerticalAdapter(/*listListCraft, this*/)
+        adapter = CraftVerticalAdapter()
+        adapter.notifyDataSetChanged()
 
         binding.apply {
             rvListKerajinan.setHasFixedSize(true)
             rvListKerajinan.layoutManager = LinearLayoutManager(this@ListCraftActivity)
             rvListKerajinan.adapter = adapter
+        }
+
+        //get data craft
+        val dataCraft = intent.getParcelableArrayListExtra<CraftsModel>(EXTRA_CRAFT)
+        if (dataCraft != null) {
+            adapter.setListCraft(dataCraft)
         }
 
         adapter.setOnItemClickCallback(object : CraftVerticalAdapter.OnItemClickCallback {
@@ -61,4 +66,8 @@ class ListCraftActivity : AppCompatActivity() {
 //            }
 //            return arrayListCraft
 //        }
+
+    companion object {
+        const val EXTRA_CRAFT = "extra_craft"
+    }
 }

@@ -3,8 +3,10 @@ package com.example.recycraft.ui.search
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recycraft.adapter.CraftVerticalAdapter
 import com.example.recycraft.data.model.CraftsModel
@@ -54,17 +56,25 @@ class SearchResultActivity : AppCompatActivity() {
                 val craft2 =
                     dataCraft?.filter { craft -> craft.categoryCraft.titleCategory?.lowercase() == p0.lowercase() }
 
-                var craft = ArrayList<CraftsModel>()
-                if (craft1 != null) {
+                val craft = ArrayList<CraftsModel>()
+                if (craft1 != null && craft1.isNotEmpty()) {
                     craft.addAll(craft1)
                 }
-                if (craft2 != null) {
+                if (craft2 != null && craft2.isNotEmpty()) {
                     craft.addAll(craft2)
                 }
-                craft = craft.distinct() as ArrayList<CraftsModel>
+                Log.d(" ISI CRAFT", "onQueryTextSubmit: ${craft::class.simpleName} $craft ${craft.isEmpty()}")
+                val craftDistinct = craft.distinct()
 
                 //set data
-                adapter.setListCraft(craft)
+                if (craft.isEmpty()){
+                    listCraft.clear()
+                    Toast.makeText(applicationContext, "Tidak ada hasil yang cocok", Toast.LENGTH_SHORT).show()
+                } else {
+                    craft.clear()
+                    craft.addAll(craftDistinct)
+                    adapter.setListCraft(craft)
+                }
 
                 showLoading(false)
                 binding.etSearch.clearFocus()

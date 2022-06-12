@@ -19,7 +19,7 @@ import com.example.recycraft.databinding.ActivityMainBinding
 import com.example.recycraft.ui.camera.CameraActivity
 import com.example.recycraft.ui.login.LoginActivity
 
-private val Context.datasore: DataStore<Preferences> by preferencesDataStore(name = "login")
+//private val Context.datasore: DataStore<Preferences> by preferencesDataStore(name = "login")
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getLoginSetting()
+      //  getLoginSetting()
 
         val homeFragment = HomeFragment()
         val accountFragment = AccountFragment()
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
     }
-
+/*
     private fun getLoginSetting() {
         val pref = SettingPreferences.getInstance(datasore)
         val settingPreferencesViewModel = ViewModelProvider(
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             } else {
             }
         }
-    }
+    }*/
 
 
 

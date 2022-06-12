@@ -8,12 +8,16 @@ import com.example.recycraft.adapter.CraftVerticalAdapter
 import com.example.recycraft.data.model.CraftsModel
 import com.example.recycraft.databinding.ActivityListCraftBinding
 import com.example.recycraft.ui.detail.DetailActivity
+import com.example.recycraft.ui.main.HomeViewModel
 import kotlinx.android.synthetic.main.listcraft_toolbar.view.*
 
 class ListCraftActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListCraftBinding
     private lateinit var adapter: CraftVerticalAdapter
     private val listListCraft = ArrayList<CraftsModel>()
+    private lateinit var viewModel: HomeViewModel
+
+    private var allCraft = ArrayList<CraftsModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

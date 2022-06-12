@@ -24,5 +24,17 @@
             android:padding="16dp"
             tools:listitem="@layout/item_list_craft" />
 
+    <ProgressBar
+        android:id="@+id/progress_Bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyle"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

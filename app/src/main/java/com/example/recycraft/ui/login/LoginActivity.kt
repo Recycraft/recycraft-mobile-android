@@ -26,7 +26,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-private val Context.datastore: DataStore<Preferences> by preferencesDataStore(name = "login")
+//private val Context.datastore: DataStore<Preferences> by preferencesDataStore(name = "login")
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityLoginBinding
@@ -37,10 +37,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-       // sharedPreferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE)
-      //  isSaveLoginInfo = sharedPreferences.getBoolean(CHECKBOX, false)
-      //  saveloginInfo(isSaveLoginInfo)
+        sharedPreferences = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE)
+        isSaveLoginInfo = sharedPreferences.getBoolean(CHECKBOX, false)
+        saveloginInfo(isSaveLoginInfo)
 
+        /*
         val pref = SettingPreferences.getInstance(datastore)
         val settingPreferencesViewModel = ViewModelProvider(
             this,
@@ -56,7 +57,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intentLogin)
                 finish()
             }
-        }
+        }*/
 
         binding.loginButton.setOnClickListener(this)
         binding.signupButton.setOnClickListener(this)
@@ -82,7 +83,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 call: Call<UserLoginResponse>,
                 response: Response<UserLoginResponse>
             ) {
-                /*
+
                 if (response.isSuccessful) {
                     response.body()?.dataLogin?.apply {
                         validateLogin(userId, name, token, email, username)
@@ -99,7 +100,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     ).show()
                 }
             }
-            */
+            /*
                 showLoading(false)
                 val loginResponse = response.body()
                 if (loginResponse != null) {
@@ -109,7 +110,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     Toast.makeText(this@LoginActivity, "Login gagal", Toast.LENGTH_SHORT).show()
                 }
 
-            }
+            }*/
 
 
             override fun onFailure(call: Call<UserLoginResponse>, t: Throwable) {
@@ -123,6 +124,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
+    /*
     private fun postLoginToken(data: UserLoginResponse, isLogin: Boolean) {
         val pref = SettingPreferences.getInstance(datastore)
         val settingPreferencesViewModel = ViewModelProvider(
@@ -131,7 +133,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         )[SettingPreferencesViewModel::class.java]
         data.dataLogin?.token?.let { settingPreferencesViewModel.saveLoginSetting(isLogin , it) }
 
-    }
+    }*/
 
 
     private fun showLoading(state: Boolean) {
@@ -165,8 +167,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         editor.putString(NAME, name)
         editor.putInt(USER_ID, userId)
         editor.putString(TOKEN, token)
-        editor.putString(EMAIL, token)
-        editor.putString(USERNAME, token)
+        editor.putString(EMAIL, email)
+        editor.putString(USERNAME, username)
         editor.putBoolean(CHECKBOX, binding.cbremember.isChecked)
         editor.apply()
     }

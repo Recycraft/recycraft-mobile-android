@@ -1,13 +1,17 @@
 package com.example.recycraft.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class UserLoginResponse(
     @field:SerializedName("data")
     val dataLogin: LoginModel
 
-)
+) : Parcelable
 
+@Parcelize
 data class LoginModel(
 
     @field:SerializedName("name")
@@ -24,4 +28,4 @@ data class LoginModel(
 
     @field:SerializedName("token")
     val token: String
-)
+) : Parcelable
